@@ -3,3 +3,28 @@
 @import 'fumadocs-ui/css/preset.css';
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
+
+p{
+    line-height: 2rem;
+    font-weight: 300;
+}
+
+.defense-green,
+.defense-green h3 {
+    color: #67E480 !important
+}
+
+.atack-red,
+.atack-red h3 {
+    color: #EB4242 !important
+}
+
+.cumstom-purple,
+.cumstom-purple h3 {
+    color: #802075 !important
+}
+
+.neutral-gray,
+.neutral-gray h3 {
+    color: #4b475c !important
+}
