@@ -11,7 +11,7 @@ description: Modificações para cybersuit
     Escolha um tipo de arma (rifles, submetralhadoras, sabres, etc..) Você possuí um **bônus de acerto igual ao seu nível** 
     com armas desse tipo.
 
-    Essa Modificação pode ser pego multiplas para diferentes tipos de armas.
+    Essa Modificação pode ser pego multiplas vezes para diferentes tipos de armas.
 
 </div>
 
@@ -47,6 +47,47 @@ description: Modificações para cybersuit
     ### Ataque Poderoso - <i className='atack-red'>ofensivo</i>
 
     <p>Você pode gastar sua **ação de movimento** para que seu próximo ataque tenha **+1 MBA**</p>
+
+</div>
+
+<div className='box-border'>    
+    ### Senhor da Batalha - <i className='atack-red'>ofensivo</i>
+
+    <p>Ao reduzir os pontos de vida de uma unidade a 0 no seu turno, você pode fazer uma ação padrão adicional. Essa habilidade só 
+    pode ocorrer uma vez por turno</p>
+
+</div>
+
+<div className='box-border'>    
+    ### Senhor da Guerra - <i className='atack-red'>ofensivo</i>
+
+    **Pre-requisito:** Poder 10, Senhor da Batalha
+
+    <p>Você pode transpassar quantas vezes quiser por turno. Cada vez que você transpassar aumente **+1 Margem de Ameaça** até o final do turno</p>
+
+    > **Margem de Ameaça**: Aumenta a quantidade de números para causar um dano crítico. Cybersuits com Margem de ameaça 0, causa um acerto crítico tirando 20 no dado.
+    > Cybersuits com Margem de Ameaça +2, causa um acerto crítico tirando 18 a 20 no dado.(apenas 20 natural é acerto instântaneo,
+    para os demais números, apenas o dano é aumentado de acordo com a arma utilizada.)
+
+</div>
+
+<div className='box-border'>    
+    ### Segundo Ataque!! - <i className='atack-red'>ofensivo</i>
+
+    **Pre-requisito:** Poder 8
+
+    <p>Você pode dar um ataque adicional com uma de suas armas na sua ação padrão, nesse ataque você não soma os modificadores de dano,
+    utilize apenas os **dados de dano da arma** e o **MBA**.</p>
+
+</div>
+
+<div className='box-border'>    
+    ### Terceiro Ataque!!! - <i className='atack-red'>ofensivo</i>
+
+    **Pre-requisito:** Poder 11, Segundo Ataque
+
+    <p>Você pode dar um ataque adicional novamente com uma de suas armas na sua ação padrão, nesse ataque você não soma os modificadores de dano,
+    utilize apenas os **dados de dano da arma** e o **MBA**.</p>
 
 </div>
 
@@ -171,7 +212,7 @@ description: Modificações para cybersuit
 
     <p>Cybersuit ganha **+4 Testes de Reflexos** (usado para reduzir a metade danos em area se reflexo superar acerto do oponente)</p>
 
-    Essa Modificação pode ser pego multiplas vezes para obter efeitos acumulativos.
+    Essa Modificação pode ser pega multiplas vezes para obter efeitos acumulativos.
 
 </div>
 
@@ -218,8 +259,19 @@ description: Modificações para cybersuit
 
     +1 ponto de **Escudo de Energia(EE)**
     
-    <p>Toda vez que receber um ataque, você pode escolher gastar *3 cargas de Campo de Força* para anular
-    completamente um dano de energia ou físico.</p>
+    <p>Como reação, você pode escolher gastar *3 cargas de Campo de Força* para anular completamente o dano do ataque (tanto de enrgia quanto físico).</p>
+</div>
+
+<div className='box-border'>
+    ### Recarga Acelerada - <i className='defense-green'>defensivo</i>
+
+    +1 ponto de **Escudo de Energia(EE)**
+    
+    <p>No ínicio do seu turno, se você não sofreu danos na rodada passada, adicione *+1 carga de campo de força*</p>
+
+    Essa Modificação pode ser pega multiplas vezes, para cada vez que escolher essa modificação novamente aumente em +1 para cada vês que escolheu essa modificação
+
+    >Exemplo: 1° vez = +1 carga, 2° vez = +3 cargas, 3° vez = +6 cargas...
 </div>
 
 <div className='box-border'>
@@ -236,6 +288,32 @@ description: Modificações para cybersuit
     +1 ponto de **Escudo de Energia(EE)**   
     
     <p>Você pode gastar *2 cargas de Campo de Força*, se fizer isso seu próximo ataque de energia receberá **+1 MBA**</p>
+</div>
+
+<div className='box-border'>
+    ### Escudo Vortice - <i className='neutral-gray'>neutro</i>
+
+    +1 ponto de **Escudo de Energia(EE)**
+    
+    <p>Como uma reação ou ação livre durante o seu turno, você consegue criar um escudo de energia em formato de vortice,
+    na frente da sua Cybersuit. ela te acompanha por onde você anda.</p>
+
+    <p>Enquanto o escudo estiver ativo você ganha os seguintes benefícios:</p>
+
+    <li>**Ser atingido por projetil ou golpe de energia**: reduza o dano do projétil ou ataque corpo-a-corpo em 100% 
+    (Ataques em área ainda causam 50% de dano)</li>
+
+    <li>**Ser atingido por projétil físico**: O projétil fica preso no vortice não causando dano à Cybersuit, no inicio do 
+    seu turno, ao desligar o escudo você pode lançar os projéteis presos no escudo para outros alvos como uma ação livre. 
+    eles causam o mesmo dano que seriam causados á você.</li>
+
+    <p>Enquanto o escudo estiver ativo e você receber ataques, remova **2 cargas de campo de força** ao invés de 1 carga</p>
+
+    <p>Se suas caragas de campo de força acabarem o escudo é desativado. Os projéteis presos no escudo são destruídos(não 
+    causam dano nem a você ou seus oponentes)</p>
+
+    <p>Enquanto o escudo estiver ativo ele ocupa uma mão da Cybersuit (impedindo o uso do que estiver nela), você só pode 
+    desligar o escudo durante o seu turno.</p>
 </div>
 
 ## Modificações de Scanner
@@ -276,13 +354,15 @@ description: Modificações para cybersuit
 
     +1 ponto de **Scanner(SC)**   
     
-    <p>**+1 Margem de Ameaça** dos seus ataques (para cada margem de ameaça se torna mais fácil causar um acerto crítico)</p>
+    <p>**+1 Margem de Ameaça** dos seus ataques </p>
 
-    > Exemplo: Cybersuits com Margem de ameaça 0, causa um acerto crítico tirando 20 no dado.
+    > Margem de Ameaça: Aumenta a quantidade de números para causar um dano crítico. Cybersuits com Margem de ameaça 0, causa um acerto crítico tirando 20 no dado.
     > Cybersuits com Margem de Ameaça +2, causa um acerto crítico tirando 18 a 20 no dado.(apenas 20 natural é acerto instântaneo,
-    os demais número apenas o dano é aumentado de acordo com a arma utilizada.)
+    para os demais números, apenas o dano é aumentado de acordo com a arma utilizada.)
 
-    Essa Modificação pode ser pega multiplas vezes para obter efeitos acumulativos.
+    Essa Modificação pode ser pega multiplas vezes, para cada vez que escolher essa modificação novamente aumente em +1 para cada vês que escolheu essa modificação
+
+    >Exemplo: 1° vez = +1 M.Ameaça, 2° vez = +3 M.Ameaça, 3° vez = +6 M.Ameaça...
 
 </div>
 
@@ -365,9 +445,64 @@ description: Modificações para cybersuit
     for destruída o alvo do ataque não recebe o dano ecedente.</p>
     Remova em -2 a penetração do disparo
 
-    > Manobra de sacrífico: como uma reação, uma unidade pode se jogar na frente de um ataque para receber o dano por outra
-    se a unidade for destruída o dano escedente será causado no alvo original do ataque.
+    > **Manobra de sacrífico**: como uma reação, uma unidade pode se jogar na frente de um ataque para receber o dano por outra.
+    Se a unidade for destruída o dano escedente será causado no alvo original do ataque.
     
+</div>
+
+## Modificações de Manobra
+
+<div className='box-border'>
+    ### Proeficiencia em [Manobra] - <i className='neutral-gray'>neutro</i>
+
+    +1 ponto de **Manobra(PM)**
+
+    Escolha uma <a target='_blank' href='/docs/combate/combate-avancado'>Manobra padrão</a>, você recebe *+6 de acerto* na manobra escolhida
+
+    <p>Essa Modificação pode ser pego multiplas para diferentes tipos de manobras, ou para obter efeitos acumulativos.</p>
+
+</div>
+
+<div className='box-border'>
+    ### Sortudo - <i className='neutral-gray'>neutro</i>
+
+    +1 ponto de **Manobra(PM)**
+
+    Como reação a uma rolagem de dado sua, você pode pagar 3 pontos de manobra para refazer o teste. Você escolhe entre as duas rolagens.
+
+</div>
+
+<div className='box-border'>
+    ### Benção da Sorte - <i className='defense-green'>defensivo</i>
+
+    **Pré-requisito:** Sortudo
+
+    +1 ponto de **Manobra(PM)**
+
+    Como reação a uma rolagem de dado, você pode pagar 3 pontos de manobra para refazer a rolagem de seus **aliados**. Você escolhe entre as duas rolagens.
+
+</div>
+
+<div className='box-border'>
+    ### Maldição do Azar - <i className='atack-red'>ofensivo</i>
+
+    **Pré-requisito:** Sortudo
+
+    +1 ponto de **Manobra(PM)**
+
+    Como reação a uma rolagem de dado, você pode pagar 3 pontos de manobra para refazer a rolagem de seus **inimigos**. Você escolhe entre as duas rolagens.
+
+</div>
+
+<div className='box-border'>
+    ### Senhor do Destino - <i className='neutral-gray'>neutro</i>
+
+    **Pré-requisito:** Ponto de Manobra +5, Sortudo, Maldição do Azar, Benção da Sorte.
+
+    +1 ponto de **Manobra(PM)**
+
+    Invés de pagar 3 pontos de manobras nas modificações Sortudo, Maldição do Azar, Benção da Sorte. Agora elas custam apenas 2 pontos de manobra.
+
 </div>
 
 ## Modificações Mistas
