@@ -259,7 +259,7 @@ description: Modificações para cybersuit
 
     +1 ponto de **Escudo de Energia(EE)**
     
-    <p>Como reação, você pode escolher gastar *3 cargas de Campo de Força* para anular completamente o dano do ataque (tanto de enrgia quanto físico).</p>
+    <p>Como reação, você pode escolher gastar *3 cargas de Escudo de Energia* para anular completamente o dano do ataque (tanto de enrgia quanto físico).</p>
 </div>
 
 <div className='box-border'>
@@ -267,7 +267,7 @@ description: Modificações para cybersuit
 
     +1 ponto de **Escudo de Energia(EE)**
     
-    <p>No ínicio do seu turno, se você não sofreu danos na rodada passada, adicione *+1 carga de campo de força*</p>
+    <p>No ínicio do seu turno, se você não sofreu danos na rodada passada, adicione *+1 carga de Escudo de Energia*</p>
 
     Essa Modificação pode ser pega multiplas vezes, para cada vez que escolher essa modificação novamente aumente em +1 para cada vês que escolheu essa modificação
 
@@ -275,11 +275,19 @@ description: Modificações para cybersuit
 </div>
 
 <div className='box-border'>
+    ### Reator digital - <i className='defense-green'>defensivo</i>
+
+    +1 ponto de **Escudo de Energia(EE)**
+    
+    <p>Você pode somar seu atributo de Escudo de Energia(EE) a testes de resistência contra Hacking</p>
+</div>
+
+<div className='box-border'>
     ### Disparo Energizante - <i className='neutral-gray'>neutro</i>
 
     +1 ponto de **Escudo de Energia(EE)**   
     
-    <p>Se você acertou um disparo a uma unidade com campo de força nesse turno, recupere uma carga de campo de força no inicio do seu próximo Turno</p>
+    <p>Se você acertou um disparo a uma unidade com cargas de Escudo de Energia nesse turno, recupere uma carga de Escudo de Energia no inicio do seu próximo Turno</p>
 </div>
 
 <div className='box-border'>
@@ -287,7 +295,7 @@ description: Modificações para cybersuit
 
     +1 ponto de **Escudo de Energia(EE)**   
     
-    <p>Você pode gastar *2 cargas de Campo de Força*, se fizer isso seu próximo ataque de energia receberá **+1 MBA**</p>
+    <p>Você pode gastar *2 cargas de Escudo de Energia*, se fizer isso seu próximo ataque de energia receberá **+1 MBA**</p>
 </div>
 
 <div className='box-border'>
@@ -307,9 +315,9 @@ description: Modificações para cybersuit
     seu turno, ao desligar o escudo você pode lançar os projéteis presos no escudo para outros alvos como uma ação livre. 
     eles causam o mesmo dano que seriam causados á você.</li>
 
-    <p>Enquanto o escudo estiver ativo e você receber ataques, remova **2 cargas de campo de força** ao invés de 1 carga</p>
+    <p>Enquanto o escudo estiver ativo e você receber ataques, remova **2 cargas de Escudo de Energia** ao invés de 1 carga</p>
 
-    <p>Se suas caragas de campo de força acabarem o escudo é desativado. Os projéteis presos no escudo são destruídos(não 
+    <p>Se suas caragas de Escudo de Energia acabarem o escudo é desativado. Os projéteis presos no escudo são destruídos(não 
     causam dano nem a você ou seus oponentes)</p>
 
     <p>Enquanto o escudo estiver ativo ele ocupa uma mão da Cybersuit (impedindo o uso do que estiver nela), você só pode 
@@ -443,7 +451,7 @@ description: Modificações para cybersuit
     
     <p>Ao fazer uma **Manobra de sacrifício** com uma unidade sob. seu controle, caso a unidade 
     for destruída o alvo do ataque não recebe o dano ecedente.</p>
-    Remova em -2 a penetração do disparo
+    Remova em -2 a perfuração do disparo
 
     > **Manobra de sacrífico**: como uma reação, uma unidade pode se jogar na frente de um ataque para receber o dano por outra.
     Se a unidade for destruída o dano escedente será causado no alvo original do ataque.
@@ -568,5 +576,33 @@ description: Modificações para cybersuit
 
     Versão aprimorada da transformação, agora sua Cybersuit pode adquirir **2 habilidades especiais**
     ao invés de apenas 1.
+
+</div>
+
+<div className='box-border'>
+    ### CyberFusão - <i className='cumstom-purple'>neutro custom</i>
+
+    *"Se 2 robo já incomoda muita gente, um gigante incomoda muito mais" - ???*
+
+    Se 2 duas Cybersuits ou veículos possuem a Modificação `CyberFusão` elas podem realizar uma manobra em conjunto.
+
+    A manobra precisa ser feita com as duas unidades adjacentes e dura uma ação completa do turno quem iniciar a manobra.
+
+    No final da manobra as duas unidades passam a ser apenas uma de tamanho proporcional a soma das duas unidades,
+
+    > Exemplo: 2 unidades médias viram uma grande, 1 unidade grande + uma unidade média vira uma enorme, 2 unidades grandes
+    > viram uma imensa, etc...
+
+    Os **atributos principais e especiais** das duas unidades são somados e **multiplicados por 0,66** utilize o valor arredondado 
+    para cima como o novo atributo da unidade fusionada.
+
+    Caso as unidades tenham sido danificadas em combate esse dano permance depois da fusão, caso o dano ultrapasse a quantidade máxima de pontos de vida que a unidade fusionada 
+    teria as duas unidades que fizeram a fusão são derrotadas
+
+    A unidade fusionada possuí as mesmas modificações e desvantagens das duas unidades, modificações iguais não acumulam seus efeitos exceto modificações que podem ser pegas mais de uma vez.
+
+    A unidade fusionada se torna a última na iniciativa, pode utilizar todos os itens e habilidades das unidades da fusão.
+
+    A unidade fusionada possuí 1 ação de movimento e 2 ações padrões (Se a unidade estiver sendo pilotada por 2 jogadores eles se decidem quem ira tomar controle de cada ação ações, se os jogadores brigarem por controle das ações da unidade a fusão é interrompida)
 
 </div>
