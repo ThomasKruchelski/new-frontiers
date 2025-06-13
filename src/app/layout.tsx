@@ -14,6 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen relative">
+        <Analytics/>
         <div className='w-full h-full z-10 fixed'>
           <Waves
             lineColor="#130240"
