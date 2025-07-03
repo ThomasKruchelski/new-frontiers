@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import BackGroundVideo from '@/components/BackgroundVideo'
 
 import Post1 from 'src/public/posts/post-0-1.gif'
 import Post2 from 'src/public/posts/post-0-5.gif'
@@ -9,6 +10,9 @@ export default function HomePage() {
   // console.log('gifbg')
   return (
     <main className="flex flex-1 flex-col items-center py-10 w-full" >
+
+      {/* <BackGroundVideo/> */}
+
       {/* <div className='flex flex-col items-center w-full pb-10'>
 
         <h1 className="mb-4 text-4xl font-bold text-center">Update 0.5 - Derrubando Robôs Gigantes</h1>
