@@ -1,0 +1,222 @@
+[
+    {
+        "nome":"Pistola de Energia",
+        "tipo-de-dano":"Energia",
+        "tipo-da-arma":"Pistola",
+        "maos":"1",
+        "area":"",
+        "dado-de-dano":"2d8",
+        "bonus-de-dano":"PWR",
+        "MBA":"x3",
+        "distancia":"180m",
+        "perfuracao":"",
+        "margem-de-ameaca":"20",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Bateria de Energia",
+        "imagem":"",
+        "descricao":[
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"Rifle de Energia",
+        "tipo-de-dano":"Energia",
+        "tipo-da-arma":"Rifle",
+        "maos":"2",
+        "area":"",
+        "dado-de-dano":"3d8",
+        "bonus-de-dano":"PWR",
+        "MBA":"x3",
+        "distancia":"225m",
+        "perfuracao":"",
+        "margem-de-ameaca":"19",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Bateria de Energia",
+        "imagem":"",
+        "descricao":[
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"TTT-300 'Vibora'",
+        "tipo-de-dano":"Físico",
+        "tipo-da-arma":"Submetralhadora",
+        "maos":"1",
+        "area":"",
+        "dado-de-dano":"2d6",
+        "bonus-de-dano":"MOB",
+        "MBA":"x3",
+        "distancia":"180m",
+        "perfuracao":"",
+        "margem-de-ameaca":"20",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Munição de Submetralhadora",
+        "imagem":"",
+        "descricao":[
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"MAG-4040-2 'Python'",
+        "tipo-de-dano":"Energia",
+        "tipo-da-arma":"Submetralhadora",
+        "maos":"1",
+        "area":"",
+        "dado-de-dano":"3d6",
+        "bonus-de-dano":"MOB",
+        "MBA":"x3",
+        "distancia":"180m",
+        "perfuracao":"",
+        "margem-de-ameaca":"19",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Bateria de Energia",
+        "imagem":"",
+        "descricao":[
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"Clay Bazooka",
+        "tipo-de-dano":"Físico",
+        "tipo-da-arma":"Canhão",
+        "maos":"1",
+        "area":"7.5m",
+        "dado-de-dano":"2d6",
+        "bonus-de-dano":"PWR",
+        "MBA":"x3",
+        "distancia":"180m",
+        "perfuracao":"",
+        "margem-de-ameaca":"20",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Munição explosiva",
+        "imagem":"",
+        "descricao":[
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"LMG-04 'Magnus'",
+        "tipo-de-dano":"Físico",
+        "tipo-da-arma":"Canhão",
+        "maos":"2",
+        "area":"",
+        "dado-de-dano":"4d4",
+        "bonus-de-dano":"PWR",
+        "MBA":"x3",
+        "distancia":"180m",
+        "perfuracao":"",
+        "margem-de-ameaca":"20",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Munição explosiva",
+        "imagem":"",
+        "descricao":[
+            "Arma teleguiada: +10 acerto",
+            "Você pode escolher até 4 alvos para um ataque com essa arma, role o dado de acerto para cada um deles e divida o dano final entre as unidades",
+            ""
+        ]
+    },
+    {
+        "nome":"Sabre de Energia",
+        "tipo-de-dano":"Energia",
+        "tipo-da-arma":"CaC",
+        "maos":"1",
+        "area":"",
+        "dado-de-dano":"3d8",
+        "bonus-de-dano":"PWR",
+        "MBA":"x4",
+        "distancia":"",
+        "perfuracao":"",
+        "margem-de-ameaca":"20",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"",
+        "imagem":"",
+        "descricao":[
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"Drill Dozer",
+        "tipo-de-dano":"Físico",
+        "tipo-da-arma":"CaC",
+        "maos":"1",
+        "area":"",
+        "dado-de-dano":"4d4",
+        "bonus-de-dano":"PWR",
+        "MBA":"x4",
+        "distancia":"",
+        "perfuracao":"",
+        "margem-de-ameaca":"19",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"",
+        "imagem":"",
+        "descricao":[
+            "Se o alvo do ataque dessa arma for uma estrutura adiciona x2 no MBA desse ataque",
+            "",
+            ""
+        ]
+    },
+    {
+        "nome":"Vulcan",
+        "tipo-de-dano":"Físico",
+        "tipo-da-arma":"Submetralhadora",
+        "maos":"",
+        "area":"",
+        "dado-de-dano":"2d4",
+        "bonus-de-dano":"MOB",
+        "MBA":"x2",
+        "distancia":"75m",
+        "perfuracao":"",
+        "margem-de-ameaca":"20",
+        "critico":"x2 MBA",
+        "texto-especial":"",
+        "municao":"Munição de Submetralhadora",
+        "imagem":"",
+        "descricao":[
+            "Essa arma pode ser equipada em sua Cybersuit sem precisar do Talento 'Arma Secundária' ",
+            "Como reação ao ser alvo de um projetil explosivo, você pode fazer um disparo com essa arma, se seu acerto passar de 25, o projetil é destruindo e o dano é anulando",
+            ""
+        ]
+    },
+    {
+        "nome":"Missel anti projetil perseguidor M.A.P.P",
+        "tipo-de-dano":"Físico",
+        "tipo-da-arma":"utilitário",
+        "maos":"",
+        "area":"",
+        "dado-de-dano":"",
+        "bonus-de-dano":"",
+        "MBA":"",
+        "distancia":"105m",
+        "perfuracao":"",
+        "margem-de-ameaca":"",
+        "critico":"",
+        "texto-especial":"",
+        "municao":"Munição M.A.P.P",
+        "imagem":"",
+        "descricao":[
+            "Essa arma pode ser equipada em sua Cybersuit sem precisar do Talento 'Arma Secundária' ",
+            "Como reação a qualquer unidade no raio de distância da arma ser alvo de um projetil projetil perseguidor, você pode fazer um disparo com essa arma, O projetil será despistado e o dano anulado",
+            ""
+        ]
+    }
+]
