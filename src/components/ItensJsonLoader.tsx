@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 
 export default function MyJsonLoader() {
-  const [itens, setItens] = useState(null)
+  const [itens, setItens] = useState<any[]>([])
 
   useEffect(() => {
     fetch('/json/itens.json')
