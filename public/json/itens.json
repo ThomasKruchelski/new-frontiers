@@ -16,6 +16,7 @@
             "carga":"12",
             "municao":"civil",
             "pericia":"pistola",
+            "keywords":[],
             "especial":[]
         }
     },
@@ -36,6 +37,7 @@
             "carga":"6",
             "municao":"civil",
             "pericia":"pistola",
+            "keywords":[],
             "especial":[]
         }
     },
@@ -56,13 +58,14 @@
             "carga":"3",
             "municao":"bateria",
             "pericia":"pistola",
+            "keywords":[],
             "especial":[]
         }
     },
     {
         "nome": "'Cano Serrado'",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["Escopeta","arma de fogo","recarga lenta"],
+        "tipoSecundario": ["Escopeta","arma de fogo"],
         "descricao":"uma poderosa espingarda de uma mão",
         "valor":"",
         "imagem":"",
@@ -76,6 +79,7 @@
             "carga":"1 disparo",
             "municao":"cartucho",
             "pericia":"armas",
+            "keywords":["Recarga lenta"],
             "especial":[]
         }
     },
@@ -96,13 +100,14 @@
             "carga":"4 rajadas",
             "municao":"civil",
             "pericia":"armas",
+            "keywords":[],
             "especial":[]
         }
     },
     {
         "nome": "P90",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["submetralhadora","arma de fogo","baixo recuo"],
+        "tipoSecundario": ["submetralhadora","arma de fogo"],
         "descricao":"Mobilidade e letalidade, a marca oficial dessas armas para quem está em constante movimento, muitas vezes é vendida junto com um energético monstro e um patinete.",
         "valor":"",
         "imagem":"",
@@ -116,6 +121,7 @@
             "carga":"6 rajadas",
             "municao":"civil",
             "pericia":"armas",
+            "keywords":["Baixo recuo"],
             "especial":[]
         }
     },
@@ -136,13 +142,14 @@
             "carga":"8 rajadas",
             "municao":"militar",
             "pericia":"armas",
+            "keywords":[],
             "especial":[]
         }
     },
     {
         "nome": "Bastão de Baseball",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","agil","Especial"],
+        "tipoSecundario": ["arma branca","Especial"],
         "descricao":"Das quadras de baseball até os becos escuros da Metrocity, por mais que não pareça é uma execelente arma de auto-defesa",
         "valor":"",
         "imagem":"",
@@ -156,14 +163,15 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
-            "especial":["Home run: você pode fazer um teste de arremesso usando um teste de corpo-a-corpo"]
+            "keywords":["Agil"],
+            "especial":["Home run: Você pode fazer um teste de arremesso usando a perícia Luta"]
         }
     },
     {
         "nome": "Faca",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","arremessável","agil"],
-        "descricao":"Das quadras de baseball até os becos escuros da Metrocity, por mais que não parece é uma execelente arma de auto-defesa",
+        "tipoSecundario": ["arma branca"],
+        "descricao":"Facil de esconder, a faca é a arma mais versátil e a mais comum das armas brancas",
         "valor":"",
         "imagem":"",
         "item": {
@@ -176,13 +184,14 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":["Arremessável","Agil"],
             "especial":[]
         }
     },
     {
         "nome": "Pé-de-cabra",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","agil","vandalismo I","Especial"],
+        "tipoSecundario": ["arma branca","Especial"],
         "descricao":"Essa ferramenta é muito popular entre assaltantes e engenheiros para abrir portas e escotilhas imperradas em construções, e nas horas de desespero pode ser usado como arma!",
         "valor":"",
         "imagem":"",
@@ -196,6 +205,7 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":["Agil","Vandalismo I"],
             "especial":["Invasão: Você ganha vantagem no teste de quebrar portas e janelas usando a perícia de crime"]
         }
     },
@@ -216,13 +226,14 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":[],
             "especial":[]
         }
     },
     {
         "nome": "Martelo",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","agil","vandalismo I"],
+        "tipoSecundario": ["arma branca"],
         "descricao":"Um simples martelo",
         "valor":"",
         "imagem":"",
@@ -236,13 +247,14 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":["Agil","Vandalismo I"],
             "especial":[]
         }
     },
     {
         "nome": "Katana",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","agil"],
+        "tipoSecundario": ["arma branca"],
         "descricao":"Uma poderosa espada samurai original do japão feudal, aprimorada através do tempo hoje é cultuada pelos mais ferozes assasinos de aluguel e cosplayers em convensões de anime",
         "valor":"",
         "imagem":"",
@@ -256,13 +268,14 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":["Agil"],
             "especial":[]
         }
     },
     {
         "nome": "Marreta",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","vandalismo II"],
+        "tipoSecundario": ["arma branca"],
         "descricao":"Grande marreta de construção civil, a melhor arma para quebrar uma porta, ou parede...",
         "valor":"",
         "imagem":"",
@@ -276,6 +289,7 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":["Vandalismo II"],
             "especial":[]
         }
     },
@@ -296,13 +310,14 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
+            "keywords":[],
             "especial":[]
         }
     },
     {
         "nome": "Sabre de Energia",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["arma branca","agil","dano igneo","Especial"],
+        "tipoSecundario": ["arma branca","dano igneo","Especial"],
         "descricao":"Ffffkrrrrshhzzzwooooom.. woom..woooom.. wooooooom..",
         "valor":"",
         "imagem":"",
@@ -316,6 +331,7 @@
             "carga":"",
             "municao":"bateria",
             "pericia":"luta",
+            "keywords":["Agil"],
             "especial":["Técnica Dejai: Você pode realizar a ação de aparar em disparos realizados contra você, faça um teste de oposição ao disparo usando acrobacia, se for bem sucedido você evita o ataque e não recebe dano."]
         }
     }
