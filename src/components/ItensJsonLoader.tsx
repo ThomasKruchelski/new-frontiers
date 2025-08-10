@@ -26,9 +26,7 @@ export default function MyJsonLoader() {
         <HandleWeaponLayout item={item} />
         // 
       ) : (
-        <div>
-          TIPO "{item.tipoPrincipal}" NÃO IDENTIFICADO
-        </div>
+        null
       )
       )}
     </div>
