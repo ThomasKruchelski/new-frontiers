@@ -147,6 +147,48 @@
         }
     },
     {
+        "nome": "Ataque desarmado",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["ataque desarmado"],
+        "descricao":"Ataque com seu corpo de forma bruta, sem técnica, sem enrolação. Socos, joelhadas, cabeçadas e ponta-pés são considerados como esse tipo de ataque desarmado",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "1",
+            "area": "",
+            "dadoDano": "d3",
+            "bonusDano":["3/CORP"],
+            "distancia":"-",
+            "carga":"",
+            "municao":"",
+            "pericia":"luta",
+            "keywords":[],
+            "especial":[]
+        }
+    },
+    {
+        "nome": "Arte Marcial",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["ataque desarmado"],
+        "descricao":"Golpe de artes marciais que você aprendeu em algum momento da sua vida, extraindo um maior potencial do seu corpo do que simplesmente bater igual um condenado",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "1",
+            "area": "",
+            "dadoDano": "d4",
+            "bonusDano":["3/CORP","3/DEST"],
+            "distancia":"-",
+            "carga":"",
+            "municao":"",
+            "pericia":"artes marciais",
+            "keywords":[],
+            "especial":["Golpe Marcial: ao acertar o ataque você pode escolher acrescentar um dado de dano adicional ou realizar uma manobra no alvo como ação livre"]
+        }
+    },
+    {
         "nome": "Bastão de Baseball",
         "tipoPrincipal": "arma",
         "tipoSecundario": ["arma branca","Especial"],
@@ -165,6 +207,30 @@
             "pericia":"luta",
             "keywords":["Agil"],
             "especial":["Home run: Você pode fazer um teste de arremesso usando a perícia Luta"]
+        }
+    },
+    {
+        "nome": "Guitarra",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["arma branca","Especial"],
+        "descricao":"Essa belezinha é blindada do corpo ao braço, sem perigo de danificar o instrumento. Agora você sabe o que fazer com aquele cara que sempre pede 'Toca Raul!'. ",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "1",
+            "area": "",
+            "dadoDano": "d8",
+            "bonusDano":["3/CORP","3/DEST"],
+            "distancia":"",
+            "carga":"",
+            "municao":"",
+            "pericia":"luta",
+            "keywords":["Agil"],
+            "especial":[
+                "Aparelhagem da Casa: Você pode conectar remotamente sua guitarra a amplificadores e caixas de som de qualquer lugar, fazer a conexão é uma ação livre se estiver adjacente ao aparelho, você pode se conectar a todos os aparelhos em um raio de 12m se for bem sucedido em um teste de tecnologia de dificuldade comum (fazer isso utiliza uma ação bônus)",
+                "20 pedais de distorção: Ao acertar um ataque o alvo e os personagens que estiverem a uma area de 3m de amplificadores ligados a sua guitarra fazem um teste de fortitude, se falharem ficam surdos até seu próximo turno"
+            ]
         }
     },
     {
