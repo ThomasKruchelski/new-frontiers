@@ -23,7 +23,7 @@ export default function MyJsonLoader() {
   return (
     <div>
       {itens.map((item) => item.tipoPrincipal == "arma" ? (
-        <HandleWeaponLayout item={item} />
+        <HandleWeaponLayout item={item} key={item.nome} />
         // 
       ) : (
         null

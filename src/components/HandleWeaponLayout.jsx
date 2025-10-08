@@ -4,7 +4,7 @@ import KeywordEffectbox from '@/components/KeywordEffectbox'
 const HandleWeaponsLayout = ({ item }) => {
 
     return (
-        <div className='item-arma flex-col'>
+        <div className='item-arma flex-col' id={item.nome}>
             <div className='flex-col md:flex-row w-full flex border border-white'>
                 <div className='flex flex-col flex-1 border-r '>
                     <div className='flex p-2 border-b'>
@@ -13,7 +13,7 @@ const HandleWeaponsLayout = ({ item }) => {
                         </div>
                         <div className='flex'>
                             {item.tipoSecundario.map((tipo) => (
-                                <div className='tag ml-2'>
+                                <div className='tag ml-2' key={item.nome + '-' + tipo}>
                                     {tipo}
                                 </div>
                             ))}
@@ -58,7 +58,7 @@ const HandleWeaponsLayout = ({ item }) => {
                                 <div className='font-light text-sm'>
                                     area
                                 </div>
-                                <div className='flex px-2 font-medium text-2xl justify-center items-center flex-1'>
+                                <div className='flex px-2 font-medium text-md justify-center items-center flex-1'>
                                     {item.item.area === "" ? '-' : item.item.area}
                                 </div>
                             </div>

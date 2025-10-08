@@ -11,6 +11,11 @@ p {
   font-weight: 300;
 }
 
+.title{
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
 .defense-green,
 .defense-green h3 {
   color: #67E480 !important
