@@ -5,6 +5,13 @@
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
 
+.dark{
+  --color-fd-background:#060010 !important;
+}
+
+.bg-\[\#160000\]{
+  background-color: #16000000;
+}
 
 p {
   line-height: 2rem;

@@ -17,8 +17,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         <Analytics/>
         <div className='w-full h-full z-10 fixed'>
           <Waves
-            lineColor="#130240"
-            backgroundColor="#060010"
+            lineColor="#3c199b50"
+            // backgroundColor="#060010"
             waveSpeedX={0.02}
             waveSpeedY={0.01}
             waveAmpX={40}
