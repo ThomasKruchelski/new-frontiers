@@ -154,3 +154,13 @@ p {
 .img-desc-hover:hover {
   opacity: 1;
 }
+
+.credit{
+  font-size: .8rem;
+  float: inline-end;
+  padding-top: .5rem;
+}
+
+.credit span{
+  font-size: .9rem;
+}

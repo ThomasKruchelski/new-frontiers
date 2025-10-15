@@ -104,7 +104,7 @@ aprovação do mestre.
     *Você é grande*
 
     Pré requisito: 15 no atributo CORPO
-    <li>+4 pontos de vida máxima</li>
+    <li>+8 pontos de vida máxima</li>
     <li>Seu ataque desarmado sobe 1 categoria de tamanho (Se era 1d3 agora passa a ser 1d4)</li>
     <li>Você recebe vantagem na manobra de agarrar da perícia Luta</li>
 
@@ -161,7 +161,7 @@ aprovação do mestre.
 
     *O que para muitos é um ferimento mortal para você é apenas um arranhão, pelo menos por algum tempo...*
 
-    <li>Ao chegar em 0 pontos de vida você não fica inconciente mas ainda recebe sangramento a</li>
+    <li>Ao chegar em menos de 0 pontos de vida você não fica inconciente mas ainda recebe sangramento do estado crítico</li>
     <li>Ao estabilizar o sangramento, se o personagem estiver com menos de 0 pontos de vida ficará inconciente</li>
 
 </div>
@@ -177,59 +177,131 @@ Cada vez que você fazer um implante você perde -1 ponto no atributo Persona e 
 
 ## Implantes comuns
 
-<div className='box-border'>
-    ### Interface de retina: médica
+<div className='item'>
+    <div className='box-border'>
+        ### Interface de retina: médica
 
-    *Implante na retina ligadas a uma pequena lente de scanner grudada ao olho do portador, acompanha um chip com informações de analise médica inserido internamente na tempora*
+        *Implante na retina ligadas a uma pequena lente de scanner grudada ao olho do portador, acompanha um chip com informações de analise médica inserido internamente na tempora*
 
-    Você possuí vantagem na perícia primeiros socorros
+        Você possuí vantagem na perícia primeiros socorros
 
-    Você consegue determinar caracteristicas sobre a saude de pessoas a  até 18m de você. Você consegue determinar quantos pontos de vida qualquer ser vivo tem atualmente e tambem suas condições físicas atuais(se possuí ferimentos, efeitos de medicamentos ou dopping)
+        Você consegue determinar caracteristicas sobre a saude de pessoas a  até 18m de você. Você consegue determinar quantos pontos de vida qualquer ser vivo tem atualmente e tambem suas condições físicas atuais(se possuí ferimentos, efeitos de medicamentos ou dopping)
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
 
-<div className='box-border'>
-    ### Interface de retina: informação
+<div className='item'>
+    <div className='box-border'>
+        ### Interface de retina: informação
 
-    *Implante na retina ligadas a uma pequena lente de scanner grudada ao olho do portador, acompanha um chip com analise facial e buscador de informações inserido internamente na tempora*
+        *Implante na retina ligadas a uma pequena lente de scanner grudada ao olho do portador, acompanha um chip com analise facial e buscador de informações inserido internamente na tempora*
 
-    Você consegue determinar identidades de pessoas de sua base de dados a até 60m de você. Faça um teste comum de percepção, se for bem sucedido você sabe nome, idade, tamanho, peso, contato e outras informações relevantes do personagem.
-    
-    Todas as informações dadas a partir de uma base de dados, se a pessoa não estiver registrada na base de dados ele será dada como desconhecida, e caso ela falsificou documentos no registro de dados as informações recebidas não serão coerentes.
+        Você consegue determinar identidades de pessoas de sua base de dados a até 60m de você. Faça um teste comum de percepção, se for bem sucedido você sabe nome, idade, tamanho, peso, contato e outras informações relevantes do personagem.
+        
+        Todas as informações dadas a partir de uma base de dados, se a pessoa não estiver registrada na base de dados ele será dada como desconhecida, e caso ela falsificou documentos no registro de dados as informações recebidas não serão coerentes.
 
-    > Você pode coletar informações de bases da dados diferentes para ter um resumo mais completo sobre um personagem. Exemplo: Geralmente bases de dados da polícia são mais completas que bases de dados públicas.
+        > Você pode coletar informações de bases da dados diferentes para ter um resumo mais completo sobre um personagem. Exemplo: Geralmente bases de dados da polícia são mais completas que bases de dados públicas.
 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
-<div className='box-border'>
-    ### Braço mecânico
+<div className='item'>
+    <div className='box-border'>
+        ### Braço mecânico
 
-    *Os ossos do seu braço foi revistido com aço e ligado a roldanas para ter um maior torque em suas atividas*
+        *Os ossos do seu braço foi revistido com aço e ligado a roldanas para ter um maior torque em suas atividas*
 
-    O ataque desarmado com seu braço passa de 1d3 para 1d6 de dano bruto
+        O ataque desarmado com seu braço aumenta em 2 categorias de tamanho (se você possuí 1d3 de dano no ataque desarmado ele passa a ser 1d6)
 
-    Seu braço tem `Redução de Dano bruto 4`.
+        Seu braço tem `Redução de Dano bruto 4`.
 
-    Se possuir esse implante nos dois braços você recebe Vantagem em testes de `levantar objeto pesado` e `escalada` da perícia Atletismo.
+        Se possuir esse implante nos dois braços você recebe Vantagem em testes de `levantar objeto pesado` e `escalada` da perícia Atletismo.
 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
-<div className='box-border'>
-    ### Perna mecânica
+<div className='item'>
+    <div className='box-border'>
+        ### Perna mecânica
 
-    *Os ossos da sua pernas são revistido com aço e puxado com roldanas ter um maior torque em suas atividas*
+        *Os ossos da sua pernas são revistido com aço e puxado com roldanas ter um maior torque em suas atividas*
 
-    Sua Perna tem `Redução de Dano bruto 4`.
+        Sua Perna tem `Redução de Dano bruto 4`.
 
-    Seu deslocamento aumenta em 1.5 metros.
+        Seu deslocamento aumenta em 1.5 metros.
 
-    Se possuir esse implante nas duas pernas você recebe Vantagem em testes de `Salto` e `Corrida` da perícia Atletismo.
+        Se possuir esse implante nas duas pernas você recebe Vantagem em testes de `Salto` e `Corrida` da perícia Atletismo.
 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
-<div className='box-border'>
-    ### Conector de pilotagem neural
 
-    *Você possuí um conector com entrada para 3 pinos em seu pescoço, utilizado para operar maquinas especiais adaptadas sem precisar ensinar o condutor a usalas diretamente*
+<div className='item'>
+    <div className='box-border'>
+        ### Armonização Facial
 
-    Você recebe +40% de Pilotagem para veículos que possuam o conector neural. Sem o conector você utiliza sua perícia normalmente
+        *Esse implante é um conjunto de diversos procedimentos estéticos como implante dentário, rinoplastia, preenchimento facial para se adequar a moda da época e incrementar sua figura de autoridade*
 
+        Você recebe +40% em testes da perícia diplomacia.
+
+        > Tenha em mente que ao adquirir esse implante sua persona irá diminuir o valor desse teste
+
+        <div class='credit'>ideia de: <span>Gustavo Genshin</span></div>
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+        ### Blindagem de Cabeça
+
+        *O interior do seu crânio é revistido por uma espuma bioquímica anti-impacto e a pele da sua cabeça é revestida com placas de titâneo, a recuperação da cirurgia é demorada mas pelo menos não vai se preocupar tanto com um Headshot*
+
+        Sua cabeça possuí +8 de redução de dano bruto 
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+        ### Conector de pilotagem neural
+
+        *Você possuí um conector com entrada para 3 pinos em seu pescoço, utilizado para operar maquinas especiais adaptadas sem precisar ensinar o condutor a usalas diretamente*
+
+        Você recebe +40% de Pilotagem para veículos que possuam o conector neural. Sem o conector você utiliza sua perícia normalmente
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
 
 ## Implantes Perigosos
@@ -237,10 +309,17 @@ Cada vez que você fazer um implante você perde -1 ponto no atributo Persona e 
 Alguns implantes foram feitos para proporcionar capacidades sub-humanas a seus portadores porem não garantem nenhuma segurança no portador.
 A maior parte dos implantes dessa lista possuem propósitos militares e são proibidos em diversos locais
 
-<div className='box-border'>
-    ### Sandevistan
+<div className='item'>
+    <div className='box-border'>
+        ### Sandevistan
 
-    *Aparelhagem de titâneo aplicada no topo da coluna vertebral se estendendo até a metade das costas, esse aparelho dispara uma carga eletrica diretamente no cortex cerebral liberando de forma forçada cortizol e adrenalina permitindo com que o usuário reaja em uma velocidade absurda como se todo o mundo estivesse em camera lenta.*
+        *Aparelhagem de titâneo aplicada no topo da coluna vertebral se estendendo até a metade das costas, esse aparelho dispara uma carga eletrica diretamente no cortex cerebral liberando de forma forçada cortizol e adrenalina permitindo com que o usuário reaja em uma velocidade absurda como se todo o mundo estivesse em camera lenta.*
 
-    Como uma reação você pode ganhar ações bônus durante o turno de outro personagem. Se você escolher receber 1 ação bônus você recebe 2d4 de dano bruto, esse dano não pode ser reduzido, para cada ação bônus adicional você recebe 2d4 de dano a mais, se passar em um teste de fortitude o dano é reduzido pela metade.
+        Como uma reação você pode ganhar ações bônus durante o turno de outro personagem. Se você escolher receber 1 ação bônus você recebe 2d4 de dano bruto, esse dano não pode ser reduzido, para cada ação bônus adicional você recebe 2d4 de dano a mais, se passar em um teste de fortitude o dano é reduzido pela metade.
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
