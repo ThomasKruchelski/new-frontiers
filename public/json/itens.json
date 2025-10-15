@@ -117,7 +117,7 @@
             "area": "",
             "dadoDano": "3d4",
             "bonusDano":[""],
-            "distancia":"30",
+            "distancia":"18",
             "carga":"6 rajadas",
             "municao":"civil",
             "pericia":"armas",
@@ -159,33 +159,12 @@
             "area": "",
             "dadoDano": "d3",
             "bonusDano":["3/CORP"],
-            "distancia":"-",
+            "distancia":"",
             "carga":"",
             "municao":"",
             "pericia":"luta",
             "keywords":[],
             "especial":[]
-        }
-    },
-    {
-        "nome": "Arte Marcial",
-        "tipoPrincipal": "arma",
-        "tipoSecundario": ["ataque desarmado"],
-        "descricao":"Golpe de artes marciais que você aprendeu em algum momento da sua vida, extraindo um maior potencial do seu corpo do que simplesmente bater igual um condenado",
-        "valor":"",
-        "imagem":"",
-        "item": {
-            "tipoDano":"bruto",
-            "maos": "1",
-            "area": "",
-            "dadoDano": "d4",
-            "bonusDano":["3/CORP","3/DEST"],
-            "distancia":"-",
-            "carga":"",
-            "municao":"",
-            "pericia":"artes marciais",
-            "keywords":[],
-            "especial":["Golpe Marcial: ao acertar o ataque você pode escolher acrescentar um dado de dano adicional ou realizar uma manobra no alvo como ação livre"]
         }
     },
     {
@@ -294,6 +273,27 @@
             "pericia":"luta",
             "keywords":[],
             "especial":[]
+        }
+    },
+    {
+        "nome": "Extintor de Incêndio",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["arma branca","Especial"],
+        "descricao":"Esse equipamento de segurança contra incêndio tem muito a oferecer para aqueles que tiverem criatividade em uma situação de vida ou morte",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "2",
+            "area": "cone 3m",
+            "dadoDano": "d6",
+            "bonusDano":["3/CORP"],
+            "distancia":"",
+            "carga":"",
+            "municao":"espumaCO2",
+            "pericia":"luta",
+            "keywords":[],
+            "especial":["Jato Seco: Como ação bônus você pode disparar um jato em cone de 3m para apagar o fogo de uma area do cenário ou remover o estádo 'em chamas' de personagens e objetos.","Fumaça Improvisada: você pode quebrar o cano do extintor e fazer uma nuvem de fumaça de 3m de raio, a fumaça dura por 2 turnos"]
         }
     },
     {

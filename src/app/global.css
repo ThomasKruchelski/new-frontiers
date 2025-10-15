@@ -11,6 +11,11 @@ p {
   font-weight: 300;
 }
 
+.title{
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
 .defense-green,
 .defense-green h3 {
   color: #67E480 !important
@@ -148,4 +153,14 @@ p {
 
 .img-desc-hover:hover {
   opacity: 1;
+}
+
+.credit{
+  font-size: .8rem;
+  float: inline-end;
+  padding-top: .5rem;
+}
+
+.credit span{
+  font-size: .9rem;
 }

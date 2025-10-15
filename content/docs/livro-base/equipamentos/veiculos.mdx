@@ -1,11 +1,9 @@
-import React from 'react';
-import KeywordEffectbox from '@/components/KeywordEffectbox'
+---
+title: Veículos
+description: Veiculos e modificações
+---
 
-const HandleWeaponsLayout = ({ item }) => {
-
-    return (
-        <div className='item-arma flex-col' id={item.nome}>
-            <div className='flex-col md:flex-row w-full flex border border-white'>
+{/* <div className='flex-col md:flex-row w-full flex border border-white'>
                 <div className='flex flex-col flex-1 border-r '>
                     <div className='flex p-2 border-b'>
                         <div className='text-2xl'>
@@ -123,26 +121,4 @@ const HandleWeaponsLayout = ({ item }) => {
                         {item.descricao}
                     </div>
                 </div>
-            </div>
-            {item.item.especial[0] != null || item.item.keywords[0] != null ? (
-                <details className='details-box'>
-                    <summary>Detalhes</summary>
-                    <div className='sanfona'>
-                        {item.item.keywords.map((keyword) => (
-                            <KeywordEffectbox keyword={keyword} />
-                        ))}
-                        {item.item.especial.map((efeito) => (
-                            <div className='efeito-box'>
-                                {efeito}
-                            </div>
-                        ))}
-                    </div>
-                </details>
-            ) : null}
-
-        </div>
-
-    )
-}
-
-export default HandleWeaponsLayout;
+            </div> */}
