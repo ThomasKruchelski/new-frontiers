@@ -42,7 +42,7 @@ description: Lista de Itens
     </div>
 </div>
 
-## óculos
+## Óculos
 
 <div className='item'>
     <div className='box-border'>
@@ -82,7 +82,7 @@ description: Lista de Itens
 
     *Óculos que despadroniza efeitos hipnóticos*
 
-    imune a hipnoze 
+    concede imunidade a hipnoze 
  
     </div>
     <div className='flex'>
@@ -92,33 +92,160 @@ description: Lista de Itens
     </div>
 </div>
 
+## Mochilas
+
+<div className='item'>
+    <div className='box-border'>
+    ### Mochila Comum
+
+    *Mochila de carga comum*
+
+    <li className='defense-green'> Aumenta o Volume que o personagem pode carregar em 12</li>
+    
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Mochila Medica
+
+    *Mochila para carregar itens médicos*
+
+    <li className='defense-green'> Aumenta o Volume que o personagem pode carregar em 20</li>
+    <li className='atack-red'> Itens que não forem do Tipo: Medico ou Farmaco ocupam o dobro de volume na mochila</li>
+    
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Mochila Balistica
+
+    *Mochila para carregar munições*
+
+    <li className='defense-green'> Aumenta o Volume que o personagem pode carregar em 20</li>
+    <li className='atack-red'> Itens que não forem do Tipo: Munição e Armas ocupam o dobro de volume na mochila</li>
+    
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='box-border'>
+    ## Modificações para mochilas mochilas
+
+        <div className='item'>
+            <div className='box-border'>
+            ### ... Ipermeavel
+
+            *resistente a água*
+
+            Protege itens sensíveis a água e outros líquidos
+
+            </div>
+            <div className='flex'>
+                <div className='border-x border-b px-2'>
+                    <span> Valor: x2 preço original</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='item'>
+            <div className='box-border'>
+            ### ... Voadora
+
+            *Agora sua mochila é equipada micro computador capaz de te seguir utilizando um propulsor grudado na parte inferior da bolsa, o propulsor não é forte o suficiente para erguer você, apenas carregar seus itens... Pensando bem... Não sei por que alguem iria querer isso.*
+
+            Alivia dor nas costas
+
+            <div className='credit'>ideia de: <span>Gabriel Kosloski</span></div>
+
+            </div>
+            <div className='flex'>
+                <div className='border-x border-b px-2'>
+                    <span> Valor: $100 </span>
+                </div>
+            </div>
+        </div>
+</div>
+
 ## Vestimentas
 
-<div className='box-border'>
+<div className='item'>
+    <div className='box-border'>
+    ### Colete Pessoal
 
-### Colete Pessoal
+    *Colete se tornou uma simples referencias a roupas a prova de bala, a segurança pessoal evoluiu e micro placas volateis podem ser inseridas em casacos e calças sem interferir na movimentação do usuário*
 
-*Colete se tornou uma simples referencias a roupas a prova de bala, a segurança pessoal evoluiu e micro placas volateis podem ser inseridas em casacos e calças sem interferir na movimentação do usuário*
-
-Você recebe 4 de Redução de dano bruto em todas as partes do seu corpo
-
+    <li className='defense-green'>Você recebe 2 de Redução de dano bruto em todas as partes do seu corpo</li>
+    
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
 
-<div className='box-border'>
+<div className='item'>
+    <div className='box-border'>
+    ### Colete Militar
 
-### Colete Pesado
-
-Você recebe 8 de Redução de dano bruto em todas as partes do seu corpo
-Você recebe desvantagem em testes de furtividade, atletismo, acrobacia.
-Você recebe desvantagem na resistencia reflexo
-
+    <li className='defense-green'>Você recebe 4 de Redução de dano bruto em todas as partes do seu corpo</li>
+    <li className='atack-red'>Você recebe desvantagem em testes de furtividade, atletismo, acrobacia.</li>
+ 
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+    
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
 </div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Colete Pesado
+
+    <li className='defense-green'>Você recebe 6 de Redução de dano bruto em todas as partes do seu corpo</li>
+    <li className='atack-red'>Você recebe desvantagem em testes de furtividade, atletismo, acrobacia.</li>
+    <li className='atack-red'>Você recebe desvantagem na resistência reflexo</li>
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+ 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+
 
 <div className='box-border'>
 
 ### Roupa Anti-Pyro
 
-Você recebe 4 de Redução de dano igneo em todas as partes do seu corpo
+<li className='defense-green'>Você recebe 4 de Redução de dano Térmico em todas as partes do seu corpo</li>
 
 </div>
 
@@ -126,7 +253,7 @@ Você recebe 4 de Redução de dano igneo em todas as partes do seu corpo
 
 ### Roupa Anti-Contaminação
 
-Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
+<li className='defense-green'>Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo</li>
 
 </div>
 
@@ -136,13 +263,14 @@ Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
 
 *Pesada armadura de combate utilizada por tropas especiais, a armadura é uma peça única completa e não pode ser separada como as das demais vestimentas*
 
-<li>Você recebe 12 de Redução de dano bruto em todas as partes do seu corpo</li>
-<li>Você recebe 4 de Redução de dano igneo em todas as partes do seu corpo</li>
-<li>Você é imune a manobras de derrubar, empurrar e agarrar</li>
+<li className='defense-green'>Você recebe 8 de Redução de dano Bruto em todas as partes do seu corpo</li>
+<li className='defense-green'>Você recebe 4 de Redução de dano Térmico em todas as partes do seu corpo</li>
+<li className='defense-green'>Você é imune a manobras de derrubar, empurrar e agarrar</li>
 
-<li>Seu deslocamento é reduzido pela metade</li>
-<li>Você recebe dupla desvantagem nas perícias de furtividade, atletismo, acrobacia, luta e artes marciais.</li>
-<li>Você recebe dupla desvantagem na resistencia reflexo</li>
+<li className='atack-red'>Seu deslocamento é reduzido pela metade</li>
+<li className='atack-red'>Você recebe dupla desvantagem nas perícias de furtividade, atletismo, acrobacia, luta e artes marciais.</li>
+<li className='atack-red'>Você recebe dupla desvantagem na resistencia reflexo</li>
+<li className='atack-red'>Você é considerdo um personagem grande e não passa por lugares pequenos</li>
 
 </div>
 
@@ -152,20 +280,135 @@ Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
 
 *A Carapaça de ligas de titâneo com 2 metros de tamanho envolve o corpo do usuário que é preso por cintos e travas aos braços e pernas da estrutura, possibilitando o controle dos braços com garras magneticas para o levantamento e manipulação de equipamentos pesados e tambem das pernas com esteiras para movimentação em ambientes industriais*
 
-<li>Seu deslocamento se torna 12m</li>
-<li>Você recebe vantagem em testes de levantar objeto pesado</li>
-<li>Você recebe vantagem na perícia de atletismo</li>
-<li>Você recebe vantagem na resistencia reflexo</li>
+<li className='defense-green'>Seu deslocamento se torna 12m</li>
+<li className='defense-green'>Você recebe vantagem em testes de levantar objeto pesado</li>
+<li className='defense-green'>Você recebe vantagem na perícia de atletismo</li>
+<li className='defense-green'>Você recebe vantagem na resistencia reflexo</li>
 
-<li>Você recebe dupla desvantagem na perícia furtividade</li>
+<li className='atack-red'>Você recebe dupla desvantagem na perícia furtividade</li>
+<li className='atack-red'>Você é considerdo um personagem grande e não passa por lugares pequenos</li>
 
 </div>
 
-## Medicina (bruto)
+## Medicina 
 
-## Medicina (térmico)
+<div className='item'>
+    <div className='box-border'>
+    ### Kit de primeiros Socorros
 
-## Medicina (tóxico)
+    *Kit com todos os itens necessários para imprevistos, praticamente obrigatório para qualquer empreitada perigosa*
+
+    Ao utilizar esse item em **qualquer cena** você remove as condições _Sangramento_ e _Ferimento Grave_ de um personagem. Utilizar o item é uma ação padrão e o item é descartado após o uso.
+ 
+    Ao utilizar esse item em uma **cena de descanso**, faça um teste da perícia `Primeiros Socorros` e com base no resultado verifique o efeito na tabela. O item é descartado após o uso.
+
+    | Resultado | Efeito | 
+    | :-----: | :----: | 
+    |   Falha no teste  |  remova 1d10 de dano Bruto ou 4 de qualquer dano |   
+    |   Sucesso Normal  |  remova 1d10+5 de dano Bruto ou 4 de qualquer dano |
+    |   Sucesso Difícil  |  remova 1d10+10 de dano Bruto ou 4 de qualquer dano|
+    |  Sucesso Muito Difícil  |  remova 1d10+15 de dano Bruto ou 4 de qualquer dano |
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+        <div className='border-x border-b px-2'>
+            <span> Volume: 4 </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Bandagem
+
+    *rolo de tecido médico junto de um forte adesivo, capaz de estancar sangramentos rápidamente sem a necessidade de conhecimentos avançados*
+
+    Ao utilizar esse item em **qualquer cena** você remove um contador da condição _Sangramento_. Utilizar o item é uma ação bônus, o item é descartado após o uso.
+ 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+        <div className='border-x border-b px-2'>
+            <span> Volume: 1 </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Tala
+
+    *Tala de metal acompanhada de dermas com soros e HsG, capaz regenerar ossos fraturados e estancar ferimentos profundos de uma região do corpo*
+
+    Ao utilizar esse item em **qualquer cena** você remove as condições _Sangramentos_ e _Ferimento Grave_ de um personagem. Utilizar o item é uma ação bônus e o item é descartado após o uso.
+ 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+        <div className='border-x border-b px-2'>
+            <span> Volume: 2 </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Kit Médico Bruto
+
+    *Kit especializado em cura de ferimentos brutos de alta intensidade*
+
+    Ao utilizar esse item em **qualquer cena** você adiciona a condição _Anti Bruto nível 1_ à um personagem até o fim da próxima cena de combate.
+ 
+    Ao utilizar esse item em uma **cena de descanso**, faça um teste da perícia `Medicina` e com base no resultado verifique o efeito na tabela. O item é descartado após o uso.
+
+    | Resultado | Efeito | 
+    | :-----: | :----: | 
+    |   Falha no teste  |  remova 3d6 de dano Bruto  |   
+    |   Sucesso Normal  |  remova 3d6+6 de dano Bruto  |
+    |   Sucesso Difícil  |  remova 3d6+12 de dano Bruto |
+    |  Sucesso Muito Difícil  |  remova 3d6+20 de dano Bruto |
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+        <div className='border-x border-b px-2'>
+            <span> Volume: 4 </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Desfibrilador
+
+    *Dispositivo de choque que se usado no coração pode restaurar casos de parada cardiaca, conhecido popularmente entre para-médicos como "A Última Esperança"*
+
+    Se um personagem recebeu a condição _Morto_ a menos de 3 minutos e ele possuir mais que -10 pontos de vida. Você pode fazer um teste Difícil de `primeiros-socorros`. Caso for bem sucedido o personagem é Reanimado.
+ 
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
 
 ## Aparatos Cirurgicos
 
@@ -195,7 +438,7 @@ Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
 
     *Galão com liquido azul utilizado em célula de criogenia*
 
-    Se usado em uma célula de criogenia, um personagem submerso a -60°C cura 1d4 de todos os tipos de danos (bruto,igneo,tóxico e respiratório) a cada hora submerso
+    Se usado em uma célula de criogenia, um personagem submerso a -60°C cura 1d6 de todos os tipos de danos (Bruto,Térmico,Tóxico e Respiratório) a cada hora submerso
 
     Dura por 8 horas.
  
@@ -239,7 +482,7 @@ Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
 
 <div className='item'>
     <div className='box-border'>
-### Esteróide Anabolizante
+    ### Esteróide Anabolizante
 
     Você recebe pontos adicionais no atributo CORPO para cada unidade que seu personagem aplicar.
 
@@ -262,7 +505,7 @@ Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
 
 <div className='item'>
     <div className='box-border'>
-### Pilula da Alegria
+    ### Pilula da Alegria (H4 Pill)
 
     Você recebe pontos adicionais no atributo PERSONA para cada unidade que seu personagem aplicar.
 
@@ -285,9 +528,48 @@ Você recebe 4 de Redução de dano tóxico em todas as partes do seu corpo
 
 <div className='item'>
     <div className='box-border'>
+    ### Octogono Anfetaminico
+
+    Você recebe pontos adicionais no atributo DESTREZA para cada unidade que seu personagem aplicar.
+
+    Esse item é de uso continuo então é adicionado como dispesa na tabela de patrimonio do seu personagem.
+
+    No mês que seu personagem deixar de aplicar esse farmaco ele receberá proporcionalmente uma redução no Atributo de DESTREZA.
+
+    > Se o personagem aplicou 3 unidades, após uma semana o personagem aumenta +3 pontos no atributo DESTREZA, se parar de aplicar o farmaco ele perderá o bônus e terá -3 de PERSONA por 2 meses (o dobro do tempo que ele usou o farmaco), passando esse tempo ele voltará a ter o valor do atributo normal.
+    
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: $270</span>
+        </div>
+        <div className='border-x border-b px-2'>
+            <span> Tipo: Farmaco uso continuo</span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### Endorfina
+
+    Durante 24horas você se torna imune a efeito de condições mundanas causadas por ferimentos contra o personagem.
+
+    > Se seu personagem quebra a perna por conta de um ferimento ele perde metade do deslocamento e recebe desvantagem em atletismo e acrobacia, ao utilizar esse item o personagem ignora os efeitos negativos desse e outros ferimentos.
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
 ### Adrenalina
 
-Você recebe uma ação bônus adicional por 1d4 rodadas. Nas rodadas seguintes você passa o dobro de rodadas fadigado.
+Você recebe uma ação bônus adicional por 1d4 rodadas. Nas rodadas seguintes você passa o dobro de rodadas __fadigado__. Aplicar esse item é uma ação bônus
     </div>
     <div className='flex'>
         <div className='border-x border-b px-2'>

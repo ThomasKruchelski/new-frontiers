@@ -27,7 +27,7 @@ aprovação do mestre.
 <div className='box-border'>
     ### Alerta
 
-    *Seu personagem passou por longos treinamentos limitares ou viveu em lugares onde não se pode abaixar a guarda*
+    *Seu personagem passou por longos treinamentos militares ou viveu em lugares onde não se pode abaixar a guarda*
 
     <li>O personagem nunca fica desprevinido enquanto acordado</li>
     <li>Seu sono leve permite um teste adicional para identificar perigo eminente enquanto estiver dormindo</li>
@@ -62,7 +62,7 @@ aprovação do mestre.
 <div className='box-border'>
     ### Sortudo
 
-    *O personagem é inesplicavelmente sortudo, até mesmo em momentos onde tudo está perdido*
+    *O personagem é inexplicavelmente sortudo, até mesmo em momentos onde tudo está perdido*
 
     Até 3 vezes ao dia, você pode fazer um teste do precursor sorte com vantagem
     
@@ -115,7 +115,11 @@ aprovação do mestre.
 
     *Você frequêntou muito clubes de tiro ou atira dês de que era uma criança, devido a isso você sabe onde uma bala pode machucar mais*
 
-    <li>Você pode rerolar um dos dados de dano ao acertar um disparo com uma arma de fogo, você pode escolher entre o novo resultado ou o anterior</li>
+    <li>Você soma metade da destreza como Bônus de dano no primeiro disparo que você acertar durante o turno</li>
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
 
 </div>
 
@@ -147,12 +151,55 @@ aprovação do mestre.
 </div>
 
 <div className='box-border'>
+    ### Voraz
+
+    <li>Você recebe vantagem na resistência Vontade</li>
+    <li>Você não perde o primeiro ponto de mente que iria perder em um arco de aventura.</li>
+
+</div>
+
+<div className='box-border'>
     ### Brigão
 
     *Você é imprevisivel e sabe muito bem como utilizar o ambiente pra se defender ou conseguir o que quer*
 
-    <li>Armas improvisadas que você usa em combate possuem o descritor 'Agil' e passa a causar 2d4 de dano invés de 1d4</li>
+    <li>Armas improvisadas que você usa em combate possuem o descritor 'Agil' e aumentam em uma categoria de tamanho</li>
     <li>Se seu oponente precisar fazer um teste de resistência contra algum ataque ou condição causada por você, ele terá desvantagem nesse teste de resistência</li>
+
+</div>
+
+<div className='box-border'>
+    ### Artes Marciais
+
+    *Você passou parte da sua vida treinando artes marciais de diversas origens tornando-se um lutador com um estilo único.*
+
+    Ao escolher essa característica **seu ataque desarmado aumenta em uma categoria de tamanho** e você pode escolher os bônus de duas artes marciais da lista abaixo:
+
+    <li>**Water Kung Fu** -> Você fazer manobras e resistir a manobras de adversários usando a perícia de Luta com destreza (normalmente para manobras um personagem só pode usar a perícia de luta com Força) </li>
+    
+    <li>**Krav-Maga** -> Você recebe vantagem a resistir a manobras contra você, alem disso recebe Redução de dano 2 á ataques corpo-a-corpo que você é alvo</li>
+
+    <li>**NEO Katarate** -> Após acertar um ataque desarmado com sua ação padrão, você pode fazer um novo golpe de manobra </li>
+    
+    <li>**Streetbox** -> seus ataques desarmados aumentam em uma categoria de tamanho. </li>
+    
+    <li>**Wing Chun** -> Você recebe vantagem no teste de aparar ataques contra inimigos adjacentes a você, se for bem sucedido em um teste de aparar um ataque corpo-a-corpo você pode fazer um ataque adicional durante essa reação.</li>
+    
+    <li>**Kickbox Espacial** -> Você recebe vantagem em ataques Corpo-a-Corpo em *Gravidade Zero* e não rececebe mais desvantagem em ataques nas condições *Voo* e *Submerso*</li>
+    
+    <li>**Aikidô Armamentista** -> Você pode seus bônus de artes marciais em armas que contenham o descritor [Marcial] e não apenas em ataques desarmados</li>
+    
+    <li>**Cowboy’s Bane** -> Você pode seus bônus de artes marciais em armas que contenham o descritor [improvisada] e não apenas em ataques desarmados</li>
+    
+    <li>**Capoeira** -> Você pode somar o bônus de dano em seus ataques bônus (normalmente o ataque bônus causa apenas o dado como dano final) Além disso você pode fazer ataques bônus usando uma de suas pernas mesmo que sua segunda mão esteja ocupada.</li>
+    
+    <li>**Wrestling de Plateia** -> Em uma cena de combate, após acertar o primeiro golpe do turno você pode fazer um teste de diplomacia com dificuldade normal, se um grupo (3 a 20 pessoas) estiver torcendo por você recebe uma ação bônus adicional, se uma multidão (+20 pessoas) estiver torcendo por você recebe uma ação padrão adicional.</li>
+
+    Essa Caracteristica pode ser escolhida multiplas vezes para obter mais bônus de artes marciais, nenhuma arte marcial pode ser escolhida mais de uma vez
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
 
 </div>
 
@@ -262,7 +309,7 @@ Cada vez que você fazer um implante você perde -1 ponto no atributo Persona e 
 
         > Tenha em mente que ao adquirir esse implante sua persona irá diminuir o valor desse teste
 
-        <div class='credit'>ideia de: <span>Gustavo Genshin</span></div>
+        <div className='credit'>ideia de: <span>Gustavo Genshin</span></div>
 
     </div>
     <div className='flex'>
@@ -278,7 +325,7 @@ Cada vez que você fazer um implante você perde -1 ponto no atributo Persona e 
 
         *O interior do seu crânio é revistido por uma espuma bioquímica anti-impacto e a pele da sua cabeça é revestida com placas de titâneo, a recuperação da cirurgia é demorada mas pelo menos não vai se preocupar tanto com um Headshot*
 
-        Sua cabeça possuí +8 de redução de dano bruto 
+        Sua cabeça possuí +4 de redução de dano bruto 
 
     </div>
     <div className='flex'>
@@ -311,11 +358,64 @@ A maior parte dos implantes dessa lista possuem propósitos militares e são pro
 
 <div className='item'>
     <div className='box-border'>
+        ### Arma Acoplada
+
+        *Você escolheu uma arma para fazer parte de um dos seus braços, ela é retrátil de dentro de seu antebraço e difícilmente pode ser percebida, porem isso deixou partes da funcionalidade orignial do braço mais frágeis a arranhões*
+
+        Escolha uma arma de uma mão que possua até 3 de volume.
+
+        Essa arma faz parte de um de seus braços, sacar ou guardar a arma é ação livre e você não precisa usar uma de suas mãos para empunha-la. (Já que ela saí diretamente do seu braço).
+
+        Seu braço possuí menos 2 de redução de dano bruto (se não possuir redução de dano receberá dano adicional.)
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
         ### Sandevistan
 
         *Aparelhagem de titâneo aplicada no topo da coluna vertebral se estendendo até a metade das costas, esse aparelho dispara uma carga eletrica diretamente no cortex cerebral liberando de forma forçada cortizol e adrenalina permitindo com que o usuário reaja em uma velocidade absurda como se todo o mundo estivesse em camera lenta.*
 
         Como uma reação você pode ganhar ações bônus durante o turno de outro personagem. Se você escolher receber 1 ação bônus você recebe 2d4 de dano bruto, esse dano não pode ser reduzido, para cada ação bônus adicional você recebe 2d4 de dano a mais, se passar em um teste de fortitude o dano é reduzido pela metade.
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: </span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+        ### Mini Cérebro
+
+        *Seu cérebro recebeu uma injeção de produtos bioquímicos e um tumor benigno consciente se formou, te tornando mais inteligente, mas consumindo sua energia mental. Tome cuidado para ele não consumir você!*
+
+        Escolha até 3 perícias dentre Biologia, Direito, Engenharia, Física, História, Medicina, Química e Tecnologia.
+
+        Você agora possuí um Contador de Cérebro. Você deve escolher o valor inicial de seu contador entre os números 0 e 50, seu contador de cérebro se torna esse valor.
+
+        Você soma o valor do contador de cérebro nas perícias escolhidas.
+
+        Toda vez que realizar um teste com uma das perícias escolhidas você aumenta o contador de cérebro em 5.
+
+        Se não usar nenhuma das perícias escolhidas durante uma sessão, ou em uma semana no tempo do jogo, o contador diminui em 10.
+
+        Dependendo do bônus concedido pelo contador de cérebro, você sofre efeitos colaterais de acordo com a tabela a seguir:
+
+        | Contador de Cérebro | Efeito |
+        | :-----: | :----: | 
+        | 25% | Perda de 1 ponto de mente. Seu mini cérebro fala com você, se for a primeira vez que o contador chegar a esse número, role 1d6. O valor é igual a personalidade que ele terá a partir de agora: 1-Analista Frio 2-Companheiro Empático 3-Militarista Tático 4-Cientista Curioso 5-Comediante Sarcástico 6-Guardião Paranoico. Tanto o mestre quanto o jogador podem interpretar as vozes do cérebro. |
+        | 50% | Perda de 2 pontos de mente. Seu cérebro consome energia... muita energia. Você precisa fazer uma refeição a mais por dia e seu descanso longo passa a precisar durar 10h. Caso um dos requisitos não forem compridos o personagem ficara fadigado até conseguir compri-las no dia seguinte.  |
+        | 75% | Perda de 3 pontos de mente. A maior parte da sua mente foi consumida pelo cérebro, se alguma ação sua descontentar a personalidade do cérebro faça um teste comum de vontade, se falhar o cérebro pode tomar controle de um de seus membros dando desvantagem ao teste.  |
+        | 100% | Perda de 4 pontos de mente. Ele está no controle agora. o cérebro toma conta do seu personagem (agora controlado pelo mestre) com o objetivo de viver a vida em seu lugar. A rotina do cérebro será passar o máximo de tempo possível fazendo coisas envolvendo as perícias escolhidas, comendo, dormindo e conversando com pessoas apenas quando necessário para não desconfiarem do sumiço de sua personalidade original. |
+
+        <div className='credit'>ideia de: <span>Gabriel Kosloski</span></div>
     </div>
     <div className='flex'>
         <div className='border-x border-b px-2'>

@@ -1,0 +1,244 @@
+---
+title: Condições
+description: Condições aplicaveis a personagens
+---
+
+# Condições
+
+<div className='box-border'>
+### Agarrado
+
+    *Você está sendo agarrado por outro personagem*
+
+    <li className='atack-red'>Seu deslocamento se torna 0m</li>
+    <li className='atack-red'>Você tem desvantagem em realizar ataques enquanto estiver _agarrado_</li>
+    <li className='atack-red'>Você não pode usar reações</li>
+
+    Você pode encerrar da condição _agarrado_ se usar uma `ação bônus` e for bem sucedido em um **teste de oposição** de `luta(Força)` ou `acrobacia` contra o personagem que estiver te agarrando, caso não seja bem sucedido continuará _agarrado_.
+
+</div>
+
+<div className='box-border'>
+
+    ### Agarrando
+
+    *Você está com um dos braços ocupado agarrando outro personagem*
+
+    <li className='atack-red'>O deslocamento do perosonagem é reduzido pela metade</li>
+    <li className='atack-red'>Se o personagem realizar a reação de esquiva, automaticamente solta o personagem _agarrado_, encerrando a condição de _agarrando_</li>
+    <li className='defense-green'>Um personagem _agarrando_ move-se junto com o personagem _agarrado_, e como ação livre pode mover o personagem _agarrado_ para uma celula adjacente dele</li>
+    <li className='defense-green'>Se alguem que não seja o personagem _agarrado_ tentar fazer um ataque contra você, deve rodar um d100 adicional, se tirar menos que 50% o ataque acerta você, caso contrário acerta o personagem _agarrado_</li>
+
+    É obrigatório a existencia de um personagendo com a condição _agarrado_ para outro estar com a condição _agarrando_.
+
+    O personagem _agarrado_ pode fazer um **teste de oposição** da perícia `Luta(Corpo)` para se libertar, caso contrário continua _agarrado_.
+
+</div>
+
+<div className='box-border'>
+
+    ### Anti Dano Nível X
+
+    *Você aplicou alguma substancia que aumenta a tolerância a um tipo de danificação contra seu organismo*
+
+    <li className='warn-yellow'> Essa condição possui um nível fixo que só ira aumentar caso receba uma condição de mesmo nome com nível superior</li>
+    <li className='defense-green'>O personagem recebe redução a um tipo de dano igual X onde X é o nível da condição</li>
+
+    O tempo que o personagem ficará com essa condição depende do causador dessa condição.
+
+</div>
+
+<div className='box-border'>
+
+    ### Caído
+
+    *Você caiu ou se jogou no chão*
+
+    <li className='atack-red'>ataques corpo-a-corpo contra você recebem vantagem</li>
+    <li className='defense-green'>ataques a distância contra você recebem desvantagem</li>
+
+    Você pode ser aplicada a condição _Caído_ com uma *ação bônus*. (se jogando no chão)
+
+    Você pode ser removida a condição _Caído_ com uma *ação padrão*. (levantando rs)
+
+    Um personagem _Caído_ tambem pode realizar um **teste normal** de `acrobacia` para Levantar-se rápidamente gastando apenas uma *ação bônus*.
+
+</div>
+
+<div className='box-border'>
+
+    ### Em Chamas X
+
+    *O personagem está com alguma parte do corpo ou completamente envolto em chamas*
+
+    <li className='warn-yellow'> Essa condição pode ser aplicada multiplas vezes a um mesmo personagem.</li>
+    <li className='atack-red'>No inicio do turno o personagem recebe Xd4 de dano térmico onde X é a quantidade de vezes que essa condição foi aplicada.</li>
+    <li className='atack-red'>Se o personagem entrar em contato com algum líquido inflamavel, dobre a quantidade de _Em Chamas_ que esse personagem possuí</li>
+
+    Você pode remover um contador dessa condição gastando uma ação bônus para apagar o fogo.
+
+    Você pode remover essa condição entrando em contato com algum liquido não inflamavel.
+
+</div>
+
+<div className='box-border'>
+
+    ### Gravidade Zero
+
+    *O personagem não está sobre nenhum efeito de gravidade*
+
+    <li className='atack-red'>Seu deslocamento se torna 0m</li>
+    <li className='atack-red'>Recebe desvantagem na perícia Luta</li>
+
+    Um personagem em *Gravidade Zero* pode se mover gastando uma ação bônus próximo a uma parede, chão ou objeto para se empurrar para uma direção. Fazendo isso o personagem recebe a condição *Aceleração 1*
+
+    O personagem remove essa condição retorando para um local com gravidade comum
+
+</div>
+
+<div className='box-border'>
+
+    ### Aceleração X 
+
+    *O personsagem está se deslocando em uma direção retilinea uniforme independente de sua vontade*
+
+    <li className='warn-yellow'>No inicio do turno do personsagem ele se desloca X vezes 1,5 metros para a direção da aceleração, onde X é a quantidade de vezes que essa condição foi aplicada </li>
+    <li className='atack-red'>Se o contador de Aceleração do personagem estiver maior que 6. O personagem recebe desvantagem ao realizar ataques a distância </li>
+
+    Se for aplicada de forma natural (Através da Condição *Gravidade Zero*) Essa condição se encerra se o personagem colidir contra outro personagem, objeto ou cenário durante o deslocamento.
+
+    Se for aplicada de outra forma, o tempo que o personagem ficará com essa condição depende do causador dessa condição.
+
+</div>
+
+<div className='box-border'>
+
+    ### Molhado
+
+    *A maior parte do corpo do personagem está coberta por algum líquido*
+
+    <li className='atack-red'>Se um personagem molhado sofrer algum dano elétrico(Térmico), esse dano aumentará em +8</li>
+
+    Você pode gastar uma ação completa para remover essa condição.
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+
+</div>
+
+<div className='box-border'>
+
+    ### Regeneração X
+
+    *De alguma forma seu organismo está se reconstruindo rapidamente*
+
+    <li className='warn-yellow'> Essa condição pode ser aplicada multiplas vezes a um mesmo personagem.</li>
+    <li className='defense-green'>No inicio do turno do personagem recupere X pontos de vida do tipo de dano especificado pela condição, onde X é a quantidade de vezes que essa condição foi aplicada</li>
+
+    O tempo que o personagem ficará com essa condição depende do causador dessa condição.
+
+</div>
+
+<div className='box-border'>
+
+    ### Sangramento X
+
+    *Você sofreu um corte interno ou externo muito grave e precisa fazer alguma coisa, e rápido...*
+
+    <li className='warn-yellow'> Essa condição pode ser aplicada multiplas vezes a um mesmo personagem.</li>
+    <li className='atack-red'>No inicio do turno o personagem deve fazer um teste comum de fortitude, se falhar recebe Xd4 de dano bruto inbloqueavel onde X é a quantidade de vezes que essa condição foi aplicada, se passar no teste recebe apenas metade do dano.</li>
+
+    Você pode remover essa condição com um kit de `primeiros socorros` ou com uma `bandagem`
+
+</div>
+
+<div className='box-border'>
+
+    ### Ferimento Grave [Perna]
+
+    *Seu braço quebrou ou está gravamente ferido*
+
+    <li className='atack-red'> O personagem tem o deslocamento reduzido pela metade</li>
+    <li className='atack-red'> O personagem recebe desvantagens em testes de acrobacia e atletismo</li>
+    <li className='atack-red'> O personagem recebe desvantagens na resitência reflexo</li>
+
+    Você pode remover essa condição com um kit de `primeiros socorros` ou com uma `Tala`
+
+</div>
+
+<div className='box-border'>
+
+    ### Ferimento Grave [Braço]
+
+    *Sua perna quebrou ou está gravamente ferida*
+
+    <li className='atack-red'> O personagem recebe desvantagem em qualquer teste que utilize o braço ferido</li>
+
+    Você pode remover essa condição com um kit de `primeiros socorros` ou com uma `Tala`
+
+</div>
+
+<div className='box-border'>
+
+    ### Fadigado
+
+    *Você está mais cansado que o normal*
+
+    <li className='atack-red'> Personagem não possuí a Ação Bônus em seu turno de combate</li>
+    <li className='atack-red'> Ao realizar um teste de perícia estendida o personagem ou grupo precisaram adquirir 1 sucesso a mais para concluir o teste</li>
+
+    O tempo que o personagem ficará _fadigado_ depende do causador dessa condição.
+
+</div>
+
+<div className='box-border'>
+
+    ### Exausto
+
+    *Você está muito cansado*
+
+    <li className='atack-red'> Personagem só pode realizar uma ação por turno, uma ação padrão, ação bônus ou movimento.</li>
+    <li className='atack-red'> Ao realizar um teste de perícia estendida o personagem ou grupo precisaram adquirir 2 sucessos a mais para concluir o teste</li>
+
+    O tempo que o personagem ficará _Exausto_ depende do causador dessa condição.
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+
+</div>
+
+<div className='box-border'>
+
+    ### Inconciente
+
+    <li className='warn-yellow'> O personagem é incapaz de agir</li>
+    <li className='atack-red'> Se o personagem for alvo de um ataque, esse ataque terá vantagem</li>
+
+    O tempo que o personagem _inconciente_ acorda após um descanso longo
+
+</div>
+
+<div className='box-border'>
+
+    ### Estado Crítico
+
+    *Sua saúde está em estado crítico e está em Coma, A cada minuto que passa você se aproxíma da luz no fim do túnel*
+
+    <li className='warn-yellow'> Se o personagem receber a condição _Estado Crítico_ ele automaticamente receberá a condição _Inconciente_</li>
+    <li className='atack-red'> O personagem não conseguira remover a condição _Inconciente_ enquanto tive a condição _Estado Crítico_ </li>
+
+    O _Estado Crítico_ é aplicado ao personagem se tiver 0 ou menos pontos de vida.
+
+    Se os pontos de vida do personagem estiverem acima de 0 essa condição é removida.
+
+</div>
+
+<div className='box-border'>
+
+    ### Morto
+
+    *Sua história chegou ao fim*
+
+</div>

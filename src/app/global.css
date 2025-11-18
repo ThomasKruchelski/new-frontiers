@@ -33,6 +33,10 @@ p {
   color: #EB4242 !important
 }
 
+.warn-yellow{
+  color: #e6c120
+}
+
 .cumstom-purple,
 .cumstom-purple h3 {
   color: #802075 !important
@@ -123,6 +127,17 @@ p {
   background-color: #111111;
 }
 
+@media(max-width: 768px){
+    .item-arma .details-box .sanfona{
+     flex-direction: column;
+     gap: .75rem
+  }
+
+  .efeito-box{
+    width: 100%;
+  }
+}
+
 .item-arma * {
   border-color: white;
 }
@@ -171,3 +186,10 @@ p {
 .credit span{
   font-size: .9rem;
 }
+
+/* Fix callout icon */
+.my-6.flex.flex-row.gap-2.rounded-lg.border.border-s-2.bg-fd-card.p-3.text-sm.text-fd-card-foreground {
+    display: flex;
+    align-items: center;
+}
+
