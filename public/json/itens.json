@@ -12,7 +12,7 @@
             "area": "",
             "dadoDano": "d12",
             "bonusDano":[""],
-            "distancia":"40",
+            "distancia":"30",
             "carga":"12",
             "municao":"civil",
             "pericia":"pistola",
@@ -33,7 +33,7 @@
             "area": "",
             "dadoDano": "2d6",
             "bonusDano":[""],
-            "distancia":"50",
+            "distancia":"24",
             "carga":"6",
             "municao":"civil",
             "pericia":"pistola",
@@ -54,7 +54,7 @@
             "area": "",
             "dadoDano": "d20",
             "bonusDano":[""],
-            "distancia":"40",
+            "distancia":"30",
             "carga":"3",
             "municao":"bateria",
             "pericia":"pistola",
@@ -63,7 +63,7 @@
         }
     },
     {
-        "nome": "'Cano Serrado'",
+        "nome": "Canhão de mão",
         "tipoPrincipal": "arma",
         "tipoSecundario": ["Escopeta","arma de fogo"],
         "descricao":"uma poderosa espingarda de uma mão",
@@ -75,18 +75,18 @@
             "area": "",
             "dadoDano": "2d8",
             "bonusDano":[""],
-            "distancia":"12",
+            "distancia":"9",
             "carga":"1 disparo",
             "municao":"cartucho",
             "pericia":"armas",
-            "keywords":["Recarga lenta"],
+            "keywords":["Recarga lenta I"],
             "especial":[]
         }
     },
     {
         "nome": "uzi",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["submetralhadora","arma de fogo"],
+        "tipoSecundario": ["pistola","submetralhadora","arma de fogo"],
         "descricao":"Quem é bom usa uma, mas quem é bom mesmo sempre usa duas",
         "valor":"",
         "imagem":"",
@@ -96,10 +96,10 @@
             "area": "",
             "dadoDano": "2d4",
             "bonusDano":[""],
-            "distancia":"20",
+            "distancia":"12",
             "carga":"4 rajadas",
             "municao":"civil",
-            "pericia":"armas",
+            "pericia":"pistola",
             "keywords":[],
             "especial":[]
         }
@@ -117,7 +117,7 @@
             "area": "",
             "dadoDano": "3d4",
             "bonusDano":[""],
-            "distancia":"18",
+            "distancia":"12",
             "carga":"6 rajadas",
             "municao":"civil",
             "pericia":"armas",
@@ -126,7 +126,7 @@
         }
     },
     {
-        "nome": "Fuzil de assalto",
+        "nome": "Fuzil de Assalto Automático",
         "tipoPrincipal": "arma",
         "tipoSecundario": ["rifle","arma de fogo"],
         "descricao":"Classica arma de tropas especias do sindicato, uma das armas mais letais do campo de batalha dês das guerras dos céculos passados",
@@ -138,12 +138,117 @@
             "area": "",
             "dadoDano": "3d6",
             "bonusDano":[""],
-            "distancia":"100",
+            "distancia":"40",
             "carga":"8 rajadas",
             "municao":"militar",
             "pericia":"armas",
             "keywords":[],
             "especial":[]
+        }
+    },
+    {
+        "nome": "Sniper",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["rifle","arma de fogo"],
+        "descricao":"O Rifle Sniper é uma das armas que mais exige estratégia tática e posicionamento para ser usado devida a imensa precisão que o atirador precisa para usa-la corretamente, apesar disso é uma das armas mais fatais em um campo de batalha",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "2",
+            "area": "",
+            "dadoDano": "6d6",
+            "bonusDano":[""],
+            "distancia":"100",
+            "carga":"1 disparo",
+            "municao":"militar",
+            "pericia":"armas",
+            "keywords":["Disparo unico","Arma Pesada"],
+            "especial":[]
+        }
+    },
+    {
+        "nome": "Escopeta",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Escopeta","arma de fogo"],
+        "descricao":"Tambem conhecida como Calibre 12, é uma arma de destuição quando disparada em curta distância",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "1",
+            "area": "",
+            "dadoDano": "4d8",
+            "bonusDano":[""],
+            "distancia":"6",
+            "carga":"1 disparos",
+            "municao":"cartucho",
+            "pericia":"armas",
+            "keywords":["Disparo unico","Recarga lenta I"],
+            "especial":[]
+        }
+    },
+    {
+        "nome": "Amprex",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["rifle","arma de fogo","dano igneo"],
+        "descricao":"Essa arma converte energia armazenada em bobinas elétricas em um surto elétrico linear que perfura vários inimigos antes de se dissipar deixando apenas cheiro de ozônio",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"igneo",
+            "maos": "2",
+            "area": "Linha 12m",
+            "dadoDano": "5d6",
+            "bonusDano":[""],
+            "distancia":"12m",
+            "carga":"1 disparo",
+            "municao":"1 bateria",
+            "pericia":"armas",
+            "keywords":["Disparo unico","Explosão"],
+            "especial":[]
+        }
+    },
+    {
+        "nome": "Granada de Fragmentação",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Explosivo"],
+        "descricao":"Granada esférica que explode liberando centenas de fragmentos metálicos que laceram carne e estilhaçam ossos",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "1",
+            "area": "raio 3m",
+            "dadoDano": "4d8",
+            "bonusDano":[""],
+            "distancia":"9m",
+            "carga":"",
+            "municao":"",
+            "pericia":"Arremesso",
+            "keywords":["Explosão"],
+            "especial":[]
+        }
+    },
+    {
+        "nome": "Molotov",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Explosivo","dano igneo"],
+        "descricao":"Fácil de ser criada, é um explosivo poderoso de contensão de areas e uma das melhores musicas da Burnout Paradise",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"igneo",
+            "maos": "1",
+            "area": "raio 3m",
+            "dadoDano": "3d6",
+            "bonusDano":[""],
+            "distancia":"9m",
+            "carga":"",
+            "municao":"",
+            "pericia":"Arremesso",
+            "keywords":["Explosão"],
+            "especial":["Fogo no parquinho: Cria uma area de chamas que dura 5 turnos, personagens que passam pela area devem fazer um teste de refelxo"]
         }
     },
     {
@@ -186,6 +291,27 @@
             "pericia":"luta",
             "keywords":["Agil"],
             "especial":["Home run: Você pode fazer um teste de arremesso usando a perícia Luta"]
+        }
+    },
+    {
+        "nome": "Bastão de Atordoamento",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["arma branca","Especial"],
+        "descricao":"Bastão de choque usado por tropas de contenção",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "1",
+            "area": "",
+            "dadoDano": "d8",
+            "bonusDano":["3/CORP","3/DEST"],
+            "distancia":"",
+            "carga":"",
+            "municao":"",
+            "pericia":"luta",
+            "keywords":["Agil"],
+            "especial":["Tá em choque?: Ao acertar um ataque o alvo faz um teste de fortitude, se falhar ele perde metade do deslocamento e não poderá usar ações bônus no próximo turno."]
         }
     },
     {
@@ -293,7 +419,31 @@
             "municao":"espumaCO2",
             "pericia":"luta",
             "keywords":[],
-            "especial":["Jato Seco: Como ação bônus você pode disparar um jato em cone de 3m para apagar o fogo de uma area do cenário ou remover o estádo 'em chamas' de personagens e objetos.","Fumaça Improvisada: você pode quebrar o cano do extintor e fazer uma nuvem de fumaça de 3m de raio, a fumaça dura por 2 turnos"]
+            "especial":["Jato Seco: Como ação bônus você pode disparar um jato em cone de 3m para apagar o fogo de uma area do cenário ou remover a condição 'em chamas' de personagens e objetos.","Fumaça Improvisada: você pode quebrar o cano do extintor e fazer uma nuvem de fumaça de 3m de raio, a fumaça dura por 2 turnos"]
+        }
+    },
+    {
+        "nome": "Mangueira",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["arma","Especial"],
+        "descricao":"Mangueira portátil usado pela tropa de combate a incêndios de Metro City. Ela possuí uma poderosa bomba para puxar e disparar liquidos a curta distância.",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "2",
+            "area": "Linha 6m",
+            "dadoDano": "d4",
+            "bonusDano":[""],
+            "distancia":"6m",
+            "carga":"",
+            "municao":"Líquido",
+            "pericia":"luta",
+            "keywords":[],
+            "especial":[
+                "Conexão tigre: Você pode conctar a mangueira a qualquer saída de liquido como tonéis, hidrantes, bueiros ou tanques de combustivel. Fazer isso não exige teste e pode ser feito com uma ação bônus.",
+                "Força da Natureza: Personagens na area ficam molhados e devem fazer um teste de reflexo, se falharem são derrubados no chão"
+            ]
         }
     },
     {
@@ -318,6 +468,27 @@
         }
     },
     {
+        "nome": "Bastão",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["arma branca"],
+        "descricao":"Pedaço comprido de metal leve ou madeira, como Um Bô, cabo de vassoura ou vergalhão de contrução. Podem ser armas de defesa simples, porem para mestres em artes marciais pode se tornar uma ferramenta perigosa",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "2",
+            "area": "",
+            "dadoDano": "d12",
+            "bonusDano":["3/CORP","3/DEST"],
+            "distancia":"",
+            "carga":"",
+            "municao":"",
+            "pericia":"luta",
+            "keywords":["Agil","Marcial"],
+            "especial":[]
+        }
+    },
+    {
         "nome": "Katana",
         "tipoPrincipal": "arma",
         "tipoSecundario": ["arma branca"],
@@ -334,7 +505,7 @@
             "carga":"",
             "municao":"",
             "pericia":"luta",
-            "keywords":["Agil"],
+            "keywords":["Agil","Marcial"],
             "especial":[]
         }
     },
