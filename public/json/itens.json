@@ -248,7 +248,49 @@
             "municao":"",
             "pericia":"Arremesso",
             "keywords":["Explosão"],
-            "especial":["Fogo no parquinho: Cria uma area de chamas que dura 5 turnos, personagens que passam pela area devem fazer um teste de refelxo"]
+            "especial":["Fogo no parquinho: Cria uma area de chamas que dura 5 turnos, personagens que passam pela area devem fazer um teste de refelxo se falharem"]
+        }
+    },
+    {
+        "nome": "Granda de Flash",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Explosivo"],
+        "descricao":"Granada que emite lu... *TAK* piiiih.... AÍ MEU OLHO PORRA",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"",
+            "maos": "1",
+            "area": "raio 6m",
+            "dadoDano": "",
+            "bonusDano":[""],
+            "distancia":"9m",
+            "carga":"",
+            "municao":"",
+            "pericia":"Arremesso",
+            "keywords":["Explosão"],
+            "especial":["Luz cegante: personagens na area fazem um teste de fortitude, se falhar fica atordoado, cego e surdo, se passarem ficam apenas surdas"]
+        }
+    },
+    {
+        "nome": "Granada de fumaça",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Explosivo"],
+        "descricao":"Granada com um Gás composto de magnésio e aluminio",
+        "valor":"",
+        "imagem":"",
+        "item": {
+            "tipoDano":"",
+            "maos": "1",
+            "area": "onda 3m (12q)",
+            "dadoDano": "",
+            "bonusDano":[""],
+            "distancia":"9m",
+            "carga":"",
+            "municao":"",
+            "pericia":"Arremesso",
+            "keywords":["Explosão"],
+            "especial":["Mamãe Dormiu...: Cria uma cortina de fumaça que dura por 10 turnos (1min), personagens dentro da fumaça e ficam cegos até sairem da area, a fumaça bloquia linha de visão"]
         }
     },
     {
