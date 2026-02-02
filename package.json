@@ -3,19 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
+    "eslint-config-next": "^16.1.6",
     "fumadocs-core": "15.0.8",
     "fumadocs-mdx": "11.5.5",
     "fumadocs-ui": "15.0.8",
-    "next": "15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.5",
