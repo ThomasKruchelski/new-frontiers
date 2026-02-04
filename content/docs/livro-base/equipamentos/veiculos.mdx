@@ -242,4 +242,152 @@ description: Veiculos e modificações
     </div>
 </div>
 
+<div class='pt-8'>
+</div>
 # Modificações para Veículos
+
+Similares as modificações para itens, as modificações para veículos adicionam efeitos especiais em troca de uma parcela maior de créditos
+
+É possivel adquirir mais de uma modificação por veículo, diferente das modificações de armas.
+
+<div className='item'>
+    <div className='box-border'>
+    ### ...Anti-acidente
+
+    *Seu veículo é revestido de um tecido elastico expansivo acionado após qualquer colisão que lhe causaria algum ferimento a você e qualquer passageiro*
+
+    <li>Se sofrer algum acidente os personagens no veículo não sofrem nenhum dano, porem ficam presos na bolha de tecido</li>
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: $2000</span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### ...Turbinado
+
+    *Seu veículo possuí um sistemas de nitro pemitindo alcançar altas velocidades por um curto período de tempo*
+
+    <li>Seu veículo possuí 3 cargas de nitro, ao usar uma carga antes de um teste de perícia seu veículo é tratado como se fosse um nível de velocidade acima.</li>
+
+    > Se o veículo tiver o nivel de velocidade normal, nesse teste ele se torna rápido.
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: x2 valor do veículo</span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### ...Blindagem I
+
+    **
+
+    Personagens dentro do veículo recebem +2 de redução de dano contra ataques vindos de fora do veículo
+
+    O veiculo recebe 20 de vida adicional e 2 de redução de dano
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: x3 valor do veículo</span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### ...Blindagem II
+
+    **
+
+    Personagens dentro do veículo recebem +4 de redução de dano contra ataques vindos de fora do veículo
+
+    O veiculo recebe 40 de vida adicional e 4 de redução de dano
+
+    Essa modificação sobrepoem a modificação de Blindagem I
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor: x5 valor do veículo</span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### ...Barreira frontal
+
+    *Barreira que se extende através de um braço mecanico no inferior do veículo*
+
+    O veículo recebe metade do dano pela frente (os passageiros ainda recebem dano normalmente)
+
+    O veiculo causa o dobro de dano em caso de uma colisão
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor:$500</span>
+        </div>
+    </div>
+</div>
+
+<div className='item'>
+    <div className='box-border'>
+    ### ...Piloto automático
+
+    *Um computador de bordo é responsavel pela direção na ausencia de um piloto*
+
+    O carro não necessita de um piloto, testes de pericia da cena são feitas pela IA escolhida através da tabela
+
+    O piloto automático pode ser hackeado com um teste dificil.
+
+     | Nível da IA | perícia dirigir automovel | valor |
+     | :---------: | :--------------: | :---: | 
+     | Operador 21001 | 1% | $1 |
+     | Operador 21010 | 10% | $100 |
+     | Operador 21025 | 25% | $625 |
+     | Operador 21050 | 50% | $2500 |
+     | Operador 21075 | 75% | $5625 |
+     | Operador 21100 | 100% | $10000 |
+
+     > calculo para níveis customizados é de X * X onde X é a porcentagem do teste de perícia.
+
+    <Callout  type='warn'>
+        Conteúdo sujeito a alterações futuras
+    </Callout>
+
+    </div>
+    <div className='flex'>
+        <div className='border-x border-b px-2'>
+            <span> Valor:$600 + valor da IA</span>
+        </div>
+    </div>
+
+    <div className='item'>
+        <div className='box-border'>
+        ### ...Voador
+
+        Veículo recebe deslocamento aereo igual deslocamento em terra firme
+
+        </div>
+        <div className='flex'>
+            <div className='border-x border-b px-2'>
+                <span> Valor: x10 valor do veículo</span>
+            </div>
+        </div>
+    </div>
+
+</div>
