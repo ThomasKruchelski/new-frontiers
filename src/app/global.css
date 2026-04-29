@@ -55,6 +55,10 @@ p {
   margin-top: 2rem;
 }
 
+.box-border.android {
+  border: 1px solid rgba(63, 136, 231, 0.7);
+}
+
 .box-border h3 {
   margin-top: 0px;
 }
