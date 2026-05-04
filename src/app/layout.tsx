@@ -1,21 +1,22 @@
-import './global.css';
-import { RootProvider } from 'fumadocs-ui/provider';
-import { Inter } from 'next/font/google';
-import type { ReactNode } from 'react';
-import Waves from '@/components/Waves'
-import { Analytics } from "@vercel/analytics/next"
+import "./global.css";
+import { RootProvider } from "fumadocs-ui/provider";
+import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
+import Waves from "@/components/Waves";
+import { Analytics } from "@vercel/analytics/next";
+
+import { Providers } from "./providers";
 
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
 export default function Layout({ children }: { children: ReactNode }) {
-
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen relative">
-        <Analytics/>
-        <div className='w-full h-full z-10 fixed'>
+        <Analytics />
+        <div className="w-full h-full z-10 fixed">
           <Waves
             lineColor="#3c199b50"
             // backgroundColor="#060010"
@@ -30,8 +31,10 @@ export default function Layout({ children }: { children: ReactNode }) {
             yGap={36}
           />
         </div>
-        <div className='w-full h-full z-20'>
-          <RootProvider>{children}</RootProvider>
+        <div className="w-full h-full z-20">
+          <Providers>
+            <RootProvider>{children}</RootProvider>
+          </Providers>
         </div>
       </body>
     </html>
