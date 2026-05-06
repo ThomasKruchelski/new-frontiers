@@ -127,63 +127,63 @@ export default function CharacterSheet() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative scanlines">
-      <SheetToolbar
-        characters={characters}
-        activeId={activeId}
-        onSelect={selectCharacter}
-        onNew={newCharacter}
-        onSave={() => saveMutation.mutate()}
-        onDownload={handleDownload}
-        saving={saveMutation.isPending}
-        hasChanges={hasChanges}
-      />
+    <div className="min-h-screen bg-background relative scanlines"></div>
+    //     <SheetToolbar
+    //       characters={characters}
+    //       activeId={activeId}
+    //       onSelect={selectCharacter}
+    //       onNew={newCharacter}
+    //       onSave={() => saveMutation.mutate()}
+    //       onDownload={handleDownload}
+    //       saving={saveMutation.isPending}
+    //       hasChanges={hasChanges}
+    //     />
 
-      <motion.div
-        className="max-w-6xl mx-auto px-4 py-8 space-y-8 relative z-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        <CharacterHeader data={formData} onChange={updateForm} />
+    //     <motion.div
+    //       className="max-w-6xl mx-auto px-4 py-8 space-y-8 relative z-10"
+    //       initial={{ opacity: 0, y: 20 }}
+    //       animate={{ opacity: 1, y: 0 }}
+    //       transition={{ duration: 0.4 }}
+    //     >
+    //       <CharacterHeader data={formData} onChange={updateForm} />
 
-        <StatsBlock
-          stats={formData.stats}
-          onChange={(stats) => updateForm({ stats })}
-        />
+    //       <StatsBlock
+    //         stats={formData.stats}
+    //         onChange={(stats) => updateForm({ stats })}
+    //       />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <SkillsBlock
-            skills={formData.skills}
-            onChange={(skills) => updateForm({ skills })}
-          />
-          <CyberwareBlock
-            cyberware={formData.cyberware}
-            onChange={(cyberware) => updateForm({ cyberware })}
-          />
-        </div>
+    //       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    //         <SkillsBlock
+    //           skills={formData.skills}
+    //           onChange={(skills) => updateForm({ skills })}
+    //         />
+    //         <CyberwareBlock
+    //           cyberware={formData.cyberware}
+    //           onChange={(cyberware) => updateForm({ cyberware })}
+    //         />
+    //       </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <WeaponsBlock
-            weapons={formData.weapons}
-            onChange={(weapons) => updateForm({ weapons })}
-          />
-          <GearBlock
-            gear={formData.gear}
-            onChange={(gear) => updateForm({ gear })}
-          />
-        </div>
+    //       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    //         <WeaponsBlock
+    //           weapons={formData.weapons}
+    //           onChange={(weapons) => updateForm({ weapons })}
+    //         />
+    //         <GearBlock
+    //           gear={formData.gear}
+    //           onChange={(gear) => updateForm({ gear })}
+    //         />
+    //       </div>
 
-        <BackstoryBlock
-          backstory={formData.backstory}
-          appearance={formData.appearance}
-          lifepath_notes={formData.lifepath_notes}
-          onChange={(field, value) => updateForm({ [field]: value })}
-        />
+    //       <BackstoryBlock
+    //         backstory={formData.backstory}
+    //         appearance={formData.appearance}
+    //         lifepath_notes={formData.lifepath_notes}
+    //         onChange={(field, value) => updateForm({ [field]: value })}
+    //       />
 
-        {/* Bottom spacer */}
-        <div className="h-12" />
-      </motion.div>
-    </div>
+    //       {/* Bottom spacer */}
+    //       <div className="h-12" />
+    //     </motion.div>
+    //   </div>
   );
 }

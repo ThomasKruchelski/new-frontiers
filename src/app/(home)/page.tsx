@@ -9,7 +9,7 @@ export default function HomePage() {
   // console.log(gifbg)
   // console.log('gifbg')
   return (
-    <main className="flex flex-1 flex-col items-center py-10 w-full">
+    <main className="flex flex-1 flex-col items-center pb-10 w-full">
       <BackGroundVideo />
 
       {/* <div className='flex flex-col items-center w-full pb-10'>
