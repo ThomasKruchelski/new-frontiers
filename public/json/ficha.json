@@ -47,7 +47,14 @@
     },
     
     "pericias":{
-        
+
+    },
+
+    "afiliacoes":{
+        "fama":"",
+        "reconhecimento":"",
+        "positivas":[],
+        "negativas":[]
     }
 
 
