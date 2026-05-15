@@ -1,3 +1,54 @@
 {
+    "nome":"",
+    "especie":"",
+    "vocacao":"",
+    "idade":"",
+    "experiencia":"",
+    "jogador":"",
+    "statusAtuais":[],
+    "caracteristicas":["","",""],
+    "atributos":{
+        "corpo":"",
+        "destreza":"",
+        "persona":"",
+        "sabdoria":"",
+        "inteligencia":"",
+        "educacao":""
+    },
+
+    "vida":{
+        "vidaTotal":"",
+        "vidaAtual":""
+    },
+
+    "dano":{
+        "tipoDano":"",
+        "quantiadadeDano":"",
+        "resistenciaDano":""
+    },
+
+    "armasHabilidades":{
+        "nomeArma":"",
+        "danoArma":["bonusDano","tipoDano"],
+        "caracateristicaArma":["area","distancia","carga","municao"],
+        "efeito":""
+    },
+
+    "resistencias":{
+        "vontade":"",
+        "reflexo":"",
+        "fortitude":""
+    },
+
+    "precursores":{
+        "ideia":"",
+        "saber":"",
+        "sorte":""
+    },
     
+    "pericias":{
+        
+    }
+
+
 }
