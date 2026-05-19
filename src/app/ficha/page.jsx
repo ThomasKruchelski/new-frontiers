@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 // import { toast } from "sonner";
 // import { motion } from "framer-motion";
 
@@ -41,93 +40,31 @@ const DEFAULT_SHEET = {
 };
 
 export default function CharacterSheet() {
-  const queryClient = useQueryClient();
-  const [activeId, setActiveId] = useState(null);
-  const [formData, setFormData] = useState({ ...DEFAULT_SHEET });
-  const [hasChanges, setHasChanges] = useState(false);
-  const initialLoad = useRef(true);
-
-  const { data: characters = [], isLoading } = useQuery({
-    queryKey: ["characters"],
-    queryFn: () => base44.entities.CharacterSheet.list("-updated_date"),
-    initialData: [],
-  });
-
-  // Load first character or set new
-  useEffect(() => {
-    if (!initialLoad.current) return;
-    if (characters.length > 0) {
-      setActiveId(characters[0].id);
-      setFormData(mergeWithDefaults(characters[0]));
-      initialLoad.current = false;
-    }
-  }, [characters]);
-
-  const mergeWithDefaults = (data) => ({
-    ...DEFAULT_SHEET,
-    ...data,
-    stats: { ...DEFAULT_SHEET.stats, ...(data.stats || {}) },
-    skills: data.skills || [],
-    cyberware: data.cyberware || [],
-    weapons: data.weapons || [],
-    gear: data.gear || [],
-  });
-
-  const selectCharacter = (id) => {
-    const char = characters.find((c) => c.id === id);
-    if (char) {
-      setActiveId(id);
-      setFormData(mergeWithDefaults(char));
-      setHasChanges(false);
-    }
-  };
-
-  const newCharacter = () => {
-    setActiveId(null);
-    setFormData({ ...DEFAULT_SHEET });
-    setHasChanges(true);
-  };
-
-  const updateForm = useCallback((updates) => {
-    setFormData((prev) => ({ ...prev, ...updates }));
-    setHasChanges(true);
-  }, []);
-
-  const saveMutation = useMutation({
-    mutationFn: async () => {
-      const { id, created_date, updated_date, created_by, ...saveData } =
-        formData;
-      if (activeId) {
-        return base44.entities.CharacterSheet.update(activeId, saveData);
-      } else {
-        return base44.entities.CharacterSheet.create(saveData);
-      }
-    },
-    onSuccess: (result) => {
-      queryClient.invalidateQueries({ queryKey: ["characters"] });
-      if (!activeId && result?.id) setActiveId(result.id);
-      setHasChanges(false);
-      toast.success("Character saved");
-    },
-  });
-
-  const handleDownload = () => {
-    generateCharacterPDF(formData);
-    toast.success("PDF downloaded");
-  };
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-background">
-        <div className="font-display text-primary neon-text text-xl tracking-widest animate-pulse">
-          LOADING...
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-background relative scanlines"></div>
+    <main className="flex flex-1 flex-col items-center pb-10 w-full">
+
+      <div className=" max-w-[500px] box-content border-b border-fd-foreground/10 transition-colors p-4 px-8 lg:mt-4 lg:w-[calc(100%-1rem)] lg:rounded-2xl lg:border shadow-sm bg-fd-background/80 backdrop-blur-lg">
+        <b> Ficha Excel</b>
+
+        <p>1. Acesse o arquivo no Google docs 
+          <a className="hyperlink pl-2" target='_blank' href="https://docs.google.com/spreadsheets/d/1cZezQt8fyfF2wT1SN6AYVOKbV6HbRo4kANuCDSkdP7c/edit?gid=1362246236#gid=1362246236">
+            Clicando aqui
+          </a>
+        </p>
+
+        <p>2. Acesse o menu Arquivo: Fazer uma cópia</p>
+
+        <p>3. Acesse e preencha a cópia criada</p>
+      </div>
+
+      <div className=" max-w-[500px] box-content border-b border-fd-foreground/10 transition-colors p-4 px-8 lg:mt-4 lg:w-[calc(100%-1rem)] lg:rounded-2xl lg:border shadow-sm bg-fd-background/80 backdrop-blur-lg">
+        <b> Ficha no Site</b>
+
+        <p>Em construção...</p>
+        
+      </div>
+    </main>
     //     <SheetToolbar
     //       characters={characters}
     //       activeId={activeId}

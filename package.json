@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "new-frontiers",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,6 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.100.9",
     "@vercel/analytics": "^1.5.0",
     "eslint-config-next": "^16.1.6",
     "fumadocs-core": "15.0.8",
