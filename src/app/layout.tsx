@@ -5,8 +5,6 @@ import type { ReactNode } from "react";
 import Waves from "@/components/Waves";
 import { Analytics } from "@vercel/analytics/next";
 
-import { Providers } from "./providers";
-
 const inter = Inter({
   subsets: ["latin"],
 });
@@ -32,9 +30,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           />
         </div>
         <div className="w-full h-full z-20">
-          <Providers>
-            <RootProvider>{children}</RootProvider>
-          </Providers>
+          <RootProvider>{children}</RootProvider>
         </div>
       </body>
     </html>

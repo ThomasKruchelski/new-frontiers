@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 // import { toast } from "sonner";
 // import { motion } from "framer-motion";
 
@@ -41,93 +40,11 @@ const DEFAULT_SHEET = {
 };
 
 export default function CharacterSheet() {
-  const queryClient = useQueryClient();
-  const [activeId, setActiveId] = useState(null);
-  const [formData, setFormData] = useState({ ...DEFAULT_SHEET });
-  const [hasChanges, setHasChanges] = useState(false);
-  const initialLoad = useRef(true);
-
-  const { data: characters = [], isLoading } = useQuery({
-    queryKey: ["characters"],
-    queryFn: () => base44.entities.CharacterSheet.list("-updated_date"),
-    initialData: [],
-  });
-
-  // Load first character or set new
-  useEffect(() => {
-    if (!initialLoad.current) return;
-    if (characters.length > 0) {
-      setActiveId(characters[0].id);
-      setFormData(mergeWithDefaults(characters[0]));
-      initialLoad.current = false;
-    }
-  }, [characters]);
-
-  const mergeWithDefaults = (data) => ({
-    ...DEFAULT_SHEET,
-    ...data,
-    stats: { ...DEFAULT_SHEET.stats, ...(data.stats || {}) },
-    skills: data.skills || [],
-    cyberware: data.cyberware || [],
-    weapons: data.weapons || [],
-    gear: data.gear || [],
-  });
-
-  const selectCharacter = (id) => {
-    const char = characters.find((c) => c.id === id);
-    if (char) {
-      setActiveId(id);
-      setFormData(mergeWithDefaults(char));
-      setHasChanges(false);
-    }
-  };
-
-  const newCharacter = () => {
-    setActiveId(null);
-    setFormData({ ...DEFAULT_SHEET });
-    setHasChanges(true);
-  };
-
-  const updateForm = useCallback((updates) => {
-    setFormData((prev) => ({ ...prev, ...updates }));
-    setHasChanges(true);
-  }, []);
-
-  const saveMutation = useMutation({
-    mutationFn: async () => {
-      const { id, created_date, updated_date, created_by, ...saveData } =
-        formData;
-      if (activeId) {
-        return base44.entities.CharacterSheet.update(activeId, saveData);
-      } else {
-        return base44.entities.CharacterSheet.create(saveData);
-      }
-    },
-    onSuccess: (result) => {
-      queryClient.invalidateQueries({ queryKey: ["characters"] });
-      if (!activeId && result?.id) setActiveId(result.id);
-      setHasChanges(false);
-      toast.success("Character saved");
-    },
-  });
-
-  const handleDownload = () => {
-    generateCharacterPDF(formData);
-    toast.success("PDF downloaded");
-  };
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-background">
-        <div className="font-display text-primary neon-text text-xl tracking-widest animate-pulse">
-          LOADING...
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-background relative scanlines"></div>
+    <div className="max-h-screen bg-background relative flex flex-1  justify-center">
+      <h1 className="pt-10">Em construção...</h1>
+    </div>
     //     <SheetToolbar
     //       characters={characters}
     //       activeId={activeId}
