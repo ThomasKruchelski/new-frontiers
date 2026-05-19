@@ -6,6 +6,10 @@
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
 
+* {
+  box-sizing: border-box;
+}
+
 .dark {
   --color-fd-background: #060010 !important;
 }
@@ -22,6 +26,10 @@ p {
 .title {
   font-size: 1.875rem;
   font-weight: 600;
+}
+
+.hyperlink{
+  color:#4c20c4
 }
 
 .defense-green,
