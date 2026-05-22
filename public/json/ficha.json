@@ -47,15 +47,24 @@
     },
     
     "pericias":{
-
+        "nomePericia":"",
+        "pontosInvestidos":"",
+        "valorNormal":"",
+        "valorDificil":"",
+        "valorExtremo":""
     },
+        
+
+    
 
     "afiliacoes":{
         "fama":"",
         "reconhecimento":"",
         "positivas":[],
         "negativas":[]
-    }
+    },
+
+    ""
 
 
 }
