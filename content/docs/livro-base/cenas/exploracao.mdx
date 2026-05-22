@@ -90,7 +90,7 @@ seu personagem vai ajudar alguém a desempenhar seu papel da melhor forma.
 <div className='pt-12'/>
 # Exemplos de cenas de Exploração
 
-## Bunker Abandonado
+## Bunker Abandonado (Nivel Fácil)
 
 **Sinopse:** "O Bunker foi habitado por um ex-militar insano, o bunker foi usado na 3° guerra mundial e depois desativado, se tornando a morada de um velho louco que morreu a uma semana atrás. Não há ninguem lá agora, mas dizem que o velho plantou dezenas de armadilhas nos cômodos para evitar qualquer um que queira descobrir seus segredos!"
 
@@ -113,20 +113,68 @@ seu personagem vai ajudar alguém a desempenhar seu papel da melhor forma.
 
 <li>**(x2) Sucesso normal:**</li> Personagem encontra um deposito de munição, adicione 2 caixas de munição civil, militar ou cartuchos. Esses itens podem ser encontrados apenas 2 vezes.
 <li>**(x1) Sucesso extremo:**</li> Personagem encontra o quarto do ex-militar e seu armamento, Personagem encontra uma escopeta e 2 caixas de munição cartuchos. Esses itens só podem ser encontrados 1 vez.
-<li>**(x1) Sucesso dificil, pericia tecnologia:**</li> Personagem encontra um antigo servidor do exercito, se for bem sucedito em um teste de hacking o jogador obtem um Banco de Dados de antigos soldados e suas informações.
+<li>**(x1) Sucesso dificil, pericia Hacking:**</li> Personagem encontra um antigo servidor do exercito, se for bem sucedito em um teste de hacking o jogador obtem um Banco de Dados de antigos soldados e suas informações.
 
-## Mata Atlantica
+## Laborátório Secreto (Nivel Médio)
 
-<div className='w-full items-center'>
-    <h1 className='text-center'>
-        Em construção...
-    </h1>
-</div>
+**Sinopse:** "Seguindo uma estranha limosine vocês chegam em um enorme instalação militar antiga, com traços da era passada esse local parece abandonado a não ser pelas luzes acessas em algumas partes da instalação. A base de pesquisa é perigosa mas talvez a unica alternativa que vocês tem para recuperarem o diamante roubado."
 
-## Laborátório Secreto 
+| | |
+| :-----: | :----: | 
+|Sucessos necessários: | 3🟢 3🟡 |
+|Falhas possiveis: | ❌❌❌ |
 
-<div className='w-full items-center'>
-    <h1 className='text-center'>
-        Em construção...
-    </h1>
-</div>
+### Regras da Cena:
+
+<li><b className='defense-green'>Objetivo:</b> Ser bem sucedido em 3 testes de navegação normais e 3 testes de navegação dificies para encontrar o fim do laboratório.</li>
+<li><b className='atack-red'>Fracasso:</b> Se os jogadores acumularem 3 contadores de falha, os guardas do laborátório encontram o grupo, inicia uma cena de combate.</li>
+
+### Modificadores:
+
+Essa cena não possuí modificadores
+
+### Saques:
+
+<li>**Sucesso normal:**</li> Personagem encontra um deposito de munição, adicione 2 caixas de munição de qualquer tipo. Esse item pode ser encontrado várias vezes.
+<li>**(x1) Sucesso dificil:**</li> Personagem encontra pesquisas da suposta utilidade do diamante, (adicione informações para ajudar os jogadores no próximo combate no Laborátório).
+<li>**(x1) Sucesso extremo:**</li> Os Personagens encontram uma sala misteriosa com uma Maca Medicanica, o jogador que resolver deitar na maca é injetado uma substância psico estimulante e possuí +20% nas perícias de Luta, Pistola/Arremesso e Arma de fogo até o próximo combate, após o combate o personagem fica fadigado até o próximo descanso longo.
+<li>**(x1) Sucesso dificil, pericia tecnologia:**</li> Personagem encontra uma sala de dispositivos de segurança, removendo as armadilhas na sala onde está escondida o diamante. 
+
+## Mata Fechada (Nivel Dificil)
+
+**Sinopse:** "A Floresta Amazonica pode ser uma linda paisagem olhando de cima, mas dentro da mata lhe aguarda um feroz e selvagem ambiente de sobrevivência, seu objetivo é simples, fugir de lá o mais rápido possivel e encontrar a civilização antes que a selva o consuma por inteiro"
+
+| | |
+| :-----: | :----: | 
+|Sucessos necessários: | 12🟢 |
+|Falhas possiveis: | ❌❌❌ |
+
+### Regras da Cena:
+
+<li><b className='defense-green'>Objetivo:</b> Ser bem sucedido em 12 testes de navegação de dificuldade padrão para encontrar o caminho para a civilização.</li>
+<li><b className='atack-red'>Fracasso:</b> Se os jogadores acumularem 3 contadores de falha, role 1d6 e verifique a consequencia na tabela <spam className='atack-red'>Perigos da Floresta</spam>, os contadores de falha reiniciam e a cena continua (*até o último sobreviver*)</li>
+
+### Modificadores:
+
+<li>**Exploração Natural:** Os testes de navegação dessa cena só podem ser realizados com as pericias Sobrevivência ou Pesquisa Geografia</li>
+<li>**Acampamento Perigoso:** É possivel iniciar uma cena de descanso a qualquer momento dessa cena de exploração mas a floresta não vai esperar você descansar. </li>
+
+ <u>Ao iniciar uma cena de Descanso Curto</u>: aumente em 1 o <spam className='atack-red'> contador de falha</spam>.
+
+ <u>Ao iniciar uma cena de Descanso Longo</u>: ative o modificador <b className='atack-red'> Perigos da Floresta</b>.
+
+<li><b className='atack-red'>Perigos na Floresta:</b> role 1d6 e verifique o resultado na tabela abaixo:</li>
+
+| D6 | Efeito |
+| :-----: | :----: | 
+| 6 | **Sem saída**: Boa parte dos rastros que vocês seguiam eram falsos, aumente 3🟢 testes na cena. |
+| 5 | **Caos**: O tempo se fecha e uma tempestade inicia, todos os testes são feitos com desvantagem, se cair nesse efeito e uma tempestade ja estiver acontecendo, a tempestade se encerra. |
+| 4 | **Perdição**: Todos os personagens perdem um item do inventário (mínimo de 1 volume), esse item não pode ser recuperado. |
+| 3 | **Desolação**: Todos os personagens ficam sob a condição *Doença*, para cada teste que fizerem recebem 1d6 de dano tóxico e não curam pontos de vida em cenas de descanso. |
+| 2 | **Ataque**: O grupo entra em combate contra 1d4 Jacarés Açu. |
+| 1 | **Fuja**: O grupo é emboscado por uma Anaconda de Anhanguara, ela ataca primeiro. |
+
+### Saques:
+
+<li>**Sucesso Normal:**</li> Personagem encontra x1 mantimentos na mata. Você pode utilizar mantimentos em uma cena de descanso, cada mantimento usado cura 1 ponto de vida de qualquer dano.
+<li>**Sucesso Extremo, perícia Biologia ou sobrevivência:**</li> Personagem encontra x1 antidoto. Esse item pode ser usado para curar a condição Doença de um perosnagem.
