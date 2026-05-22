@@ -64,7 +64,26 @@
         "negativas":[]
     },
 
-    ""
+    "implantes":{
+        "nomeImplante":"",
+        "descricaoImplante":""
+    },
+
+    "patrimonio":{
+        "creditos":"",
+        "rendaMensal":"",
+        "custoDeVida":"",
+        "despesas":[]
+    },
+    
+    "linguas":[],
+
+    "oficio":[],
+
+    "inventario":{
+        "nomeItem":"",
+        "volumeItem":""
+    }
 
 
 }
