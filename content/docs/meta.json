@@ -1,8 +1,3 @@
 {
-    "pages":[
-        "index",
-        "livro-base",
-        "expansao-cybersuit",
-        "conteudo-extra"
-    ]
+  "pages": ["index", "livro-base", "expansao-cybersuit", "conteudo-adicional"]
 }
