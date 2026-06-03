@@ -10,7 +10,10 @@ import logo from "src/public/logo.png";
  * Docs Layout: app/docs/layout.tsx
  */
 
-const isDevelopment = process.env.NODE_ENV === "development" ? "" : "hidden";
+const isDevelopment =
+  process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview"
+    ? ""
+    : "hidden";
 
 export const baseOptions: BaseLayoutProps = {
   nav: {

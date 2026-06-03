@@ -10,7 +10,9 @@ const inter = Inter({
 });
 
 const lineColor =
-  process.env.NODE_ENV === "development" ? "#ff000075" : "#3c199b50";
+  process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview"
+    ? "#ff000075"
+    : "#3c199b50";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
