@@ -9,6 +9,9 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const lineColor =
+  process.env.NODE_ENV === "development" ? "#ff000075" : "#3c199b50";
+
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
@@ -16,7 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <Analytics />
         <div className="w-full h-full z-10 fixed">
           <Waves
-            lineColor="#3c199b50"
+            lineColor={lineColor}
             // backgroundColor="#060010"
             waveSpeedX={0.02}
             waveSpeedY={0.01}

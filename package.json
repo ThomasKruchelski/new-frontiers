@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
+    "dotenv": "^17.4.2",
     "eslint-config-next": "^16.1.6",
     "fumadocs-core": "15.0.8",
     "fumadocs-mdx": "11.5.5",
