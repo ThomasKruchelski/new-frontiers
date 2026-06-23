@@ -62,8 +62,24 @@ p {
   margin-top: 2rem;
 }
 
-.box-border.android {
+.box-border.androide {
   border: 1px solid rgba(63, 136, 231, 0.7);
+}
+
+.box-border.androide-replicante {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right, rgba(63, 136, 231, 0.7), #eb4242) 1;
+}
+
+.box-border.bizarro {
+  border-width: 1px;
+  border-style: solid;
+  border-image: radial-gradient(circle, #1f1f20, #54545e) 1;
+}
+
+.box-border.replicante {
+  border: 1px solid #eb4242;
 }
 
 .box-border h3 {
