@@ -56,6 +56,31 @@ p {
   color: #4b475c !important;
 }
 
+.ficha-green{
+  background-color: #d9ead3;
+  color:black;
+  background-size: 200%;
+  background-position: 100%;
+  padding: 0 .2rem;
+}
+
+.ficha-red{
+  background-color:#f0b9b9;
+  color:black;
+  background-size: 200%;
+  background-position: 100%;
+  padding: 0 .2rem;
+  
+}
+
+.ficha-extremo{
+  background-color: #b67b6f;
+  color:black;
+  background-size: 200%;
+  background-position: 100%;
+  padding: 0 .2rem;
+}
+
 .box-border {
   border: 1px solid rgba(229, 229, 229, 0.7);
   padding: 0.5rem;
