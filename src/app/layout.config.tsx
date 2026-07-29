@@ -37,5 +37,10 @@ export const baseOptions: BaseLayoutProps = {
       url: "/ficha",
       active: "nested-url",
     },
+    {
+      text: "ChatBot",
+      url: "/ai",
+      active: "nested-url",
+    },
   ],
 };
