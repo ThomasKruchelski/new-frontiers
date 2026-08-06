@@ -1,0 +1,47 @@
+[
+    {
+        "nome":"",
+        "tipo":"",
+        "escola":"",
+        "mana":"",
+        "paradoxo":"",
+        "efeitos":{
+            "alcance":"",
+            "area":"",
+            "duracao":"",
+            "acao":"",
+            "resistencia":"",
+            "descricao":[""]
+        }
+    },
+    {
+        "nome":"Alergia a...",
+        "tipo":"",
+        "escola":"alteracao",
+        "mana":"20",
+        "paradoxo":"0",
+        "efeitos":{
+            "alcance":"25m",
+            "area":"alvo unico",
+            "duracao":"1 dia",
+            "acao":"padrao",
+            "resistencia":"fortitude",
+            "descricao":["Escolha um objeto, comida ou material. o personagem alvo precisa fazer um teste de fortitude toda vez que entrar em contato com sua alergia, se falhar recebe desvantagem em todos os testes até o final do turno"]
+        }
+    },
+    {
+        "nome":"Amendoim",
+        "tipo":"",
+        "escola":"invocação",
+        "mana":"13",
+        "paradoxo":"0",
+        "efeitos":{
+            "alcance":"9m",
+            "area":"alvo unico",
+            "duracao":"-",
+            "acao":"padrao",
+            "resistencia":"-",
+            "descricao":["Você invoca uma pilha de amendoins, são amendoins comuns e podem ser comidos e servem como uma refeição para 1 persoangem, se for invocado no mesmo espaço de um personagem com alergia a amendoim o personagem recebe 6d6 de dano tóxico"]
+        }
+    }
+]

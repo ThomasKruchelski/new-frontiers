@@ -1,89 +1,131 @@
 {
-    "nome":"",
-    "especie":"",
-    "vocacao":"",
-    "idade":"",
-    "experiencia":"",
-    "jogador":"",
-    "statusAtuais":[],
-    "caracteristicas":["","",""],
-    "atributos":{
-        "corpo":"",
-        "destreza":"",
-        "persona":"",
-        "sabdoria":"",
-        "inteligencia":"",
-        "educacao":""
+    "nome": "",
+    "especie": "",
+    "vocacao": "",
+    "idade": "",
+    "ancora": "",
+    "experiencia": "",
+    "nivel": "",
+    "jogador": "",
+    "statusAtuais": [],
+    "caracteristicas": [],
+    "atributos": {
+        "corpo": [
+            "",
+            ""
+        ],
+        "destreza": [
+            "",
+            ""
+        ],
+        "persona": [
+            "",
+            ""
+        ],
+        "inteligencia": [
+            "",
+            ""
+        ],
+        "educacao": [
+            "",
+            ""
+        ]
     },
-
-    "vida":{
-        "vidaTotal":"",
-        "vidaAtual":""
+    "vidaTotal": [
+        "",
+        ""
+    ],
+    "menteTotal": [
+        "",
+        ""
+    ],
+    "dano": {
+        "bruto": "",
+        "termico": "",
+        "toxico": "",
+        "respiratorio": "",
+        "psiquico": ""
     },
-
-    "dano":{
-        "tipoDano":"",
-        "quantiadadeDano":"",
-        "resistenciaDano":""
+    "armasHabilidades": [],
+    "resistencias": {
+        "vontade": [
+            0,
+            0,
+            ""
+        ],
+        "reflexo": [
+            0,
+            0,
+            ""
+        ],
+        "fortitude": [
+            0,
+            0,
+            ""
+        ]
     },
-
-    "armasHabilidades":{
-        "nomeArma":"",
-        "danoArma":["bonusDano","tipoDano"],
-        "caracateristicaArma":["area","distancia","carga","municao"],
-        "efeito":""
+    "precursores": {
+        "ideia": [
+            0,
+            0,
+            ""
+        ],
+        "saber": [
+            0,
+            0,
+            ""
+        ],
+        "sorte": [
+            0,
+            0,
+            ""
+        ]
     },
-
-    "resistencias":{
-        "vontade":"",
-        "reflexo":"",
-        "fortitude":""
+    "pericias": [
+        {
+            "nome": "",
+            "vantagem": 0,
+            "pontosInt": "",
+            "pontosEdu": "",
+            "pontosExp": ""
+        }
+    ],
+    "afiliacoes": {
+        "fama": "",
+        "reconhecimento": "",
+        "positivas": [
+            {
+                "nome": "",
+                "nivel": ""
+            }
+        ],
+        "negativas": [
+            {
+                "nome": "",
+                "nivel": ""
+            }
+        ]
     },
-
-    "precursores":{
-        "ideia":"",
-        "saber":"",
-        "sorte":""
+    "implantes": [
+        {
+            "nomeImplante": "",
+            "descricaoImplante": ""
+        }
+    ],
+    "patrimonio": {
+        "creditos": "",
+        "rendaMensal": "",
+        "custoDeVida": "",
+        "despesas": [],
+        "imoveis": [],
+        "veiculos": []
     },
-    
-    "pericias":{
-        "nomePericia":"",
-        "pontosInvestidos":"",
-        "valorNormal":"",
-        "valorDificil":"",
-        "valorExtremo":""
-    },
-        
-
-    
-
-    "afiliacoes":{
-        "fama":"",
-        "reconhecimento":"",
-        "positivas":[],
-        "negativas":[]
-    },
-
-    "implantes":{
-        "nomeImplante":"",
-        "descricaoImplante":""
-    },
-
-    "patrimonio":{
-        "creditos":"",
-        "rendaMensal":"",
-        "custoDeVida":"",
-        "despesas":[]
-    },
-    
-    "linguas":[],
-
-    "oficio":[],
-
-    "inventario":{
-        "nomeItem":"",
-        "volumeItem":""
-    }
-
-
+    "linguas": [],
+    "oficios": [],
+    "inventario": [
+        {
+            "item": "",
+            "volume": 0
+        }
+    ]
 }
