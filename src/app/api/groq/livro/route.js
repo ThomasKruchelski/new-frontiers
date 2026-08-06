@@ -31,7 +31,9 @@ export async function POST(req) {
 
     const apiKey = process.env.GROQCLOUD_API_KEY;
 
-    const contentDirectory = path.join(process.cwd(), "content");
+    // --- ALTERAÇÃO AQUI ---
+    // Agora o caminho inicial aponta diretamente para "content/livro-base"
+    const contentDirectory = path.join(process.cwd(), "content","docs","livro-base");
     const listaDeArquivos = await lerArquivosRecursivamente(contentDirectory);
 
     // 1. Extrai palavras importantes da pergunta (ignorando palavras curtas como "o", "a", "de")
