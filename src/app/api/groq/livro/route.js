@@ -1,6 +1,23 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import { getApps, initializeApp, cert } from "firebase-admin/app";
+import { getFirestore, FieldValue } from "firebase-admin/firestore";
+
+if (getApps().length === 0) {
+  initializeApp({
+    credential: cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    }),
+  });
+}
+
+// Conectando ao banco de dados Firestore
+const db = getFirestore();
+
+const aiModel = "llama-3.3-70b-versatile"
 
 async function lerArquivosRecursivamente(diretorio) {
   let arquivosEncontrados = [];
@@ -31,12 +48,9 @@ export async function POST(req) {
 
     const apiKey = process.env.GROQCLOUD_API_KEY;
 
-    // --- ALTERAÇÃO AQUI ---
-    // Agora o caminho inicial aponta diretamente para "content/livro-base"
-    const contentDirectory = path.join(process.cwd(), "content","docs","livro-base");
+    const contentDirectory = path.join(process.cwd(), "content", "docs", "livro-base");
     const listaDeArquivos = await lerArquivosRecursivamente(contentDirectory);
 
-    // 1. Extrai palavras importantes da pergunta (ignorando palavras curtas como "o", "a", "de")
     const palavrasChave = question
       .toLowerCase()
       .split(" ")
@@ -44,7 +58,6 @@ export async function POST(req) {
 
     let arquivosComPontuacao = [];
 
-    // 2. Lê os arquivos e dá uma pontuação baseada em quantas palavras-chave aparecem neles
     for (const filePath of listaDeArquivos) {
       const fileContent = await fs.readFile(filePath, "utf8");
       const filename = path.basename(filePath);
@@ -61,25 +74,21 @@ export async function POST(req) {
       arquivosComPontuacao.push({ filename, fileContent, pontuacao });
     }
 
-    // 3. Ordena os arquivos pela pontuação (do maior para o menor)
     arquivosComPontuacao.sort((a, b) => b.pontuacao - a.pontuacao);
 
-    // 4. Pega APENAS os 2 arquivos mais relevantes (que pontuaram mais de 0)
     const melhoresArquivos = arquivosComPontuacao
       .filter(arq => arq.pontuacao > 0)
-      .slice(0, 2); // Limita a 2 arquivos no máximo!
+      .slice(0, 2);
 
     let contextString = "";
     for (const arq of melhoresArquivos) {
       contextString += `\n--- Início de ${arq.filename} ---\n${arq.fileContent}\n--- Fim de ${arq.filename} ---\n`;
     }
 
-    // Se não achou nenhum arquivo relevante, manda vazio ou cancela a request para poupar tokens
     if (melhoresArquivos.length === 0) {
       return NextResponse.json({ answer: "Desculpe, não encontrei informações sobre isso nos meus documentos." });
     }
 
-    // PASSO 3: Enviar APENAS o conteúdo filtrado para a Groq
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -94,7 +103,7 @@ export async function POST(req) {
           },
           { role: "user", content: question },
         ],
-        model: "llama-3.3-70b-versatile",
+        model: aiModel,
         temperature: 0.3,
       }),
     });
@@ -102,7 +111,24 @@ export async function POST(req) {
     const data = await response.json();
     if (!response.ok) throw new Error(data.error?.message || "Falha na Groq");
 
-    return NextResponse.json({ answer: data.choices[0].message.content });
+    // Resposta final
+    const finalAnswer = data.choices[0].message.content;
+
+    // Salvando no Firestore
+    try {
+      await db.collection("groq-answers").add({
+        question: question,
+        answer: finalAnswer,
+        createdAt: FieldValue.serverTimestamp(),
+        model: aiModel
+        
+      });
+      console.log("#####Pergunta e resposta salvas no Firestore!");
+    } catch (dbError) {
+      console.error("Erro ao salvar no banco de dados:", dbError);
+    }
+
+    return NextResponse.json({ answer: finalAnswer });
 
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
