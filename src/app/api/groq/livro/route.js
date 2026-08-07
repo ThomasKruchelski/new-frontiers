@@ -4,6 +4,7 @@ import path from "path";
 import { getApps, initializeApp, cert } from "firebase-admin/app";
 import { getFirestore, FieldValue } from "firebase-admin/firestore";
 
+// If só pra não iniciar duas vezes
 if (getApps().length === 0) {
   initializeApp({
     credential: cert({
@@ -16,9 +17,10 @@ if (getApps().length === 0) {
 
 // Conectando ao banco de dados Firestore
 const db = getFirestore();
-
+// models podem ser encontrados no site da groq https://console.groq.com/docs/rate-limits
 const aiModel = "llama-3.3-70b-versatile"
 
+// junta a listade arquivos para a leitura da IA
 async function lerArquivosRecursivamente(diretorio) {
   let arquivosEncontrados = [];
   try {
@@ -48,6 +50,7 @@ export async function POST(req) {
 
     const apiKey = process.env.GROQCLOUD_API_KEY;
 
+    //Cwd passa o mapa de qual sequencia de arquivos acessar para a função de ler arquivos recursivamente.
     const contentDirectory = path.join(process.cwd(), "content", "docs", "livro-base");
     const listaDeArquivos = await lerArquivosRecursivamente(contentDirectory);
 
