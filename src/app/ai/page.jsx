@@ -65,7 +65,7 @@ export default function Chatbot() {
 
       </div>
 
-      <div class='mt-4'>
+      <div className='mt-4'>
         <Link href="/ai/perguntas">Veja o histórico de perguntas</Link>
       </div>
     

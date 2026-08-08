@@ -18,7 +18,7 @@ Link da aplicação em produção: https://new-frontier-git-devops-ia-thomaskruc
 | Hospedagem em nuvem | [Vercel](https://vercel.com/home)
 
 
-Run development server:
+Run development app:
 
 ```bash
 npm run dev

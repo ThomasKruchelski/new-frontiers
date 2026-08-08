@@ -102,7 +102,7 @@ export async function POST(req) {
         messages: [
           {
             role: "system",
-            content: `Use os documentos abaixo como contexto para responder. Se a resposta não estiver nos documentos, diga que não sabe.\n\nCONTEXTO:${contextString}`,
+            content: `Use os documentos abaixo sobre o livro de RPG New Frontiers como contexto para responder. Se a resposta não estiver nos documentos, diga que não sabe.\n\nCONTEXTO:${contextString}`,
           },
           { role: "user", content: question },
         ],
