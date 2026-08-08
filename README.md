@@ -10,11 +10,12 @@ Link da aplicação em produção: https://new-frontier-git-devops-ia-thomaskruc
 
 | Funcionalidade | Tecnologia | 
 | -------- | ----- | 
-| Frontend | [React](https://react.dev/), [Fumadocs]((https://fumadocs.vercel.app)) & [Tailwind](https://tailwindcss.com/) | 
+| Frontend | [React](https://react.dev/), [Fumadocs](https://fumadocs.vercel.app) & [Tailwind](https://tailwindcss.com/) | 
 | Backend  | Routes do [Next.js](https://nextjs.org/) | 
 | Banco de Dados | [Firestore](https://firebase.google.com/docs/firestore?hl=pt-br) |
 | Testes automatizados | [Jest](https://jestjs.io/) |
-| Ia | [Groq](https://groq.com/) modelo llama-3.3-70b-versatile |
+| Ia | [Groq](https://groq.com/) modelo [llama-3.3-70b-versatile](https://console.groq.com/docs/rate-limits#rate-limits) |
+| Hospedagem em nuvem | [Vercel](https://vercel.com/home)
 
 
 Run development server:
