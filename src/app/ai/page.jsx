@@ -46,7 +46,7 @@ export default function Chatbot() {
 
 
         {answer && (
-          <div className="lg:max-w-[1080px] box-content border-b border-fd-foreground/10 transition-colors p-4 px-8 lg:mt-4 lg:rounded-2xl lg:border shadow-sm bg-fd-background/80 backdrop-blur-lg">
+          <div className="lg:max-w-[1080px] box-content border-b border-fd-foreground/10 transition-colors p-4 px-8 lg:mt-4 lg:rounded-2xl lg:border shadow-sm bg-fd-background/80 backdrop-blur-lg whitespace-pre-wrap">
             <p>{answer}</p>
           </div>
         )}
@@ -62,6 +62,11 @@ export default function Chatbot() {
         <button onClick={handleAsk} disabled={loading} className="cursor-pointer rounded-xl lg:mt-4 bg-fd-background/80 backdrop-blur-lg p-2 px-4">
           {loading ? "Pensando..." : "Enviar"}
         </button>
+
+      </div>
+
+      <div class='mt-4'>
+        <Link href="/ai/perguntas">Veja o histórico de perguntas</Link>
       </div>
     
     </main>
