@@ -1,131 +1,281 @@
 {
-    "nome": "",
-    "especie": "",
-    "vocacao": "",
-    "idade": "",
-    "ancora": "",
-    "experiencia": "",
-    "nivel": "",
-    "jogador": "",
-    "statusAtuais": [],
-    "caracteristicas": [],
-    "atributos": {
-        "corpo": [
-            "",
-            ""
-        ],
-        "destreza": [
-            "",
-            ""
-        ],
-        "persona": [
-            "",
-            ""
-        ],
-        "inteligencia": [
-            "",
-            ""
-        ],
-        "educacao": [
-            "",
-            ""
-        ]
-    },
-    "vidaTotal": [
-        "",
-        ""
-    ],
-    "menteTotal": [
-        "",
-        ""
-    ],
-    "dano": {
-        "bruto": "",
-        "termico": "",
-        "toxico": "",
-        "respiratorio": "",
-        "psiquico": ""
-    },
-    "armasHabilidades": [],
-    "resistencias": {
-        "vontade": [
-            0,
-            0,
-            ""
-        ],
-        "reflexo": [
-            0,
-            0,
-            ""
-        ],
-        "fortitude": [
-            0,
-            0,
-            ""
-        ]
-    },
-    "precursores": {
-        "ideia": [
-            0,
-            0,
-            ""
-        ],
-        "saber": [
-            0,
-            0,
-            ""
-        ],
-        "sorte": [
-            0,
-            0,
-            ""
-        ]
-    },
-    "pericias": [
-        {
-            "nome": "",
-            "vantagem": 0,
-            "pontosInt": "",
-            "pontosEdu": "",
-            "pontosExp": ""
-        }
-    ],
-    "afiliacoes": {
-        "fama": "",
-        "reconhecimento": "",
-        "positivas": [
+    "tipo":"personagem",
+    "ficha": {
+        "nome": "",
+        "especie": "",
+        "vocacao": "",
+        "idade": "",
+        "ancora": "",
+        "experiencia": "",
+        "nivel": "",
+        "jogador": "",
+        "statusAtuais": [],
+        "caracteristicas": [],
+        "atributos": {
+            "corpo": {
+                "valorInicial": "",
+                "valorAdicional": ""
+            },
+            "destreza": {
+                "valorInicial": "",
+                "valorAdicional": ""
+            },
+            "persona": {
+                "valorInicial": "",
+                "valorAdicional": ""
+            },
+            "inteligencia": {
+                "valorInicial": "",
+                "valorAdicional": ""
+            },
+            "educacao": {
+                "valorInicial": "",
+                "valorAdicional": ""
+            }
+        },
+        "vidaTotal": {
+            "valorInicial": "",
+            "valorAdicional": ""
+        },
+        "menteTotal": {
+            "valorInicial": "",
+            "valorAdicional": ""
+        },
+        "dano": {
+            "bruto": "",
+            "termico": "",
+            "toxico": "",
+            "respiratorio": "",
+            "psiquico": ""
+        },
+        "armasHabilidades": [],
+        "resistencias": {
+            "vontade": {
+                "valorInicial": "",
+                "valorAdicional": "",
+                "vantagem": 0
+            },
+            "reflexo": {
+                "valorInicial": "",
+                "valorAdicional": "",
+                "vantagem": 0
+            },
+            "fortitude": {
+                "valorInicial": "",
+                "valorAdicional": "",
+                "vantagem": 0
+            }
+        },
+        "precursores": {
+            "ideia": {
+                "valorInicial": "",
+                "valorAdicional": "",
+                "vantagem": 0
+            },
+            "saber": {
+                "valorInicial": "",
+                "valorAdicional": "",
+                "vantagem": 0
+            },
+            "sorte": {
+                "valorInicial": "",
+                "valorAdicional": "",
+                "vantagem": 0
+            }
+        },
+        "pericias": [
             {
-                "nome": "",
-                "nivel": ""
+                "nome": "acrobacia",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "atletismo",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "crime",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "diplomacia",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "dirigir automovel",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "enganação",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "engenharia",
+                "tipo": "eletrica",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "furtividade",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "natureza",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "hacking",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "intuição",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "medicina",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "ofício",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "pesquisa",
+                "tipo": "quimica",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "primeiros socorros",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "pilotagem",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "vivencia",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "tecnologia",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "tecnologia Xeno",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
             }
         ],
-        "negativas": [
+        "afiliacoes": {
+            "fama": "",
+            "reconhecimento": "",
+            "positivas": [
+                {
+                    "nome": "",
+                    "nivel": ""
+                }
+            ],
+            "negativas": [
+                {
+                    "nome": "",
+                    "nivel": ""
+                }
+            ]
+        },
+        "implantes": [
             {
-                "nome": "",
-                "nivel": ""
+                "nomeImplante": "",
+                "descricaoImplante": ""
+            }
+        ],
+        "patrimonio": {
+            "creditos": "",
+            "rendaMensal": "",
+            "custoDeVida": "",
+            "despesas": [],
+            "imoveis": [],
+            "veiculos": []
+        },
+        "linguas": [],
+        "oficios": [],
+        "inventario": [
+            {
+                "item": "",
+                "volume": 0
             }
         ]
-    },
-    "implantes": [
-        {
-            "nomeImplante": "",
-            "descricaoImplante": ""
-        }
-    ],
-    "patrimonio": {
-        "creditos": "",
-        "rendaMensal": "",
-        "custoDeVida": "",
-        "despesas": [],
-        "imoveis": [],
-        "veiculos": []
-    },
-    "linguas": [],
-    "oficios": [],
-    "inventario": [
-        {
-            "item": "",
-            "volume": 0
-        }
-    ]
+    }
 }
