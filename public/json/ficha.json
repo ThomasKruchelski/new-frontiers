@@ -11,6 +11,7 @@
         "jogador": "",
         "statusAtuais": [],
         "caracteristicas": [],
+        "bonusAdicionais":[],
         "atributos": {
             "corpo": {
                 "valorInicial": "",
@@ -47,6 +48,17 @@
             "toxico": "",
             "respiratorio": "",
             "psiquico": ""
+        },
+        "visao":{
+            "distancia":0,
+            "mutacao":0,
+            "poder":0,
+            "mente":0,
+            "realidade":0,
+            "evolucao":0,
+            "habilidades":[
+                
+            ]
         },
         "armasHabilidades": [],
         "resistencias": {
