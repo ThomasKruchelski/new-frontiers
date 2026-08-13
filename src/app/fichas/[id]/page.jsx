@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function FichaPersonagem() {
   const { id } = useParams();
+  const { resolvedTheme } = useTheme();
   const [fichaAtual, setFichaAtual] = useState(null);
   const [modoEdicao, setModoEdicao] = useState(false);
 
@@ -24,16 +28,23 @@ export default function FichaPersonagem() {
       arrayDeFichas = arrayDeFichas.map(f => f.id === id ? fichaAtual : f);
       localStorage.setItem('fichas', JSON.stringify(arrayDeFichas));
       setModoEdicao(false);
-      alert("Ficha salva com sucesso!");
+      
+      // 2. Substituímos o alert() pelo toast.success()
+      toast.success("Ficha salva com sucesso!", {
+        position: "bottom-right", // Posição do toast na tela
+        autoClose: 2500,          // Fecha sozinho após 3 segundos
+        theme: resolvedTheme === 'dark' ? 'dark' : 'light',
+      });
     }
   };
 
-  const atualizarCampoBase = (campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [campo]: valor } }));
-  const atualizarAtributo = (atributo, campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, atributos: { ...prev.ficha.atributos, [atributo]: { ...prev.ficha.atributos[atributo], [campo]: valor } } } }));
-  const adicionarStringArray = (nomeArray) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], ""] } }));
+  // ... (As funções de atualização permanecem exatamente iguais)
+  const atualizarCampoBase = (campo, valor) => setFichaAtual(prev => ({...prev, ficha: { ...prev.ficha, [campo]: valor }}));
+  const atualizarAtributo = (atributo, campo, valor) => setFichaAtual(prev => ({...prev, ficha: {...prev.ficha, atributos: {...prev.ficha.atributos, [atributo]: { ...prev.ficha.atributos[atributo], [campo]: valor }}}}));
+  const adicionarStringArray = (nomeArray) => setFichaAtual(prev => ({...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], ""] }}));
   const atualizarStringArray = (nomeArray, index, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = valor; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
   const removerStringArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
-  const adicionarObjetoArray = (nomeArray, objetoPadrao) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], objetoPadrao] } }));
+  const adicionarObjetoArray = (nomeArray, objetoPadrao) => setFichaAtual(prev => ({...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], objetoPadrao] }}));
   const atualizarObjetoArray = (nomeArray, index, campo, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = { ...novo[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
   const removerObjetoArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
 
@@ -48,25 +59,26 @@ export default function FichaPersonagem() {
   const f = fichaAtual.ficha;
 
   return (
-    <main className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 text-fd-primary">
-
+    <main className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 text-fd-primary relative">
+      
       {/* CABEÇALHO E CONTROLES */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
         <h1 className="text-3xl font-bold data-[active=true]:text-fd-primary">Ficha de Personagem</h1>
         <div className="flex gap-2">
-          <button
-            onClick={() => setModoEdicao(!modoEdicao)}
-            className={`px-4 py-2 font-semibold rounded-md transition-colors duration-200 border ${modoEdicao
-                ? 'bg-fd-background/80 text-fd-primary border-fd-primary/30 hover:bg-fd-primary/10'
+          <button 
+            onClick={() => setModoEdicao(!modoEdicao)} 
+            className={`px-4 py-2 font-semibold rounded-md transition-colors duration-200 border ${
+              modoEdicao 
+                ? 'bg-fd-background/80 text-fd-primary border-fd-primary/30 hover:bg-fd-primary/10' 
                 : 'bg-blue-600 text-white border-transparent hover:bg-blue-700'
-              }`}
+            }`}
           >
             {modoEdicao ? 'Cancelar Edição' : 'Editar Ficha'}
           </button>
-
+          
           {modoEdicao && (
-            <button
-              onClick={salvarFicha}
+            <button 
+              onClick={salvarFicha} 
               className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors duration-200 shadow-sm border border-transparent"
             >
               Salvar Alterações
@@ -78,10 +90,10 @@ export default function FichaPersonagem() {
       <hr className="mb-8 border-fd-primary/20" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
+        
         {/* COLUNA ESQUERDA */}
         <div className="space-y-8">
-
+          
           {/* EXEMPLO 1: CAMPOS SIMPLES */}
           <section className="bg-fd-background/80 p-6 rounded-xl border border-fd-primary/20 shadow-sm backdrop-blur-sm">
             <h2 className="text-xl font-bold mb-4 border-b border-fd-primary/20 pb-2 data-[active=true]:text-fd-primary">Informações Básicas</h2>
@@ -89,10 +101,10 @@ export default function FichaPersonagem() {
               <label className="flex flex-col gap-1">
                 <span className="font-semibold text-fd-primary/80">Nome</span>
                 {modoEdicao ? (
-                  <input
+                  <input 
                     className="bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
-                    value={f.nome}
-                    onChange={(e) => atualizarCampoBase('nome', e.target.value)}
+                    value={f.nome} 
+                    onChange={(e) => atualizarCampoBase('nome', e.target.value)} 
                   />
                 ) : (
                   <span className="bg-fd-background/80 text-fd-primary px-3 py-2 rounded-md border border-fd-primary/10">{f.nome || 'Não definido'}</span>
@@ -102,10 +114,10 @@ export default function FichaPersonagem() {
               <label className="flex flex-col gap-1">
                 <span className="font-semibold text-fd-primary/80">Vocação</span>
                 {modoEdicao ? (
-                  <input
+                  <input 
                     className="bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
-                    value={f.vocacao}
-                    onChange={(e) => atualizarCampoBase('vocacao', e.target.value)}
+                    value={f.vocacao} 
+                    onChange={(e) => atualizarCampoBase('vocacao', e.target.value)} 
                   />
                 ) : (
                   <span className="bg-fd-background/80 text-fd-primary px-3 py-2 rounded-md border border-fd-primary/10">{f.vocacao || 'Não definida'}</span>
@@ -122,19 +134,19 @@ export default function FichaPersonagem() {
                 <strong className="text-fd-primary/90 w-24">Corpo:</strong>
                 {modoEdicao ? (
                   <div className="flex gap-2">
-                    <input
-                      type="number"
-                      placeholder="Inicial"
+                    <input 
+                      type="number" 
+                      placeholder="Inicial" 
                       className="bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-2 py-1 w-20 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={f.atributos.corpo.valorInicial}
-                      onChange={(e) => atualizarAtributo('corpo', 'valorInicial', e.target.value)}
+                      value={f.atributos.corpo.valorInicial} 
+                      onChange={(e) => atualizarAtributo('corpo', 'valorInicial', e.target.value)} 
                     />
-                    <input
-                      type="number"
-                      placeholder="Adic."
+                    <input 
+                      type="number" 
+                      placeholder="Adic." 
                       className="bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-2 py-1 w-20 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={f.atributos.corpo.valorAdicional}
-                      onChange={(e) => atualizarAtributo('corpo', 'valorAdicional', e.target.value)}
+                      value={f.atributos.corpo.valorAdicional} 
+                      onChange={(e) => atualizarAtributo('corpo', 'valorAdicional', e.target.value)} 
                     />
                   </div>
                 ) : (
@@ -150,11 +162,11 @@ export default function FichaPersonagem() {
 
         {/* COLUNA DIREITA */}
         <div className="space-y-8">
-
+          
           {/* EXEMPLO 3: ARRAY DE STRINGS (CARACTERÍSTICAS) */}
           <section className="bg-fd-background/80 p-6 rounded-xl border border-fd-primary/20 shadow-sm backdrop-blur-sm">
             <h2 className="text-xl font-bold mb-4 border-b border-fd-primary/20 pb-2 data-[active=true]:text-fd-primary">Características</h2>
-
+            
             {f.caracteristicas.length === 0 && !modoEdicao && (
               <p className="text-fd-primary/50 italic">Nenhuma característica adicionada.</p>
             )}
@@ -164,13 +176,13 @@ export default function FichaPersonagem() {
                 <li key={index} className="flex items-center gap-2">
                   {modoEdicao ? (
                     <>
-                      <input
+                      <input 
                         className="flex-1 bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value={carac}
-                        onChange={(e) => atualizarStringArray('caracteristicas', index, e.target.value)}
+                        value={carac} 
+                        onChange={(e) => atualizarStringArray('caracteristicas', index, e.target.value)} 
                       />
-                      <button
-                        onClick={() => removerStringArray('caracteristicas', index)}
+                      <button 
+                        onClick={() => removerStringArray('caracteristicas', index)} 
                         className="text-red-500 hover:text-red-600 hover:bg-red-500/10 p-1.5 rounded-md transition-colors"
                         title="Remover"
                       >
@@ -185,9 +197,9 @@ export default function FichaPersonagem() {
                 </li>
               ))}
             </ul>
-
+            
             {modoEdicao && (
-              <button
+              <button 
                 onClick={() => adicionarStringArray('caracteristicas')}
                 className="w-full py-2 border-2 border-dashed border-fd-primary/30 text-fd-primary/70 rounded-md hover:border-fd-primary/60 hover:text-fd-primary transition-colors font-medium"
               >
@@ -199,7 +211,7 @@ export default function FichaPersonagem() {
           {/* EXEMPLO 4: ARRAY DE OBJETOS (INVENTÁRIO) */}
           <section className="bg-fd-background/80 p-6 rounded-xl border border-fd-primary/20 shadow-sm backdrop-blur-sm">
             <h2 className="text-xl font-bold mb-4 border-b border-fd-primary/20 pb-2 data-[active=true]:text-fd-primary">Inventário</h2>
-
+            
             {f.inventario.length === 0 && !modoEdicao && (
               <p className="text-fd-primary/50 italic">Inventário vazio.</p>
             )}
@@ -209,21 +221,21 @@ export default function FichaPersonagem() {
                 <li key={index} className="flex items-center gap-2">
                   {modoEdicao ? (
                     <>
-                      <input
-                        placeholder="Nome do Item"
+                      <input 
+                        placeholder="Nome do Item" 
                         className="flex-1 bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value={inv.item}
-                        onChange={(e) => atualizarObjetoArray('inventario', index, 'item', e.target.value)}
+                        value={inv.item} 
+                        onChange={(e) => atualizarObjetoArray('inventario', index, 'item', e.target.value)} 
                       />
-                      <input
-                        type="number"
-                        placeholder="Vol."
+                      <input 
+                        type="number" 
+                        placeholder="Vol." 
                         className="w-20 bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value={inv.volume}
-                        onChange={(e) => atualizarObjetoArray('inventario', index, 'volume', Number(e.target.value))}
+                        value={inv.volume} 
+                        onChange={(e) => atualizarObjetoArray('inventario', index, 'volume', Number(e.target.value))} 
                       />
-                      <button
-                        onClick={() => removerObjetoArray('inventario', index)}
+                      <button 
+                        onClick={() => removerObjetoArray('inventario', index)} 
                         className="text-red-500 hover:text-red-600 hover:bg-red-500/10 p-1.5 rounded-md transition-colors"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -240,9 +252,9 @@ export default function FichaPersonagem() {
                 </li>
               ))}
             </ul>
-
+            
             {modoEdicao && (
-              <button
+              <button 
                 onClick={() => adicionarObjetoArray('inventario', { item: "", volume: 0 })}
                 className="w-full py-2 border-2 border-dashed border-fd-primary/30 text-fd-primary/70 rounded-md hover:border-fd-primary/60 hover:text-fd-primary transition-colors font-medium"
               >
@@ -253,6 +265,9 @@ export default function FichaPersonagem() {
 
         </div>
       </div>
+
+      {/* 3. Componente que exibe os toasts (pode ficar no final da main) */}
+      <ToastContainer />
     </main>
   );
 }
