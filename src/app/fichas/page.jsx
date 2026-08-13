@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 // import { toast } from "sonner";
 // import { motion } from "framer-motion";
-import { BotaoCriarFicha } from "@/components/fichaComponents";
+import BtnCriarFicha from "@/components/ficha/btnCriarFicha"
 
 export default function CharacterSheet() {
 
@@ -27,7 +27,7 @@ export default function CharacterSheet() {
       <div className=" max-w-[500px] box-content border-b border-fd-foreground/10 transition-colors p-4 px-8 lg:mt-4 lg:w-[calc(100%-1rem)] lg:rounded-2xl lg:border shadow-sm bg-fd-background/80 backdrop-blur-lg">
         <b> Ficha no Site</b>
 
-        <BotaoCriarFicha/>
+        <BtnCriarFicha tipo='personagem'/>
         
       </div>
     </main>

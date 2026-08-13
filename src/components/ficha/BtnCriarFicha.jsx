@@ -2,14 +2,12 @@
 import { useRouter } from 'next/navigation';
 import { criarFicha } from '@/lib/fichas.js'; // Ajuste o caminho se necessário
 
-export function BotaoCriarFicha() {
+export default function BtnCriarFicha({ tipo }) {
   const router = useRouter();
 
   const handleCriar = async () => {
-    // Agora usamos o 'await' porque o fetch leva alguns milissegundos
-    const novaFicha = await criarFicha(); 
+    const novaFicha = await criarFicha(tipo); 
     
-    // Verifica se deu tudo certo antes de redirecionar
     if (novaFicha && novaFicha.id) {
       router.push(`/fichas/${novaFicha.id}`);
     } else {
@@ -19,7 +17,7 @@ export function BotaoCriarFicha() {
 
   return (
     <button onClick={handleCriar}>
-      Criar Personagem
+      Criar {tipo}
     </button>
   );
 }
