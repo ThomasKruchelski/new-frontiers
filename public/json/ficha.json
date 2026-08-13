@@ -1,4 +1,5 @@
 {
+    "id":"",
     "tipo":"personagem",
     "ficha": {
         "nome": "",
@@ -11,7 +12,12 @@
         "jogador": "",
         "statusAtuais": [],
         "caracteristicas": [],
-        "bonusAdicionais":[],
+        "bonus-e-implantes":[
+            {
+                "nome":"",
+                "descricao":""
+            }
+        ],
         "atributos": {
             "corpo": {
                 "valorInicial": "",
@@ -267,12 +273,6 @@
                 }
             ]
         },
-        "implantes": [
-            {
-                "nomeImplante": "",
-                "descricaoImplante": ""
-            }
-        ],
         "patrimonio": {
             "creditos": "",
             "rendaMensal": "",
