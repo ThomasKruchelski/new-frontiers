@@ -1,6 +1,14 @@
-// src/components/ficha/InformacoesBasicas.js
+"use client"
+import { useFicha } from '@/contexts/FichaContext';
 
-export default function InformacoesBasicas({ f, modoEdicao, atualizarCampoBloco }) {
+export default function InformacoesBasicas() {
+
+  const { fichaAtual, modoEdicao, atualizarCampoBloco } = useFicha();
+
+  if (!fichaAtual) return null; // Prevenção enquanto carrega
+
+  const f = fichaAtual.ficha;
+
   return (
     <section className="bg-fd-background/80 p-6 rounded-xl border border-fd-primary/20 shadow-sm backdrop-blur-sm">
       <h2 className="text-xl font-bold mb-4 border-b border-fd-primary/20 pb-2 data-[active=true]:text-fd-primary">

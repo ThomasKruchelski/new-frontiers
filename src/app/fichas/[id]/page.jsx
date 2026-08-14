@@ -2,80 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { useTheme } from 'next-themes';
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useFicha } from '@/contexts/FichaContext';
 
 import InfoPersonagem from '@/components/ficha/InfoPersonagem';
 
 export default function FichaPersonagem() {
-  const { id } = useParams();
-  const { resolvedTheme } = useTheme();
-  const [fichaAtual, setFichaAtual] = useState(null);
-  const [modoEdicao, setModoEdicao] = useState(false);
 
-  useEffect(() => {
-    const fichasSalvas = localStorage.getItem('fichas');
-    if (fichasSalvas) {
-      const arrayDeFichas = JSON.parse(fichasSalvas);
-      const fichaEncontrada = arrayDeFichas.find(f => f.id === id);
-      setFichaAtual(fichaEncontrada || null);
-    }
-  }, [id]);
-
-  const salvarFicha = () => {
-    const fichasSalvas = localStorage.getItem('fichas');
-    if (fichasSalvas) {
-      let arrayDeFichas = JSON.parse(fichasSalvas);
-      arrayDeFichas = arrayDeFichas.map(f => f.id === id ? fichaAtual : f);
-      localStorage.setItem('fichas', JSON.stringify(arrayDeFichas));
-      setModoEdicao(false);
-
-      // 2. Substituímos o alert() pelo toast.success()
-      toast.success("Ficha salva com sucesso!", {
-        position: "bottom-right", 
-        autoClose: 2500,          
-        theme: resolvedTheme === 'dark' ? 'dark' : 'light',
-      });
-    }
-  };
-
-  const atualizarCampoBase = (campo, valor) => setFichaAtual(
-    prev => ({
-      ...prev, ficha: {
-        ...prev.ficha, [campo]: valor
-      }
-    })
-  );
-
-  const atualizarCampoBloco = (bloco, campo, valor) => setFichaAtual(
-    prev => ({
-      ...prev, ficha: {
-        ...prev.ficha, [bloco]: {
-          ...prev.ficha[bloco], [campo]: valor
-        }
-      }
-    })
-  );
-
-  const atualizarAtributo = (atributo, campo, valor) => setFichaAtual(
-    prev => ({
-      ...prev, ficha: {
-        ...prev.ficha, atributos: {
-          ...prev.ficha.atributos, [atributo]: {
-            ...prev.ficha.atributos[atributo], [campo]: valor
-          }
-        }
-      }
-    })
-  );
-
-  const adicionarStringArray = (nomeArray) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], ""] } }));
-  const atualizarStringArray = (nomeArray, index, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = valor; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
-  const removerStringArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
-  const adicionarObjetoArray = (nomeArray, objetoPadrao) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], objetoPadrao] } }));
-  const atualizarObjetoArray = (nomeArray, index, campo, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = { ...novo[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
-  const removerObjetoArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
+  const { fichaAtual, modoEdicao, salvarFicha, setModoEdicao } = useFicha();
 
   if (!fichaAtual) {
     return (
@@ -122,11 +56,7 @@ export default function FichaPersonagem() {
         {/* COLUNA ESQUERDA */}
         <div className="space-y-8">
 
-          <InfoPersonagem
-            f={f} 
-            modoEdicao={modoEdicao} 
-            atualizarCampoBloco={atualizarCampoBloco}
-          />
+          <InfoPersonagem/>
 
           {/* EXEMPLO 2: ATRIBUTOS */}
           <section className="bg-fd-background/80 p-6 rounded-xl border border-fd-primary/20 shadow-sm backdrop-blur-sm">
