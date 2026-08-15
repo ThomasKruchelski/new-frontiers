@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useFicha } from '@/contexts/FichaContext';
 
 import InfoPersonagem from '@/components/ficha/InfoPersonagem';
+import Atributos from '@/components/ficha/Atributos';
 
 export default function FichaPersonagem() {
 
@@ -59,37 +60,9 @@ export default function FichaPersonagem() {
           <InfoPersonagem/>
 
           {/* EXEMPLO 2: ATRIBUTOS */}
-          <section className="bg-fd-background/80 p-6 rounded-xl border border-fd-primary/20 shadow-sm backdrop-blur-sm">
-            <h2 className="text-xl font-bold mb-4 border-b border-fd-primary/20 pb-2 data-[active=true]:text-fd-primary">Atributos</h2>
-            <div className="flex flex-col gap-4">
-              <div className="flex justify-between items-center bg-transparent p-3 rounded-md border border-fd-primary/20">
-                <strong className="text-fd-primary/90 w-24">Corpo:</strong>
-                {modoEdicao ? (
-                  <div className="flex gap-2">
-                    <input
-                      type="number"
-                      placeholder="Inicial"
-                      className="bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-2 py-1 w-20 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={f.atributos.corpo.valorInicial}
-                      onChange={(e) => atualizarAtributo('corpo', 'valorInicial', e.target.value)}
-                    />
-                    <input
-                      type="number"
-                      placeholder="Adic."
-                      className="bg-transparent border border-fd-primary/30 text-fd-primary data-[active=true]:text-fd-primary rounded-md px-2 py-1 w-20 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={f.atributos.corpo.valorAdicional}
-                      onChange={(e) => atualizarAtributo('corpo', 'valorAdicional', e.target.value)}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex gap-4 text-fd-primary/70">
-                    <span>Inicial: <strong className="text-fd-primary">{f.atributos.corpo.valorInicial || 0}</strong></span>
-                    <span>Adic: <strong className="text-fd-primary">{f.atributos.corpo.valorAdicional || 0}</strong></span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </section>
+          
+          <Atributos/>
+
         </div>
 
         {/* COLUNA DIREITA */}
