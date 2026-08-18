@@ -24,7 +24,6 @@ export function FichaProvider({ children }) {
     }, [id]);
 
     const { resolvedTheme } = useTheme();
-    
 
     const salvarFicha = () => {
         const fichasSalvas = localStorage.getItem('fichas');
@@ -42,32 +41,26 @@ export function FichaProvider({ children }) {
         }
     };
 
-    const atualizarCampoBase = (campo, valor) => {
-        setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [campo]: valor } }));
-    };
+    let atributosFinais = null;
 
-    const atualizarCampoBloco = (bloco, campo, valor) => setFichaAtual(
-        prev => ({
-            ...prev, ficha: {
-                ...prev.ficha, [bloco]: {
-                    ...prev.ficha[bloco], [campo]: valor
-                }
-            }
-        })
-    );
+    if (fichaAtual && fichaAtual.ficha.atributos) {
+        const atributosObj = fichaAtual.ficha.atributos;
 
-    const atualizarAtributo = (atributo, campo, valor) => setFichaAtual(
-        prev => ({
-            ...prev, ficha: {
-                ...prev.ficha, atributos: {
-                    ...prev.ficha.atributos, [atributo]: {
-                        ...prev.ficha.atributos[atributo], [campo]: valor
-                    }
-                }
-            }
-        })
-    );
+        // Usamos o reduce para passar por 'corpo', 'destreza', etc.
+        // e criar um novo objeto com a soma final de cada um.
+        atributosFinais = Object.keys(atributosObj).reduce((acumulador, chave) => {
+            const inicial = Number(atributosObj[chave].valorInicial) || 0;
+            const adicional = Number(atributosObj[chave].valorAdicional) || 0;
 
+            acumulador[chave] = inicial + adicional;
+            return acumulador;
+        }, {});
+        // O {} no final significa que nosso acumulador começa como um objeto vazio.
+    }
+
+    const atualizarCampoBase = (campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [campo]: valor } })); };
+    const atualizarCampoBloco = (bloco, campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [bloco]: { ...prev.ficha[bloco], [campo]: valor } } }));
+    const atualizarAtributo = (atributo, campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, atributos: { ...prev.ficha.atributos, [atributo]: { ...prev.ficha.atributos[atributo], [campo]: valor } } } }));
     const adicionarStringArray = (nomeArray) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], ""] } }));
     const atualizarStringArray = (nomeArray, index, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = valor; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
     const removerStringArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
@@ -84,6 +77,7 @@ export function FichaProvider({ children }) {
             modoEdicao,
             setModoEdicao,
             salvarFicha,
+            atributosFinais,
             atualizarCampoBase,
             atualizarCampoBloco,
             atualizarAtributo,
@@ -92,7 +86,7 @@ export function FichaProvider({ children }) {
             removerStringArray,
             adicionarObjetoArray,
             atualizarObjetoArray,
-            removerObjetoArray
+            removerObjetoArray,
         }}>
             {children}
         </FichaContext.Provider>

@@ -3,7 +3,7 @@ import { useFicha } from '@/contexts/FichaContext';
 
 export default function Atributos() {
 
-    const { fichaAtual, modoEdicao, atualizarAtributo } = useFicha();
+    const { fichaAtual, modoEdicao, atualizarAtributo, atributosFinais } = useFicha();
 
     if (!fichaAtual) return null; // Prevenção enquanto carrega
 
@@ -14,7 +14,7 @@ export default function Atributos() {
             <h2 className="text-xl font-bold mb-4 border-b border-fd-primary/20 pb-2 data-[active=true]:text-fd-primary">Atributos</h2>
             <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center bg-transparent p-3 rounded-md border border-fd-primary/20">
-                    <strong className="text-fd-primary/90 w-24">Corpo:</strong>
+                    <strong className="text-fd-primary/90 w-28">Corpo: {atributosFinais.corpo}</strong>
                     <div className="flex gap-2">
                         <input
                             type="number"
@@ -38,7 +38,7 @@ export default function Atributos() {
 
                 </div>
                 <div className="flex justify-between items-center bg-transparent p-3 rounded-md border border-fd-primary/20">
-                    <strong className="text-fd-primary/90 w-24">Destreza:</strong>
+                    <strong className="text-fd-primary/90 w-28">Destreza: {atributosFinais.destreza}</strong>
                     <div className="flex gap-2">
                         <input
                             type="number"
@@ -61,7 +61,7 @@ export default function Atributos() {
                     </div>
                 </div>
                 <div className="flex justify-between items-center bg-transparent p-3 rounded-md border border-fd-primary/20">
-                    <strong className="text-fd-primary/90 w-24">Persona:</strong>
+                    <strong className="text-fd-primary/90 w-28">Persona: {atributosFinais.persona}</strong>
                     <div className="flex gap-2">
                         <input
                             type="number"
@@ -84,7 +84,7 @@ export default function Atributos() {
                     </div>
                 </div>
                 <div className="flex justify-between items-center bg-transparent p-3 rounded-md border border-fd-primary/20">
-                    <strong className="text-fd-primary/90 w-24">Inteligência:</strong>
+                    <strong className="text-fd-primary/90 w-28">Inteligência: {atributosFinais.inteligencia}</strong>
                     <div className="flex gap-2">
                         <input
                             type="number"
@@ -107,7 +107,7 @@ export default function Atributos() {
                     </div>
                 </div>
                 <div className="flex justify-between items-center bg-transparent p-3 rounded-md border border-fd-primary/20">
-                    <strong className="text-fd-primary/90 w-24">Educação:</strong>
+                    <strong className="text-fd-primary/90 w-28">Educação: {atributosFinais.educacao}</strong>
                     <div className="flex gap-2">
                         <input
                             type="number"
