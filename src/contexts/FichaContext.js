@@ -87,6 +87,12 @@ export function FichaProvider({ children }) {
             atualizarCampoBase,
             atualizarCampoBloco,
             atualizarAtributo,
+            adicionarStringArray,
+            atualizarStringArray,
+            removerStringArray,
+            adicionarObjetoArray,
+            atualizarObjetoArray,
+            removerObjetoArray
         }}>
             {children}
         </FichaContext.Provider>
