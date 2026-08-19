@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import { criarFicha } from '@/lib/fichas.js';
+import { criarFicha } from '@/lib/fichas';
 
 export default function BtnCriarFicha({ tipo }) {
   const router = useRouter();
