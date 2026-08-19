@@ -69,34 +69,28 @@
         "armasHabilidades": [],
         "resistencias": {
             "vontade": {
-                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "reflexo": {
-                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "fortitude": {
-                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             }
         },
         "precursores": {
             "ideia": {
-                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "saber": {
-                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "sorte": {
-                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             }

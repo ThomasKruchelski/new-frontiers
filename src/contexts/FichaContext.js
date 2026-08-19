@@ -53,13 +53,12 @@ export function FichaProvider({ children }) {
         }
     };
 
+    //calcula Atributos
     let atributosFinais = null;
 
     if (fichaAtual && fichaAtual.ficha.atributos) {
         const atributosObj = fichaAtual.ficha.atributos;
 
-        // Usamos o reduce para passar por 'corpo', 'destreza', etc.
-        // e criar um novo objeto com a soma final de cada um.
         atributosFinais = Object.keys(atributosObj).reduce((acumulador, chave) => {
             const inicial = Number(atributosObj[chave].valorInicial) || 0;
             const adicional = Number(atributosObj[chave].valorAdicional) || 0;
@@ -67,8 +66,67 @@ export function FichaProvider({ children }) {
             acumulador[chave] = inicial + adicional;
             return acumulador;
         }, {});
-        // O {} no final significa que nosso acumulador começa como um objeto vazio.
     }
+
+    //Calcula Resistência & Precursores
+
+    let resistsEPrecursFinais = null;
+    let sorteBase = 15
+    let multiplicadorResitencia = 4
+    let multiplicadorPrecursor = 3
+
+    if (fichaAtual && atributosFinais) {
+        const r = fichaAtual.ficha.resistencias;
+        const p = fichaAtual.ficha.precursores;
+
+        // Função interna para automatizar a matemática do Normal, Difícil e Extremo
+        const calcularResistEPrecur = (valorAtributo,multiplicador,objOrigem) => {
+            const adicional = Number(objOrigem.valorAdicional) || 0;
+            const base = (valorAtributo * multiplicador) + adicional;
+
+            return {
+                adicional,
+                vantagem: objOrigem.vantagem || 0,
+                normal: base,
+                dificil: Math.floor(base / 2),
+                extremo: Math.floor(base / 5)
+            };
+        };
+
+        resistsEPrecursFinais = {
+            // Resistências
+            fortitude: calcularResistEPrecur(atributosFinais.corpo || 0, multiplicadorResitencia, r.fortitude),
+            reflexo: calcularResistEPrecur(atributosFinais.destreza || 0, multiplicadorResitencia, r.reflexo),
+            vontade: calcularResistEPrecur(atributosFinais.persona || 0, multiplicadorResitencia, r.vontade),
+            // Precursores
+            ideia: calcularResistEPrecur(atributosFinais.inteligencia || 0,multiplicadorPrecursor,  p.ideia),
+            saber: calcularResistEPrecur(atributosFinais.educacao || 0,multiplicadorPrecursor, p.saber),
+            sorte: calcularResistEPrecur(sorteBase,1, p.sorte) 
+        };
+    }
+
+    // --- NOVAS FUNÇÕES DE ATUALIZAÇÃO ---
+    const atualizarResistencia = (resistencia, campo, valor) => {
+        setFichaAtual(prev => ({
+            ...prev, ficha: {
+                ...prev.ficha, resistencias: {
+                    ...prev.ficha.resistencias,
+                    [resistencia]: { ...prev.ficha.resistencias[resistencia], [campo]: valor }
+                }
+            }
+        }));
+    };
+
+    const atualizarPrecursor = (precursor, campo, valor) => {
+        setFichaAtual(prev => ({
+            ...prev, ficha: {
+                ...prev.ficha, precursores: {
+                    ...prev.ficha.precursores,
+                    [precursor]: { ...prev.ficha.precursores[precursor], [campo]: valor }
+                }
+            }
+        }));
+    };
 
     const atualizarCampoBase = (campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [campo]: valor } })); };
     const atualizarCampoBloco = (bloco, campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [bloco]: { ...prev.ficha[bloco], [campo]: valor } } }));
@@ -91,6 +149,7 @@ export function FichaProvider({ children }) {
             salvarFicha,
             cancelarEdicao,
             atributosFinais,
+            resistsEPrecursFinais,
             atualizarCampoBase,
             atualizarCampoBloco,
             atualizarAtributo,
@@ -100,6 +159,8 @@ export function FichaProvider({ children }) {
             adicionarObjetoArray,
             atualizarObjetoArray,
             removerObjetoArray,
+            atualizarResistencia,
+            atualizarPrecursor
         }}>
             {children}
         </FichaContext.Provider>

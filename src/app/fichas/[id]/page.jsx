@@ -10,6 +10,7 @@ import Atributos from '@/components/ficha/Atributos';
 import Caracteristicas from '@/components/ficha/Caracteristicas';
 import Inventario from '@/components/ficha/Inventario';
 import BonusEImplantes from '@/components/ficha/BonusEImplantes';
+import ResistenciasEPrecursores from '@/components/ficha/ResistenciasEPrecursores';
 
 export default function FichaPersonagem() {
 
@@ -64,6 +65,8 @@ export default function FichaPersonagem() {
           <InfoPersonagem/>
           
           <Atributos/>
+
+          <ResistenciasEPrecursores/>
 
         </div>
 
