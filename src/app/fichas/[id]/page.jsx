@@ -13,7 +13,7 @@ import BonusEImplantes from '@/components/ficha/BonusEImplantes';
 
 export default function FichaPersonagem() {
 
-  const { fichaAtual, modoEdicao, salvarFicha, setModoEdicao } = useFicha();
+  const { fichaAtual, modoEdicao, salvarFicha, setModoEdicao, cancelarEdicao } = useFicha();
 
   if (!fichaAtual) {
     return (
@@ -32,12 +32,13 @@ export default function FichaPersonagem() {
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
         <h1 className="text-3xl font-bold data-[active=true]:text-fd-primary">Ficha de Personagem</h1>
         <div className="flex gap-2">
-          <button
-            onClick={() => setModoEdicao(!modoEdicao)}
-            className={`px-4 py-2 font-semibold rounded-md transition-colors duration-200 border ${modoEdicao
-              ? 'bg-fd-background/80 text-fd-primary border-fd-primary/30 hover:bg-fd-primary/10'
-              : 'bg-blue-600 text-white border-transparent hover:bg-blue-700'
-              }`}
+          <button 
+            onClick={() => modoEdicao ? cancelarEdicao() : setModoEdicao(true)} 
+            className={`px-4 py-2 font-semibold rounded-md transition-colors duration-200 border ${
+              modoEdicao 
+                ? 'bg-fd-background/80 text-fd-primary border-fd-primary/30 hover:bg-fd-primary/10' 
+                : 'bg-blue-600 text-white border-transparent hover:bg-blue-700'
+            }`}
           >
             {modoEdicao ? 'Cancelar Edição' : 'Editar Ficha'}
           </button>

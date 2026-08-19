@@ -41,6 +41,18 @@ export function FichaProvider({ children }) {
         }
     };
 
+    const cancelarEdicao = () => {
+        setModoEdicao(false); // Sai do modo de edição
+
+        // 2. Busca os dados originais no localStorage para descartar as alterações
+        const fichasSalvas = localStorage.getItem('fichas');
+        if (fichasSalvas) {
+            const arrayDeFichas = JSON.parse(fichasSalvas);
+            const fichaOriginal = arrayDeFichas.find(f => f.id === id);
+            setFichaAtual(fichaOriginal || null);
+        }
+    };
+
     let atributosFinais = null;
 
     if (fichaAtual && fichaAtual.ficha.atributos) {
@@ -77,6 +89,7 @@ export function FichaProvider({ children }) {
             modoEdicao,
             setModoEdicao,
             salvarFicha,
+            cancelarEdicao,
             atributosFinais,
             atualizarCampoBase,
             atualizarCampoBloco,
