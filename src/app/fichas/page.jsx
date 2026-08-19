@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 // import { toast } from "sonner";
 // import { motion } from "framer-motion";
-import BtnCriarFicha from "@/components/ficha/btnCriarFicha"
+import BtnCriarFicha from "@/components/ficha/BtnCriarFicha"
 
 export default function CharacterSheet() {
 
