@@ -14,6 +14,15 @@ export function FichaProvider({ children }) {
     const { id } = useParams(); // Pega o ID da URL automaticamente
     const [fichaAtual, setFichaAtual] = useState(null);
     const [modoEdicao, setModoEdicao] = useState(false);
+    const [configSistema, setConfigSistema] = useState({});
+
+    // 2. Buscar o JSON ao carregar a página (coloque junto ou logo abaixo do outro useEffect)
+    useEffect(() => {
+        fetch('/json/v0-9/config-sistema.json')
+            .then(res => res.json())
+            .then(data => setConfigSistema(data))
+            .catch(err => console.error("Erro ao carregar configSistema:", err));
+    }, []);
 
     useEffect(() => {
         const fichasSalvas = localStorage.getItem('fichas');
@@ -80,7 +89,7 @@ export function FichaProvider({ children }) {
         const p = fichaAtual.ficha.precursores;
 
         // Função interna para automatizar a matemática do Normal, Difícil e Extremo
-        const calcularResistEPrecur = (valorAtributo,multiplicador,objOrigem) => {
+        const calcularResistEPrecur = (valorAtributo, multiplicador, objOrigem) => {
             const adicional = Number(objOrigem.valorAdicional) || 0;
             const base = (valorAtributo * multiplicador) + adicional;
 
@@ -99,35 +108,84 @@ export function FichaProvider({ children }) {
             reflexo: calcularResistEPrecur(atributosFinais.destreza || 0, multiplicadorResitencia, r.reflexo),
             vontade: calcularResistEPrecur(atributosFinais.persona || 0, multiplicadorResitencia, r.vontade),
             // Precursores
-            ideia: calcularResistEPrecur(atributosFinais.inteligencia || 0,multiplicadorPrecursor,  p.ideia),
-            saber: calcularResistEPrecur(atributosFinais.educacao || 0,multiplicadorPrecursor, p.saber),
-            sorte: calcularResistEPrecur(sorteBase,1, p.sorte) 
+            ideia: calcularResistEPrecur(atributosFinais.inteligencia || 0, multiplicadorPrecursor, p.ideia),
+            saber: calcularResistEPrecur(atributosFinais.educacao || 0, multiplicadorPrecursor, p.saber),
+            sorte: calcularResistEPrecur(sorteBase, 1, p.sorte)
         };
     }
 
+    // 3. CÁLCULO DE PERÍCIAS
+    let periciasFinais = [];
+
+    if (fichaAtual && atributosFinais && configSistema?.pericias?.length > 0) {
+    // Trocamos o .map() pelo .flatMap()
+    periciasFinais = fichaAtual.ficha.pericias.flatMap((pericia, index) => {
+      
+      const regra = configSistema.pericias.find(b => b.nome.toLowerCase() === pericia.nome.toLowerCase()) || {};
+
+      const int = Number(pericia.pontosInt) || 0;
+      const edu = Number(pericia.pontosEdu) || 0;
+      const exp = Number(pericia.pontosExp) || 0;
+      const custom = Number(pericia.valorCustom) || 0;
+      const pontosInvestidos = int + edu + exp + custom;
+
+      // EXCEÇÃO: Se o atributo for um Array (Ex: ["destreza", "corpo"])
+      if (Array.isArray(regra.atributo)) {
+        return regra.atributo.map(attr => {
+          const valorBase = (atributosFinais[attr] || 0) * (regra.multiplicador || 1);
+          const total = valorBase + pontosInvestidos;
+          
+          return {
+            ...pericia,
+            nomeExibicao: `${pericia.nome} (${attr})`, // Cria o nome "luta (corpo)"
+            chaveUnica: `${pericia.nome}-${attr}`, // Cria uma chave para o React não reclamar
+            originalIndex: index,
+            valorBase,
+            normal: total,
+            dificil: Math.floor(total / 2),
+            extremo: Math.floor(total / 5)
+          };
+        });
+      } 
+      // REGRA PADRÃO: Atributo único ou Valor Fixo
+      else {
+        let valorBase = 0;
+        if (regra.atributo && atributosFinais[regra.atributo]) {
+          valorBase = atributosFinais[regra.atributo] * (regra.multiplicador || 1);
+        } else if (regra.valorFixo !== undefined) {
+          valorBase = regra.valorFixo;
+        }
+
+        const total = valorBase + pontosInvestidos;
+        
+        return [{
+          ...pericia,
+          nomeExibicao: pericia.nome, // Mantém o nome normal
+          chaveUnica: pericia.nome,
+          originalIndex: index,
+          valorBase,
+          normal: total,
+          dificil: Math.floor(total / 2),
+          extremo: Math.floor(total / 5)
+        }];
+      }
+    });
+  }
+
+  useEffect(()=>{console.log("periciasFinais"),console.log(periciasFinais)},[periciasFinais])
+
+    // 4. FUNÇÃO PARA ATUALIZAR A PERÍCIA (Use o originalIndex)
+    const atualizarPericia = (index, campo, valor) => {
+        setFichaAtual(prev => {
+            const novoArray = [...prev.ficha.pericias];
+            novoArray[index] = { ...novoArray[index], [campo]: valor };
+            return { ...prev, ficha: { ...prev.ficha, pericias: novoArray } };
+        });
+    };
+
     // --- NOVAS FUNÇÕES DE ATUALIZAÇÃO ---
-    const atualizarResistencia = (resistencia, campo, valor) => {
-        setFichaAtual(prev => ({
-            ...prev, ficha: {
-                ...prev.ficha, resistencias: {
-                    ...prev.ficha.resistencias,
-                    [resistencia]: { ...prev.ficha.resistencias[resistencia], [campo]: valor }
-                }
-            }
-        }));
-    };
-
-    const atualizarPrecursor = (precursor, campo, valor) => {
-        setFichaAtual(prev => ({
-            ...prev, ficha: {
-                ...prev.ficha, precursores: {
-                    ...prev.ficha.precursores,
-                    [precursor]: { ...prev.ficha.precursores[precursor], [campo]: valor }
-                }
-            }
-        }));
-    };
-
+    const atualizarResistencia = (resistencia, campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, resistencias: { ...prev.ficha.resistencias, [resistencia]: { ...prev.ficha.resistencias[resistencia], [campo]: valor } } } })); };
+    const atualizarPrecursor = (precursor, campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, precursores: { ...prev.ficha.precursores, [precursor]: { ...prev.ficha.precursores[precursor], [campo]: valor } } } })); };
     const atualizarCampoBase = (campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [campo]: valor } })); };
     const atualizarCampoBloco = (bloco, campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [bloco]: { ...prev.ficha[bloco], [campo]: valor } } }));
     const atualizarAtributo = (atributo, campo, valor) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, atributos: { ...prev.ficha.atributos, [atributo]: { ...prev.ficha.atributos[atributo], [campo]: valor } } } }));
@@ -138,18 +196,18 @@ export function FichaProvider({ children }) {
     const atualizarObjetoArray = (nomeArray, index, campo, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = { ...novo[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
     const removerObjetoArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
 
-    // ... (Aqui entrariam as outras funções: atualizarAtributo, etc) ...
-
     // 3. O que a antena vai transmitir? (Tudo que está no 'value')
     return (
         <FichaContext.Provider value={{
             fichaAtual,
+            configSistema,
             modoEdicao,
             setModoEdicao,
             salvarFicha,
             cancelarEdicao,
             atributosFinais,
             resistsEPrecursFinais,
+            periciasFinais,
             atualizarCampoBase,
             atualizarCampoBloco,
             atualizarAtributo,
@@ -160,7 +218,8 @@ export function FichaProvider({ children }) {
             atualizarObjetoArray,
             removerObjetoArray,
             atualizarResistencia,
-            atualizarPrecursor
+            atualizarPrecursor,
+            atualizarPericia
         }}>
             {children}
         </FichaContext.Provider>

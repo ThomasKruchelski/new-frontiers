@@ -11,12 +11,13 @@ import Caracteristicas from '@/components/ficha/Caracteristicas';
 import Inventario from '@/components/ficha/Inventario';
 import BonusEImplantes from '@/components/ficha/BonusEImplantes';
 import ResistenciasEPrecursores from '@/components/ficha/ResistenciasEPrecursores';
+import Pericias from '@/components/ficha/Pericias';
 
 export default function FichaPersonagem() {
 
-  const { fichaAtual, modoEdicao, salvarFicha, setModoEdicao, cancelarEdicao } = useFicha();
+  const { fichaAtual, modoEdicao, salvarFicha, setModoEdicao, cancelarEdicao, configSistema } = useFicha();
 
-  if (!fichaAtual) {
+  if (!fichaAtual && !configSistema) {
     return (
       <div className="flex justify-center items-center h-screen bg-fd-background/80">
         <p className="text-xl text-fd-primary/60 animate-pulse">Carregando ficha...</p>
@@ -24,22 +25,22 @@ export default function FichaPersonagem() {
     );
   }
 
-  const f = fichaAtual.ficha;
-
   return (
     <main className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 text-fd-primary relative">
 
       {/* CABEÇALHO E CONTROLES */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
-        <h1 className="text-3xl font-bold data-[active=true]:text-fd-primary">Ficha de Personagem</h1>
+        <div className='flex gap-2 items-end'>
+          <h1 className="text-3xl font-bold data-[active=true]:text-fd-primary">Ficha de Personagem</h1>
+          <h2 className="text-xl font-semibold text-fd-primary/50">v{configSistema.versao}</h2>
+        </div>
         <div className="flex gap-2">
-          <button 
-            onClick={() => modoEdicao ? cancelarEdicao() : setModoEdicao(true)} 
-            className={`px-4 py-2 font-semibold rounded-md transition-colors duration-200 border ${
-              modoEdicao 
-                ? 'bg-fd-background/80 text-fd-primary border-fd-primary/30 hover:bg-fd-primary/10' 
+          <button
+            onClick={() => modoEdicao ? cancelarEdicao() : setModoEdicao(true)}
+            className={`px-4 py-2 font-semibold rounded-md transition-colors duration-200 border ${modoEdicao
+                ? 'bg-fd-background/80 text-fd-primary border-fd-primary/30 hover:bg-fd-primary/10'
                 : 'bg-blue-600 text-white border-transparent hover:bg-blue-700'
-            }`}
+              }`}
           >
             {modoEdicao ? 'Cancelar Edição' : 'Editar Ficha'}
           </button>
@@ -62,22 +63,24 @@ export default function FichaPersonagem() {
         {/* COLUNA ESQUERDA */}
         <div className="space-y-8">
 
-          <InfoPersonagem/>
-          
-          <Atributos/>
+          <InfoPersonagem />
 
-          <ResistenciasEPrecursores/>
+          <Atributos />
+
+          <ResistenciasEPrecursores />
 
         </div>
 
         {/* COLUNA DIREITA */}
         <div className="space-y-8">
 
-          <Caracteristicas/>
+          <Caracteristicas />
 
-          <BonusEImplantes/>
+          <BonusEImplantes />
 
-          <Inventario/>
+          <Pericias />
+
+          <Inventario />
 
         </div>
       </div>

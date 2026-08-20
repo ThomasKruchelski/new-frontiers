@@ -97,6 +97,30 @@
         },
         "pericias": [
             {
+                "nome": "luta",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "pistola-arremesso",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "armas de fogo",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
                 "nome": "acrobacia",
                 "vantagem": 0,
                 "pontosInt": "",
