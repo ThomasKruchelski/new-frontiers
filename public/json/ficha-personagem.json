@@ -1,21 +1,21 @@
 {
-    "id":"",
-    "tipo":"personagem",
+    "id": "",
+    "tipo": "personagem",
     "ficha": {
-        "nome": "",
-        "especie": "",
-        "vocacao": "",
-        "idade": "",
-        "ancora": "",
-        "experiencia": "",
-        "nivel": "",
-        "jogador": "",
-        "statusAtuais": [],
+        "infoPersonagem": {
+            "nome": "",
+            "especie": "",
+            "vocacao": "",
+            "ancora": "",
+            "experiencia": 0,
+            "nivel": 0,
+            "jogador": ""
+        },
         "caracteristicas": [],
-        "bonus-e-implantes":[
+        "bonusEImplantes": [
             {
-                "nome":"",
-                "descricao":""
+                "nome": "",
+                "descricao": ""
             }
         ],
         "atributos": {
@@ -40,57 +40,62 @@
                 "valorAdicional": ""
             }
         },
-        "vidaTotal": {
-            "valorInicial": "",
-            "valorAdicional": ""
+        "saude": {
+            "vidaTotal": {
+                "valorAdicional": ""
+            },
+            "menteTotal": {
+                "valorAdicional": ""
+            },
+            "dano": {
+                "bruto": "",
+                "termico": "",
+                "toxico": "",
+                "respiratorio": "",
+                "psiquico": ""
+            },
+            "statusAtuais": []
         },
-        "menteTotal": {
-            "valorInicial": "",
-            "valorAdicional": ""
+        "visao": {
+            "distancia": 0,
+            "mutacao": 0,
+            "poder": 0,
+            "mente": 0,
+            "realidade": 0,
+            "evolucao": 0,
+            "habilidades": []
         },
-        "dano": {
-            "bruto": "",
-            "termico": "",
-            "toxico": "",
-            "respiratorio": "",
-            "psiquico": ""
-        },
-        "visao":{
-            "distancia":0,
-            "mutacao":0,
-            "poder":0,
-            "mente":0,
-            "realidade":0,
-            "evolucao":0,
-            "habilidades":[
-                
-            ]
-        },
-        "armasHabilidades": [],
+        "armasEHabilidades": [],
         "resistencias": {
             "vontade": {
+                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "reflexo": {
+                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "fortitude": {
+                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             }
         },
         "precursores": {
             "ideia": {
+                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "saber": {
+                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             },
             "sorte": {
+                "valorInicial": "",
                 "valorAdicional": "",
                 "vantagem": 0
             }
@@ -297,10 +302,10 @@
             "custoDeVida": "",
             "despesas": [],
             "imoveis": [],
-            "veiculos": []
+            "veiculos": [],
+            "linguas": [],
+            "oficios": []
         },
-        "linguas": [],
-        "oficios": [],
         "inventario": [
             {
                 "item": "",
