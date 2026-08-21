@@ -1,183 +1,47 @@
 [
     {
-        "nome": "",
-        "tipo": "",
-        "escola": "",
-        "mana": "",
-        "paradoxo": "",
-        "efeitos": {
-            "alcance": "",
-            "area": [],
-            "duracao": "",
-            "acao": "",
-            "resistencia": "",
-            "descricao": [
-                ""
-            ]
+        "nome":"",
+        "tipo":"",
+        "escola":"",
+        "mana":"",
+        "paradoxo":"",
+        "efeitos":{
+            "alcance":"",
+            "area":"",
+            "duracao":"",
+            "acao":"",
+            "resistencia":"",
+            "descricao":[""]
         }
     },
     {
-        "nome": "Alergia",
-        "tipo": "",
-        "escola": "alteração",
-        "mana": "20",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "25m",
-            "area": ["alvo"],
-            "duracao": "1 dia",
-            "acao": "padrao",
-            "resistencia": "fortitude",
-            "descricao": [
-                "Escolha um objeto, comida ou material. o personagem alvo precisa fazer um teste de fortitude toda vez que entrar em contato com sua alergia, se falhar recebe desvantagem em todos os testes até o final do turno"
-            ]
+        "nome":"Alergia a...",
+        "tipo":"",
+        "escola":"alteracao",
+        "mana":"20",
+        "paradoxo":"0",
+        "efeitos":{
+            "alcance":"25m",
+            "area":"alvo unico",
+            "duracao":"1 dia",
+            "acao":"padrao",
+            "resistencia":"fortitude",
+            "descricao":["Escolha um objeto, comida ou material. o personagem alvo precisa fazer um teste de fortitude toda vez que entrar em contato com sua alergia, se falhar recebe desvantagem em todos os testes até o final do turno"]
         }
     },
     {
-        "nome": "Apetizar",
-        "tipo": "",
-        "escola": "alteração",
-        "mana": "4",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "1.5m",
-            "area": ["alvo especial"],
-            "duracao": "-",
-            "acao": "padrao",
-            "resistencia": "",
-            "descricao": [
-                "O mago muda o gosto da refeição alvo, isso não altera nada fisicamente no alimento apenas no gosto ao ser ingerida",
-                "O mago pode escolher um gosto intragável para a refeição, sendo necessário um teste de fortitude para come-la, caso falhar não é possivel comer a refeição (muito útil para que os não-arcanos não se alimentem do almoço do mago)"
-            ]
+        "nome":"Amendoim",
+        "tipo":"",
+        "escola":"invocação",
+        "mana":"13",
+        "paradoxo":"0",
+        "efeitos":{
+            "alcance":"9m",
+            "area":"alvo unico",
+            "duracao":"-",
+            "acao":"padrao",
+            "resistencia":"-",
+            "descricao":["Você invoca uma pilha de amendoins, são amendoins comuns e podem ser comidos e servem como uma refeição para 1 persoangem, se for invocado no mesmo espaço de um personagem com alergia a amendoim o personagem recebe 6d6 de dano tóxico"]
         }
-    },
-    {
-        "nome": "Pele de Aço",
-        "tipo": "",
-        "escola": "alteração",
-        "mana": "24",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "0m",
-            "area": ["conjurador"],
-            "duracao": "1 min",
-            "acao": "padrao",
-            "resistencia": "",
-            "descricao": [
-                "A pele do conjurador se torna um material metálico similar ao aço",
-                "Jogador recebe redução de dano bruto 4 e imunidade a eletricidade, esse bônus não se acumula com armaduras"
-            ]
-        }
-    },
-    {
-        "nome": "Amendoim",
-        "tipo": "",
-        "escola": "invocação",
-        "mana": "13",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "9m",
-            "area": ["alvo"],
-            "duracao": "-",
-            "acao": "padrao",
-            "resistencia": "-",
-            "descricao": [
-                "Você invoca uma pilha de amendoins, são amendoins comuns e podem ser comidos e servem como uma refeição para 1 persoangem, se for invocado no mesmo espaço de um personagem com alergia a amendoim o personagem recebe 3d6 de dano tóxico"
-            ]
-        }
-    },
-    {
-        "nome": "Armário",
-        "tipo": "",
-        "escola": "invocação",
-        "mana": "24",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "27m",
-            "area": ["alvo","espaço livre"],
-            "duracao": "1 dia",
-            "acao": "padrao",
-            "resistencia": "reflexo anula",
-            "descricao": [
-                "Dispara um raio contra o alvo, se for acertado é invocado um armario trancado ao redor do alvo",
-                "Enquanto estiver no armário o personagem fica sobre o status Preso (igual agarrado), e recebe redução de dano 8 contra danos externos",
-                "é possivel escapar do armário em uma ação padrão fazendo um teste de atletismo normal, crime normal ou causando mais de 10 pontos de dano contra o armário."
-            ]
-        },
-        "evo": [
-            {
-                "nome": "Geladeira",
-                "mana": "44",
-                "efeitos": {
-                    "extra":["O armário se torna uma geladeira."],
-                    "descricao": [
-                        "",
-                        "Enquanto estiver na geladeira o personagem fica sobre o status Preso (igual agarrado), e recebe redução de dano 20 contra danos externos e imunidade contra dano tóxico",
-                        ""
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        "nome": "Invocar Serviçal",
-        "tipo": "Governo dos Magos",
-        "escola": "invocação",
-        "mana": "19",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "3m",
-            "area": ["espaço livre"],
-            "duracao": "1 hora",
-            "acao": "padrao",
-            "resistencia": "-",
-            "descricao": [
-                "Você invoca um funcionário do governo dos magos para te ajudar",
-                "O funcionário é uma pessoa comum com 1 de moral, se ele se machucar ou se sentir ameaçado ele pode encerrar a invocação como uma ação livre."
-            ]
-        },
-        "evo": [{
-            "nome": "Invocar Serviçal Invisivel",
-            "mana": "50",
-            "efeitos": {
-                "extra":["O serviçal é invisivel"]
-            }
-        }]
-    },
-    {
-        "nome": "Invocar Combatente",
-        "tipo": "Governo dos Magos",
-        "escola": "invocação",
-        "mana": "40",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "3m",
-            "area": ["espaço livre"],
-            "duracao": "1 hora",
-            "acao": "padrao",
-            "resistencia": "-",
-            "descricao": [
-                "Você invoca um funcionário do governo dos magos para te proteger em um combate",
-                "**conteúdo sendo balanceado**"
-            ]
-        }
-    },
-    {
-        "nome": "Arkana-47",
-        "tipo": "",
-        "escola": "invocação",
-        "mana": "17",
-        "paradoxo": "0",
-        "efeitos": {
-            "alcance": "6m",
-            "area": ["espaço livre","alvo"],
-            "duracao": "1 hora",
-            "acao": "ação bônus",
-            "resistencia": "-",
-            "descricao": [
-                "Você invoca um Fuzil de Assalto Automático na mão do alvo, a munição do fuzil é ilimitada",
-                "Cancelar a invocação é uma ação livre"
-            ]
-        }
-    },
+    }
 ]

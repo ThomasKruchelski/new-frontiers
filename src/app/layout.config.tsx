@@ -33,8 +33,8 @@ export const baseOptions: BaseLayoutProps = {
       active: "nested-url",
     },
     {
-      text: "Fichas",
-      url: "/fichas",
+      text: "Ficha",
+      url: "/ficha",
       active: "nested-url",
     },
     {
