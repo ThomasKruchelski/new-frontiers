@@ -31,7 +31,7 @@ export default function Saude() {
     const vidaAtual = vidaTotal - danoFisicoTotal;
 
     const limiteMorto = -(vidaTotal * 1.5);
-    const isMorto = vidaAtual <= limiteMorto;
+    const isMorto = vidaAtual <= limiteMorto && vidaTotal != vidaAtual;
     const isVidaVermelha = vidaAtual < 0 && !isMorto;
 
     // --- MATEMÁTICA DA MENTE ---
@@ -43,7 +43,7 @@ export default function Saude() {
     const danoPsiquico = Number(s.dano?.psiquico) || 0;
     const menteAtual = menteTotal - danoPsiquico;
 
-    const limiteColapso = -(menteTotal * 2);
+    const limiteColapso = -(menteTotal);
     const isColapso = menteAtual <= limiteColapso;
 
     // Função para abrir/fechar a sanfona dos status

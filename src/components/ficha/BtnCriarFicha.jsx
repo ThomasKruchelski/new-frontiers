@@ -16,7 +16,7 @@ export default function BtnCriarFicha({ tipo }) {
   };
 
   return (
-    <button onClick={handleCriar}>
+    <button onClick={handleCriar} className='cursor-pointer max-w-[200px] px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors duration-200 shadow-sm border border-transparent'>
       Criar {tipo}
     </button>
   );
