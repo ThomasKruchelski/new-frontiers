@@ -1,6 +1,8 @@
 # deps
 /node_modules
 
+.env.development
+
 # generated content
 .contentlayer
 .content-collections
@@ -23,6 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # others
+.env
 .env*.local
 .env.development
 .vercel

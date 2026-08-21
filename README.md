@@ -1,26 +1,33 @@
-# my-app
+# Desafio Puc
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+[![CI Pipeline](https://github.com/ThomasKruchelski/new-frontiers/actions/workflows/ci.yml/badge.svg)](https://github.com/ThomasKruchelski/new-frontiers/actions/workflows/ci.yml)
 
-Run development server:
+Versão da Documentação dedicada a implementar as funcionalidades solicitadas na disciplina de Desafio na Trilha de Devops e IA.
+
+Link da aplicação em produção: https://new-frontier-git-devops-ia-thomaskruchelskis-projects.vercel.app/ai 
+
+### Tecnologias Utilizadas:
+
+| Funcionalidade | Tecnologia | 
+| -------- | ----- | 
+| Frontend | [React](https://react.dev/), [Fumadocs](https://fumadocs.vercel.app) & [Tailwind](https://tailwindcss.com/) | 
+| Backend  | Routes do [Next.js](https://nextjs.org/) | 
+| Banco de Dados | [Firestore](https://firebase.google.com/docs/firestore?hl=pt-br) |
+| Testes automatizados | [Jest](https://jestjs.io/) |
+| Ia | [Groq](https://groq.com/) modelo [llama-3.3-70b-versatile](https://console.groq.com/docs/rate-limits#rate-limits) |
+| Hospedagem em nuvem | [Vercel](https://vercel.com/home)
+
+
+Run development app:
 
 ```bash
 npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+
+```
+Run development tests:
+
+```bash
+npm run test
 ```
 
 Open http://localhost:3000 with your browser to see the result.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs

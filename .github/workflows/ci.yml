@@ -1,0 +1,35 @@
+name: CI - Testes Automatizados
+
+# GATILHO: Diz ao GitHub para rodar isso todo vez que você fizer um git push ou criar um Pull Request
+on:
+  push:
+    branches: [ "devops-ia" ]
+  pull_request:
+    branches: [ "devops-ia" ]
+
+jobs:
+  test:
+    name: Rodar Testes de Integração
+    runs-on: ubuntu-latest # Uma máquina virtual Linux nova e limpa
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' 
+          cache: 'npm'       
+
+      - name: Instalar dependências
+        run: npm ci
+
+        # Aqui usa uma lib chamada 'start-server-and-test' pra simular o localhost dos testes do jest
+      - name: Rodar Servidor e Testes
+        run: npx start-server-and-test dev http://localhost:3000 test
+        env:
+          GROQCLOUD_API_KEY: ${{ secrets.GROQCLOUD_API_KEY }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
