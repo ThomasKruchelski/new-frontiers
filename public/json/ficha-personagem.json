@@ -12,7 +12,6 @@
             "jogador": ""
         },
         "caracteristicas": [],
-        "statusAtuais": [],
         "bonusEImplantes": [
             {
                 "nome": "",
@@ -43,11 +42,9 @@
         },
         "saude": {
             "vidaTotal": {
-                "valorInicial": "",
                 "valorAdicional": ""
             },
             "menteTotal": {
-                "valorInicial": "",
                 "valorAdicional": ""
             },
             "dano": {
@@ -56,7 +53,8 @@
                 "toxico": "",
                 "respiratorio": "",
                 "psiquico": ""
-            }
+            },
+            "statusAtuais": []
         },
         "visao": {
             "distancia": 0,
@@ -103,6 +101,30 @@
             }
         },
         "pericias": [
+            {
+                "nome": "luta",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "pistola-arremesso",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
+                "nome": "armas de fogo",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
             {
                 "nome": "acrobacia",
                 "vantagem": 0,

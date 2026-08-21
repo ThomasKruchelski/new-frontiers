@@ -118,72 +118,111 @@ export function FichaProvider({ children }) {
     let periciasFinais = [];
 
     if (fichaAtual && atributosFinais && configSistema?.pericias?.length > 0) {
-    // Trocamos o .map() pelo .flatMap()
-    periciasFinais = fichaAtual.ficha.pericias.flatMap((pericia, index) => {
-      
-      const regra = configSistema.pericias.find(b => b.nome.toLowerCase() === pericia.nome.toLowerCase()) || {};
+        // Trocamos o .map() pelo .flatMap()
+        periciasFinais = fichaAtual.ficha.pericias.flatMap((pericia, index) => {
 
-      const int = Number(pericia.pontosInt) || 0;
-      const edu = Number(pericia.pontosEdu) || 0;
-      const exp = Number(pericia.pontosExp) || 0;
-      const custom = Number(pericia.valorCustom) || 0;
-      const pontosInvestidos = int + edu + exp + custom;
+            const regra = configSistema.pericias.find(b => b.nome.toLowerCase() === pericia.nome.toLowerCase()) || {};
 
-      // EXCEÇÃO: Se o atributo for um Array (Ex: ["destreza", "corpo"])
-      if (Array.isArray(regra.atributo)) {
-        return regra.atributo.map(attr => {
-          const valorBase = (atributosFinais[attr] || 0) * (regra.multiplicador || 1);
-          const total = valorBase + pontosInvestidos;
-          
-          return {
-            ...pericia,
-            nomeExibicao: `${pericia.nome} (${attr})`, // Cria o nome "luta (corpo)"
-            chaveUnica: `${pericia.nome}-${attr}`, // Cria uma chave para o React não reclamar
-            originalIndex: index,
-            valorBase,
-            normal: total,
-            dificil: Math.floor(total / 2),
-            extremo: Math.floor(total / 5)
-          };
+            const int = Number(pericia.pontosInt) || 0;
+            const edu = Number(pericia.pontosEdu) || 0;
+            const exp = Number(pericia.pontosExp) || 0;
+            const custom = Number(pericia.valorCustom) || 0;
+            const pontosInvestidos = int + edu + exp + custom;
+
+            // EXCEÇÃO: Se o atributo for um Array (Ex: ["destreza", "corpo"])
+            if (Array.isArray(regra.atributo)) {
+                return regra.atributo.map(attr => {
+                    const valorBase = (atributosFinais[attr] || 0) * (regra.multiplicador || 1);
+                    const total = valorBase + pontosInvestidos;
+
+                    return {
+                        ...pericia,
+                        nomeExibicao: `${pericia.nome} (${attr})`, // Cria o nome "luta (corpo)"
+                        chaveUnica: `${pericia.nome}-${attr}`, // Cria uma chave para o React não reclamar
+                        originalIndex: index,
+                        valorBase,
+                        normal: total,
+                        dificil: Math.floor(total / 2),
+                        extremo: Math.floor(total / 5)
+                    };
+                });
+            }
+            // REGRA PADRÃO: Atributo único ou Valor Fixo
+            else {
+                let valorBase = 0;
+                if (regra.atributo && atributosFinais[regra.atributo]) {
+                    valorBase = atributosFinais[regra.atributo] * (regra.multiplicador || 1);
+                } else if (regra.valorFixo !== undefined) {
+                    valorBase = regra.valorFixo;
+                }
+
+                const total = valorBase + pontosInvestidos;
+
+                return [{
+                    ...pericia,
+                    nomeExibicao: pericia.nome, // Mantém o nome normal
+                    chaveUnica: pericia.nome,
+                    originalIndex: index,
+                    valorBase,
+                    normal: total,
+                    dificil: Math.floor(total / 2),
+                    extremo: Math.floor(total / 5)
+                }];
+            }
         });
-      } 
-      // REGRA PADRÃO: Atributo único ou Valor Fixo
-      else {
-        let valorBase = 0;
-        if (regra.atributo && atributosFinais[regra.atributo]) {
-          valorBase = atributosFinais[regra.atributo] * (regra.multiplicador || 1);
-        } else if (regra.valorFixo !== undefined) {
-          valorBase = regra.valorFixo;
-        }
 
-        const total = valorBase + pontosInvestidos;
-        
-        return [{
-          ...pericia,
-          nomeExibicao: pericia.nome, // Mantém o nome normal
-          chaveUnica: pericia.nome,
-          originalIndex: index,
-          valorBase,
-          normal: total,
-          dificil: Math.floor(total / 2),
-          extremo: Math.floor(total / 5)
-        }];
-      }
-    });
-  }
+    }
 
-  useEffect(()=>{console.log("periciasFinais"),console.log(periciasFinais)},[periciasFinais])
+    // --- NOVAS FUNÇÕES DE ATUALIZAÇÃO ---
+    // --- ATUALIZAÇÃO DE SAÚDE E DANO ---
+    const atualizarDano = (tipoDano, valor) => {
+        setFichaAtual(prev => ({
+            ...prev, ficha: {
+                ...prev.ficha,
+                saude: {
+                    ...prev.ficha.saude,
+                    dano: { ...prev.ficha.saude.dano, [tipoDano]: valor }
+                }
+            }
+        }));
+    };
 
-    // 4. FUNÇÃO PARA ATUALIZAR A PERÍCIA (Use o originalIndex)
-    const atualizarPericia = (index, campo, valor) => {
+    const atualizarTotalSaude = (tipoSaude, valor) => {
+        setFichaAtual(prev => ({
+            ...prev, ficha: {
+                ...prev.ficha,
+                saude: {
+                    ...prev.ficha.saude,
+                    [tipoSaude]: { ...prev.ficha.saude[tipoSaude], valorAdicional: valor }
+                }
+            }
+        }));
+    };
+
+    // Funções para o Array de Status Atuais
+    const adicionarStatus = (objetoPadrao) => {
+        setFichaAtual(prev => ({
+            ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: [...(prev.ficha.saude.statusAtuais || []), objetoPadrao] } }
+        }));
+    };
+
+    const atualizarStatus = (index, campo, valor) => {
         setFichaAtual(prev => {
-            const novoArray = [...prev.ficha.pericias];
+            const novoArray = [...(prev.ficha.saude.statusAtuais || [])];
             novoArray[index] = { ...novoArray[index], [campo]: valor };
-            return { ...prev, ficha: { ...prev.ficha, pericias: novoArray } };
+            return { ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: novoArray } } };
         });
     };
 
-    // --- NOVAS FUNÇÕES DE ATUALIZAÇÃO ---
+    const removerStatus = (index) => {
+        setFichaAtual(prev => {
+            const novoArray = (prev.ficha.saude.statusAtuais || []).filter((_, i) => i !== index);
+            return { ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: novoArray } } };
+        });
+    };
+
+    //FALTA ADICIONAR PERICIA E REMOVER PERICIA
+    const atualizarPericia = (index, campo, valor) => { setFichaAtual(prev => { const novoArray = [...prev.ficha.pericias]; novoArray[index] = { ...novoArray[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, pericias: novoArray } }; }); };
     const atualizarResistencia = (resistencia, campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, resistencias: { ...prev.ficha.resistencias, [resistencia]: { ...prev.ficha.resistencias[resistencia], [campo]: valor } } } })); };
     const atualizarPrecursor = (precursor, campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, precursores: { ...prev.ficha.precursores, [precursor]: { ...prev.ficha.precursores[precursor], [campo]: valor } } } })); };
     const atualizarCampoBase = (campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [campo]: valor } })); };
@@ -219,7 +258,12 @@ export function FichaProvider({ children }) {
             removerObjetoArray,
             atualizarResistencia,
             atualizarPrecursor,
-            atualizarPericia
+            atualizarPericia,
+            atualizarDano,
+            atualizarTotalSaude,
+            adicionarStatus,
+            atualizarStatus,
+            removerStatus
         }}>
             {children}
         </FichaContext.Provider>
