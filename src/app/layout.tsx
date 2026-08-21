@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import Waves from "@/components/Waves";
 import { Analytics } from "@vercel/analytics/next";
+import { AuthProvider } from '@/contexts/AuthContext';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,7 +36,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           />
         </div>
         <div className="w-full h-full z-20">
-          <RootProvider>{children}</RootProvider>
+          <RootProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </RootProvider>
         </div>
       </body>
     </html>
