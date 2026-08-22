@@ -1,5 +1,4 @@
 export function calcularPericiasFinais({ periciasAtuais = [], atributosFinais = {}, basePericias = [] }) {
-  // Se algum dado principal estiver faltando, retorna array vazio
   if (!periciasAtuais.length || !basePericias.length) return [];
 
   return periciasAtuais.flatMap((pericia, index) => {

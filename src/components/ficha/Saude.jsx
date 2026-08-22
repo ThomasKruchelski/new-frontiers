@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useFicha } from '@/contexts/FichaContext';
 
-import { calcularVida } from '@/utils/calculosSaude';
+import { calcularVida, calcularMente } from '@/utils/calculosSaude';
 
 export default function Saude() {
     const {

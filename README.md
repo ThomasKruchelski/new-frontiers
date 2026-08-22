@@ -2,9 +2,9 @@
 
 [![CI Pipeline](https://github.com/ThomasKruchelski/new-frontiers/actions/workflows/ci.yml/badge.svg)](https://github.com/ThomasKruchelski/new-frontiers/actions/workflows/ci.yml)
 
-Versão da Documentação dedicada a implementar as funcionalidades solicitadas na disciplina de Desafio na Trilha de Devops e IA.
+Versão da Documentação dedicada a implementar as funcionalidades solicitadas na disciplina de Qualidade de Produto e Testes Automatizados.
 
-Link da aplicação em produção: https://new-frontier-git-devops-ia-thomaskruchelskis-projects.vercel.app/ai 
+Link da aplicação em produção: https://new-frontier-git-qa-puc-thomaskruchelskis-projects.vercel.app 
 
 ### Tecnologias Utilizadas:
 

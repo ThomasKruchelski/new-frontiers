@@ -41,7 +41,7 @@ describe('Cálculo de Pontos de Vida (HP)', () => {
     const resultado = calcularVida({
       corpo: 10,
       nivel: 1, // Vida total = 20
-      danos: { bruto: 29 } // Vida atual = -5 (Limite de morte é -10)
+      danos: { bruto: 29 } // Vida atual = -9 (Limite de morte é -10)
     });
 
     expect(resultado.vidaAtual).toBe(-9);

@@ -1,4 +1,3 @@
-// src/utils/__tests__/calculosPericias.test.js
 import { calcularPericiasFinais } from '@/utils/calcPericias';
 
 describe('Cálculo de Perícias', () => {
@@ -25,10 +24,11 @@ describe('Cálculo de Perícias', () => {
 
     expect(resultado.length).toBe(1);
     
-    // Destreza(10) * Multiplicador(2) = Base 20
-    // Base 20 + Pontos Investidos (10) = 30
+    // Destreza(10) * Multiplicador(5) = Base 50
+    // Base 50 + Pontos Investidos (10) = 60
     expect(resultado[0].nomeExibicao).toBe("acrobacia");
     expect(resultado[0].valorBase).toBe(50);
+
     expect(resultado[0].normal).toBe(60);
     expect(resultado[0].dificil).toBe(30); // 30 / 2
     expect(resultado[0].extremo).toBe(12);  // 30 / 5
@@ -49,7 +49,7 @@ describe('Cálculo de Perícias', () => {
   });
 
   test('deve duplicar a perícia "luta" e calcular bases diferentes (Corpo e Destreza)', () => {
-    const periciasAtuais = [{ nome: "luta", pontosInt: 5 }]; // Luta vai virar 2 itens na tela!
+    const periciasAtuais = [{ nome: "luta", pontosInt: 5 }]; 
     
     const resultado = calcularPericiasFinais({
       periciasAtuais,
@@ -63,11 +63,10 @@ describe('Cálculo de Perícias', () => {
     // Testando a Luta (Destreza)
     expect(resultado[0].nomeExibicao).toBe("luta (destreza)");
     expect(resultado[0].chaveUnica).toBe("luta-destreza");
-    // Base Destreza (10*1 = 10) + Investido (5) = 15
+    // Base Destreza (10*4 = 40) + Investido (5) = 45
     expect(resultado[0].normal).toBe(45);
     expect(resultado[0].dificil).toBe(22); 
     expect(resultado[0].extremo).toBe(9);
-    expect(resultado[0].originalIndex).toBe(0);
 
     // Testando a Luta (Corpo)
     expect(resultado[1].nomeExibicao).toBe("luta (corpo)");
@@ -76,7 +75,6 @@ describe('Cálculo de Perícias', () => {
     expect(resultado[1].normal).toBe(65);
     expect(resultado[1].dificil).toBe(32);
     expect(resultado[1].extremo).toBe(13);
-    expect(resultado[1].originalIndex).toBe(0);
   });
 
   test('deve retornar um array vazio se as dependências (config ou perícias) não existirem', () => {

@@ -13,7 +13,6 @@ export function calcularVida({ corpo = 0, nivel = 0, vidaAdicional = 0, danos = 
 
   const vidaAtual = vidaTotal - danoFisicoTotal;
 
-  // Regras de estados críticos
   const limiteMorto = -(vidaTotal * 0.5);
   const isMorto = vidaAtual <= limiteMorto;
   const isVidaVermelha = vidaAtual < 0 && !isMorto;
@@ -33,7 +32,6 @@ export function calcularMente({ persona = 0, menteAdicional = 0, danoPsiquico = 
   const numAdicional = Number(menteAdicional) || 0;
   const numDano = Number(danoPsiquico) || 0;
 
-  // Matemática exata que você pediu (com o + 5 fixo)
   const menteTotal = numPersona + numAdicional + 5;
   const menteAtual = menteTotal - numDano;
 
