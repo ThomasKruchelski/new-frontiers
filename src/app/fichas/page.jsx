@@ -1,9 +1,10 @@
 // src/app/fichas/page.js
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from 'react';
 import Link from "next/link";
+import { useState, useEffect } from 'react';
+import { collection, query, where, getDocs, doc, deleteDoc } from 'firebase/firestore'; // <-- Novos imports do Firebase
+import { db } from '@/lib/firebaseClient';
 import BtnCriarFicha from "@/components/ficha/BtnCriarFicha";
 import { useAuth } from '@/contexts/AuthContext';
 import LoginGoogle from '@/components/LoginGoogle';
@@ -14,24 +15,51 @@ export default function Fichas() {
   const { usuarioLogado, fazerLogout } = useAuth();
 
   useEffect(() => {
-    const buscarFichas = () => {
-      const salvas = localStorage.getItem('fichas');
-      if (salvas) {
-        setFichas(JSON.parse(salvas));
+    const buscarFichasNoFirebase = async () => {
+      if (!usuarioLogado) return;
+
+      try {
+        setCarregando(true);
+        // 1. Cria a regra da busca (Filtro pelo UID)
+        const q = query(
+          collection(db, "fichas"),
+          where("userId", "==", usuarioLogado.uid)
+        );
+
+        // 2. Executa a busca
+        const querySnapshot = await getDocs(q);
+
+        // 3. Transforma os dados do Firebase em um Array pro React
+        const listaFichas = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+
+        setFichas(listaFichas);
+      } catch (erro) {
+        console.error("Erro ao buscar fichas:", erro);
+      } finally {
+        setCarregando(false);
       }
-      setCarregando(false);
     };
 
-    buscarFichas();
-  }, []);
+    buscarFichasNoFirebase();
+  }, [usuarioLogado]);
 
-  const excluirFicha = (idParaExcluir, nome) => {
+  const excluirFicha = async (idParaExcluir, nome) => {
     const confirmacao = window.confirm(`Tem certeza que deseja excluir o personagem ${nome || 'Sem Nome'}? Essa ação não pode ser desfeita.`);
 
     if (confirmacao) {
-      const novaLista = fichas.filter(f => f.id !== idParaExcluir);
-      localStorage.setItem('fichas', JSON.stringify(novaLista));
-      setFichas(novaLista);
+      try {
+        // Apaga do banco de dados oficial
+        await deleteDoc(doc(db, "fichas", idParaExcluir));
+
+        // Apaga da tela instantaneamente
+        setFichas(prev => prev.filter(f => f.id !== idParaExcluir));
+      } catch (erro) {
+        console.error("Erro ao excluir ficha:", erro);
+        alert("Erro ao excluir personagem.");
+      }
     }
   };
 
@@ -46,7 +74,7 @@ export default function Fichas() {
             <h1 className="text-2xl font-bold text-fd-primary">Acesse sua Conta</h1>
             <p className="text-fd-primary/60 mt-2">Faça login para criar e gerenciar suas fichas de personagem na nuvem.</p>
           </div>
-          
+
           <LoginGoogle />
         </div>
       </main>
@@ -58,13 +86,13 @@ export default function Fichas() {
   // ==========================================
   return (
     <main className="flex flex-1 flex-col items-center pb-10 w-full px-4">
-      
+
       {/* CABEÇALHO DO USUÁRIO LOGADO */}
       <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-[800px] gap-4 mb-6 mt-4 p-6 lg:rounded-2xl lg:border border-b border-fd-foreground/10 shadow-sm bg-fd-background/80 backdrop-blur-lg">
         <div className="flex items-center gap-4">
-          <img 
-            src={usuarioLogado.photoURL} 
-            alt="Foto de perfil" 
+          <img
+            src={usuarioLogado.photoURL}
+            alt="Foto de perfil"
             className="w-12 h-12 rounded-full border-2 border-fd-primary/20"
           />
           <div>
@@ -72,10 +100,10 @@ export default function Fichas() {
             <p className="text-sm text-fd-primary/60">Olá, {usuarioLogado.displayName}</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-4">
-          <button 
-            onClick={fazerLogout} 
+          <button
+            onClick={fazerLogout}
             className="text-sm font-semibold text-red-500 hover:text-red-600 hover:underline transition-colors"
           >
             Sair
@@ -86,7 +114,7 @@ export default function Fichas() {
 
       {/* ÁREA DA LISTAGEM DE FICHAS */}
       <div className="flex flex-col w-full max-w-[800px] p-6 lg:rounded-2xl lg:border border-b border-fd-foreground/10 shadow-sm bg-fd-background/80 backdrop-blur-lg">
-        
+
         {carregando ? (
           <div className="flex justify-center items-center h-40">
             <p className="text-xl text-fd-primary/60 animate-pulse">Carregando personagens...</p>

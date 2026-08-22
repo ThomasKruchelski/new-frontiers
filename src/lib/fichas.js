@@ -1,4 +1,7 @@
-export async function criarFicha(tipo) {
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebaseClient';
+
+export async function criarFicha(tipo, usuario) {
   try {
 
     let fetchURL = ""
@@ -18,8 +21,16 @@ export async function criarFicha(tipo) {
     const novaFicha = await resposta.json();
 
     // 3. Atribui o ID único na nova ficha
-    novaFicha.id = crypto.randomUUID();
-    novaFicha.tipo = tipo
+    // novaFicha.id = crypto.randomUUID();
+    // novaFicha.tipo = tipo
+
+    const docRef = await addDoc(collection(db, "fichas"), {
+      ficha: novaFicha.ficha,
+      userId: usuario.uid,          // <-- Vincula ao ID do usuário!
+      userEmail: usuario.email,     // <-- Salva o e-mail para referência
+    });
+
+    return { id: docRef.id };
 
     // 4. Recupera as fichas antigas do localStorage
     const fichasSalvas = localStorage.getItem('fichas');

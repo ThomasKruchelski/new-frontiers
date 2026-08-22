@@ -5,6 +5,8 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useTheme } from 'next-themes';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebaseClient';
 
 // 1. Criamos a "frequência"
 const FichaContext = createContext();
@@ -25,40 +27,67 @@ export function FichaProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        const fichasSalvas = localStorage.getItem('fichas');
-        if (fichasSalvas) {
-            const arrayDeFichas = JSON.parse(fichasSalvas);
-            setFichaAtual(arrayDeFichas.find(f => f.id === id) || null);
-        }
+        if (!id) return; // Se não tiver ID na URL, não faz nada
+
+        const buscarFichaNaNuvem = async () => {
+            try {
+                // Aponta direto para o documento com este ID na coleção "fichas"
+                const docRef = doc(db, 'fichas', id);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    // O Firebase separa o ID dos dados, nós juntamos os dois aqui
+                    setFichaAtual({ id: docSnap.id, ...docSnap.data() });
+                } else {
+                    toast.error("Ficha não encontrada!");
+                }
+            } catch (erro) {
+                console.error("Erro ao buscar a ficha:", erro);
+                toast.error("Erro ao conectar com o banco de dados.");
+            }
+        };
+
+        buscarFichaNaNuvem();
     }, [id]);
 
     const { resolvedTheme } = useTheme();
 
-    const salvarFicha = () => {
-        const fichasSalvas = localStorage.getItem('fichas');
-        if (fichasSalvas) {
-            let arrayDeFichas = JSON.parse(fichasSalvas);
-            arrayDeFichas = arrayDeFichas.map(f => f.id === id ? fichaAtual : f);
-            localStorage.setItem('fichas', JSON.stringify(arrayDeFichas));
-            setModoEdicao(false);
+    const salvarFicha = async () => {
+        if (!fichaAtual || !id) return;
 
+        try {
+            const docRef = doc(db, 'fichas', id);
+
+            // O updateDoc atualiza APENAS o campo que enviarmos. 
+            // Assim não corremos o risco de apagar o userId ou o userEmail sem querer!
+            await updateDoc(docRef, {
+                ficha: fichaAtual.ficha
+            });
+
+            setModoEdicao(false);
             toast.success("Ficha salva com sucesso!", {
                 position: "bottom-right",
                 autoClose: 2500,
                 theme: resolvedTheme === 'dark' ? 'dark' : 'light',
             });
+        } catch (erro) {
+            console.error("Erro ao salvar:", erro);
+            toast.error("Erro ao salvar as alterações.");
         }
     };
 
-    const cancelarEdicao = () => {
-        setModoEdicao(false); // Sai do modo de edição
+    const cancelarEdicao = async () => {
+        setModoEdicao(false);
 
-        // 2. Busca os dados originais no localStorage para descartar as alterações
-        const fichasSalvas = localStorage.getItem('fichas');
-        if (fichasSalvas) {
-            const arrayDeFichas = JSON.parse(fichasSalvas);
-            const fichaOriginal = arrayDeFichas.find(f => f.id === id);
-            setFichaAtual(fichaOriginal || null);
+        // Busca a ficha oficial do banco de dados novamente para sobrescrever as edições não salvas
+        try {
+            const docRef = doc(db, 'fichas', id);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                setFichaAtual({ id: docSnap.id, ...docSnap.data() });
+            }
+        } catch (erro) {
+            console.error("Erro ao reverter ficha:", erro);
         }
     };
 
