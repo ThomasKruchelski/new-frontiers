@@ -8,17 +8,14 @@ import { useTheme } from 'next-themes';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebaseClient';
 
-// 1. Criamos a "frequência"
 const FichaContext = createContext();
 
-// 2. Criamos o Provider
 export function FichaProvider({ children }) {
     const { id } = useParams(); // Pega o ID da URL automaticamente
     const [fichaAtual, setFichaAtual] = useState(null);
     const [modoEdicao, setModoEdicao] = useState(false);
     const [configSistema, setConfigSistema] = useState({});
 
-    // 2. Buscar o JSON ao carregar a página (coloque junto ou logo abaixo do outro useEffect)
     useEffect(() => {
         fetch('/json/v0-9/config-sistema.json')
             .then(res => res.json())
@@ -26,28 +23,27 @@ export function FichaProvider({ children }) {
             .catch(err => console.error("Erro ao carregar configSistema:", err));
     }, []);
 
+    // 1. BUSCAR A FICHA VIA API
     useEffect(() => {
-        if (!id) return; // Se não tiver ID na URL, não faz nada
+        if (!id) return;
 
-        const buscarFichaNaNuvem = async () => {
+        const buscarFichaNaApi = async () => {
             try {
-                // Aponta direto para o documento com este ID na coleção "fichas"
-                const docRef = doc(db, 'fichas', id);
-                const docSnap = await getDoc(docRef);
+                const resposta = await fetch(`/api/fichas/${id}`);
 
-                if (docSnap.exists()) {
-                    // O Firebase separa o ID dos dados, nós juntamos os dois aqui
-                    setFichaAtual({ id: docSnap.id, ...docSnap.data() });
+                if (resposta.ok) {
+                    const dados = await resposta.json();
+                    setFichaAtual(dados);
                 } else {
                     toast.error("Ficha não encontrada!");
                 }
             } catch (erro) {
-                console.error("Erro ao buscar a ficha:", erro);
-                toast.error("Erro ao conectar com o banco de dados.");
+                console.error("Erro ao buscar a ficha na API:", erro);
+                toast.error("Erro ao conectar com o servidor.");
             }
         };
 
-        buscarFichaNaNuvem();
+        buscarFichaNaApi();
     }, [id]);
 
     const { resolvedTheme } = useTheme();
@@ -56,20 +52,22 @@ export function FichaProvider({ children }) {
         if (!fichaAtual || !id) return;
 
         try {
-            const docRef = doc(db, 'fichas', id);
-
-            // O updateDoc atualiza APENAS o campo que enviarmos. 
-            // Assim não corremos o risco de apagar o userId ou o userEmail sem querer!
-            await updateDoc(docRef, {
-                ficha: fichaAtual.ficha
+            const resposta = await fetch(`/api/fichas/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ficha: fichaAtual.ficha }) // Envia só a parte editável
             });
 
-            setModoEdicao(false);
-            toast.success("Ficha salva com sucesso!", {
-                position: "bottom-right",
-                autoClose: 2500,
-                theme: resolvedTheme === 'dark' ? 'dark' : 'light',
-            });
+            if (resposta.ok) {
+                setModoEdicao(false);
+                toast.success("Ficha salva com sucesso!", {
+                    position: "bottom-right",
+                    autoClose: 2500,
+                    theme: resolvedTheme === 'dark' ? 'dark' : 'light',
+                });
+            } else {
+                throw new Error("Falha na API");
+            }
         } catch (erro) {
             console.error("Erro ao salvar:", erro);
             toast.error("Erro ao salvar as alterações.");
@@ -79,19 +77,18 @@ export function FichaProvider({ children }) {
     const cancelarEdicao = async () => {
         setModoEdicao(false);
 
-        // Busca a ficha oficial do banco de dados novamente para sobrescrever as edições não salvas
+        // Refaz o fetch para pegar o dado original do banco novamente
         try {
-            const docRef = doc(db, 'fichas', id);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                setFichaAtual({ id: docSnap.id, ...docSnap.data() });
+            const resposta = await fetch(`/api/fichas/${id}`);
+            if (resposta.ok) {
+                const dados = await resposta.json();
+                setFichaAtual(dados);
             }
         } catch (erro) {
             console.error("Erro ao reverter ficha:", erro);
         }
     };
 
-    //calcula Atributos
     let atributosFinais = null;
 
     if (fichaAtual && fichaAtual.ficha.atributos) {
@@ -106,8 +103,6 @@ export function FichaProvider({ children }) {
         }, {});
     }
 
-    //Calcula Resistência & Precursores
-
     let resistsEPrecursFinais = null;
     let sorteBase = 15
     let multiplicadorResitencia = 4
@@ -117,7 +112,6 @@ export function FichaProvider({ children }) {
         const r = fichaAtual.ficha.resistencias;
         const p = fichaAtual.ficha.precursores;
 
-        // Função interna para automatizar a matemática do Normal, Difícil e Extremo
         const calcularResistEPrecur = (valorAtributo, multiplicador, objOrigem) => {
             const adicional = Number(objOrigem.valorAdicional) || 0;
             const base = (valorAtributo * multiplicador) + adicional;
@@ -147,7 +141,6 @@ export function FichaProvider({ children }) {
     let periciasFinais = [];
 
     if (fichaAtual && atributosFinais && configSistema?.pericias?.length > 0) {
-        // Trocamos o .map() pelo .flatMap()
         periciasFinais = fichaAtual.ficha.pericias.flatMap((pericia, index) => {
 
             const regra = configSistema.pericias.find(b => b.nome.toLowerCase() === pericia.nome.toLowerCase()) || {};
@@ -166,8 +159,8 @@ export function FichaProvider({ children }) {
 
                     return {
                         ...pericia,
-                        nomeExibicao: `${pericia.nome} (${attr})`, // Cria o nome "luta (corpo)"
-                        chaveUnica: `${pericia.nome}-${attr}`, // Cria uma chave para o React não reclamar
+                        nomeExibicao: `${pericia.nome} (${attr})`,
+                        chaveUnica: `${pericia.nome}-${attr}`,
                         originalIndex: index,
                         valorBase,
                         normal: total,
@@ -189,7 +182,7 @@ export function FichaProvider({ children }) {
 
                 return [{
                     ...pericia,
-                    nomeExibicao: pericia.nome, // Mantém o nome normal
+                    nomeExibicao: pericia.nome,
                     chaveUnica: pericia.nome,
                     originalIndex: index,
                     valorBase,
@@ -202,54 +195,11 @@ export function FichaProvider({ children }) {
 
     }
 
-    // --- NOVAS FUNÇÕES DE ATUALIZAÇÃO ---
-    // --- ATUALIZAÇÃO DE SAÚDE E DANO ---
-    const atualizarDano = (tipoDano, valor) => {
-        setFichaAtual(prev => ({
-            ...prev, ficha: {
-                ...prev.ficha,
-                saude: {
-                    ...prev.ficha.saude,
-                    dano: { ...prev.ficha.saude.dano, [tipoDano]: valor }
-                }
-            }
-        }));
-    };
-
-    const atualizarTotalSaude = (tipoSaude, valor) => {
-        setFichaAtual(prev => ({
-            ...prev, ficha: {
-                ...prev.ficha,
-                saude: {
-                    ...prev.ficha.saude,
-                    [tipoSaude]: { ...prev.ficha.saude[tipoSaude], valorAdicional: valor }
-                }
-            }
-        }));
-    };
-
-    // Funções para o Array de Status Atuais
-    const adicionarStatus = (objetoPadrao) => {
-        setFichaAtual(prev => ({
-            ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: [...(prev.ficha.saude.statusAtuais || []), objetoPadrao] } }
-        }));
-    };
-
-    const atualizarStatus = (index, campo, valor) => {
-        setFichaAtual(prev => {
-            const novoArray = [...(prev.ficha.saude.statusAtuais || [])];
-            novoArray[index] = { ...novoArray[index], [campo]: valor };
-            return { ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: novoArray } } };
-        });
-    };
-
-    const removerStatus = (index) => {
-        setFichaAtual(prev => {
-            const novoArray = (prev.ficha.saude.statusAtuais || []).filter((_, i) => i !== index);
-            return { ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: novoArray } } };
-        });
-    };
-
+    const atualizarDano = (tipoDano, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, dano: { ...prev.ficha.saude.dano, [tipoDano]: valor } } } })); };
+    const atualizarTotalSaude = (tipoSaude, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, [tipoSaude]: { ...prev.ficha.saude[tipoSaude], valorAdicional: valor } } } })); };
+    const adicionarStatus = (objetoPadrao) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: [...(prev.ficha.saude.statusAtuais || []), objetoPadrao] } } })); };
+    const atualizarStatus = (index, campo, valor) => { setFichaAtual(prev => { const novoArray = [...(prev.ficha.saude.statusAtuais || [])]; novoArray[index] = { ...novoArray[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: novoArray } } }; }); };
+    const removerStatus = (index) => { setFichaAtual(prev => { const novoArray = (prev.ficha.saude.statusAtuais || []).filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, statusAtuais: novoArray } } }; }); };
     //FALTA ADICIONAR PERICIA E REMOVER PERICIA
     const atualizarPericia = (index, campo, valor) => { setFichaAtual(prev => { const novoArray = [...prev.ficha.pericias]; novoArray[index] = { ...novoArray[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, pericias: novoArray } }; }); };
     const atualizarResistencia = (resistencia, campo, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, resistencias: { ...prev.ficha.resistencias, [resistencia]: { ...prev.ficha.resistencias[resistencia], [campo]: valor } } } })); };
