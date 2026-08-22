@@ -15,35 +15,28 @@ export default function Fichas() {
   const { usuarioLogado, fazerLogout } = useAuth();
 
   useEffect(() => {
-    const buscarFichasNoFirebase = async () => {
+    const buscarFichasNaApi = async () => {
       if (!usuarioLogado) return;
-
+      
       try {
         setCarregando(true);
-        // 1. Cria a regra da busca (Filtro pelo UID)
-        const q = query(
-          collection(db, "fichas"),
-          where("userId", "==", usuarioLogado.uid)
-        );
-
-        // 2. Executa a busca
-        const querySnapshot = await getDocs(q);
-
-        // 3. Transforma os dados do Firebase em um Array pro React
-        const listaFichas = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-
-        setFichas(listaFichas);
+        // Chama nossa rota passando o ID do usuário como parâmetro na URL
+        const resposta = await fetch(`/api/fichas?userId=${usuarioLogado.uid}`);
+        
+        if (resposta.ok) {
+          const dados = await resposta.json();
+          setFichas(dados);
+        } else {
+          console.error("Falha ao buscar fichas");
+        }
       } catch (erro) {
-        console.error("Erro ao buscar fichas:", erro);
+        console.error("Erro na requisição:", erro);
       } finally {
         setCarregando(false);
       }
     };
 
-    buscarFichasNoFirebase();
+    buscarFichasNaApi();
   }, [usuarioLogado]);
 
   const excluirFicha = async (idParaExcluir, nome) => {
@@ -63,9 +56,6 @@ export default function Fichas() {
     }
   };
 
-  // ==========================================
-  // ESTADO 1: USUÁRIO NÃO LOGADO
-  // ==========================================
   if (!usuarioLogado) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center pb-10 w-full min-h-[60vh]">
@@ -81,9 +71,6 @@ export default function Fichas() {
     );
   }
 
-  // ==========================================
-  // ESTADO 2: USUÁRIO LOGADO
-  // ==========================================
   return (
     <main className="flex flex-1 flex-col items-center pb-10 w-full px-4">
 
@@ -112,7 +99,6 @@ export default function Fichas() {
         </div>
       </div>
 
-      {/* ÁREA DA LISTAGEM DE FICHAS */}
       <div className="flex flex-col w-full max-w-[800px] p-6 lg:rounded-2xl lg:border border-b border-fd-foreground/10 shadow-sm bg-fd-background/80 backdrop-blur-lg">
 
         {carregando ? (
@@ -129,12 +115,10 @@ export default function Fichas() {
               <p className="text-sm text-fd-primary/40 mt-1 text-center">Clique no botão acima para criar o seu primeiro!</p>
             </div>
           ) : (
-            /* GRID DE CARTÕES */
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {fichas.map((f) => (
                 <div key={f.id} className="group flex flex-col bg-fd-background/80 rounded-xl border border-fd-primary/20 shadow-sm hover:shadow-md hover:border-fd-primary/40 transition-all overflow-hidden relative">
 
-                  {/* Parte clicável que leva para a ficha */}
                   <Link href={`/fichas/${f.id}`} className="p-6 flex-1 cursor-pointer">
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="text-xl font-bold text-fd-primary group-hover:text-blue-500 transition-colors truncate pr-2">
@@ -158,7 +142,6 @@ export default function Fichas() {
                     </div>
                   </Link>
 
-                  {/* Botão de Excluir fixo no rodapé do card */}
                   <div className="bg-fd-background/50 border-t border-fd-primary/10 p-3 flex justify-end">
                     <button
                       onClick={() => excluirFicha(f.id, f.ficha.infoPersonagem?.nome)}
