@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useFicha } from '@/contexts/FichaContext';
 
+import { calcularVida } from '@/utils/calculosSaude';
+
 export default function Saude() {
     const {
         fichaAtual, modoEdicao, atributosFinais,
@@ -17,22 +19,17 @@ export default function Saude() {
     const s = fichaAtual.ficha.saude; // Atalho direto para o objeto saude!
 
     // --- MATEMÁTICA DA VIDA ---
-    const corpo = atributosFinais.corpo || 0;
-    const nivel = Number(fichaAtual.ficha.infoPersonagem.nivel) || 0;
-    const vidaAdicional = Number(s.vidaTotal?.valorAdicional) || 0;
-
-    const vidaTotal = corpo + (nivel * 10) + vidaAdicional;
+    const { vidaTotal, vidaAtual, isMorto, isVidaVermelha } = calcularVida({
+        corpo: atributosFinais.corpo || 0,
+        nivel: Number(fichaAtual.ficha.infoPersonagem.nivel) || 0,
+        vidaAdicional: Number(s.vidaTotal?.valorAdicional) || 0,
+        danos: s.dano
+    });
 
     const danoFisicoTotal = (Number(s.dano?.bruto) || 0) +
         (Number(s.dano?.termico) || 0) +
         (Number(s.dano?.toxico) || 0) +
         (Number(s.dano?.respiratorio) || 0);
-
-    const vidaAtual = vidaTotal - danoFisicoTotal;
-
-    const limiteMorto = -(vidaTotal * 1.5);
-    const isMorto = vidaAtual <= limiteMorto && vidaTotal != vidaAtual;
-    const isVidaVermelha = vidaAtual < 0 && !isMorto;
 
     // --- MATEMÁTICA DA MENTE ---
     const persona = atributosFinais.persona || 0;

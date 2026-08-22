@@ -3,9 +3,9 @@ name: CI - Testes Automatizados
 # GATILHO: Diz ao GitHub para rodar isso todo vez que você fizer um git push ou criar um Pull Request
 on:
   push:
-    branches: [ "devops-ia" ]
+    branches: [ "devops-ia","qa-puc" ]
   pull_request:
-    branches: [ "devops-ia" ]
+    branches: [ "devops-ia","qa-puc" ]
 
 jobs:
   test:
