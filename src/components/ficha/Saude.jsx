@@ -26,22 +26,12 @@ export default function Saude() {
         danos: s.dano
     });
 
-    const danoFisicoTotal = (Number(s.dano?.bruto) || 0) +
-        (Number(s.dano?.termico) || 0) +
-        (Number(s.dano?.toxico) || 0) +
-        (Number(s.dano?.respiratorio) || 0);
-
     // --- MATEMÁTICA DA MENTE ---
-    const persona = atributosFinais.persona || 0;
-    const menteAdicional = Number(s.menteTotal?.valorAdicional) || 0;
-
-    const menteTotal = persona + menteAdicional + 5;
-
-    const danoPsiquico = Number(s.dano?.psiquico) || 0;
-    const menteAtual = menteTotal - danoPsiquico;
-
-    const limiteColapso = -(menteTotal);
-    const isColapso = menteAtual <= limiteColapso;
+    const { menteTotal, menteAtual, isColapso } = calcularMente({
+        persona: atributosFinais.persona,
+        menteAdicional: s.menteTotal?.valorAdicional,
+        danoPsiquico: s.dano?.psiquico
+    });
 
     // Função para abrir/fechar a sanfona dos status
     const toggleSanfona = (index) => {

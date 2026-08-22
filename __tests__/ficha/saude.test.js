@@ -1,7 +1,7 @@
-import { calcularVida } from '@/utils/calculosSaude';
+import { calcularVida, calcularMente } from '@/utils/calculosSaude';
 
 describe('Cálculo de Pontos de Vida (HP)', () => {
-  
+
   test('deve calcular a vida total corretamente com base no corpo, nível e bônus adicional', () => {
     const resultado = calcularVida({
       corpo: 15,
@@ -72,6 +72,51 @@ describe('Cálculo de Pontos de Vida (HP)', () => {
     // 12 + 10 + 7 = 22; Dano = 5; Atual = 24
     expect(resultado.vidaTotal).toBe(29);
     expect(resultado.vidaAtual).toBe(24);
+  });
+
+});
+
+describe('Cálculo de Pontos de Mente (SAN)', () => {
+
+  test('deve calcular a mente total e atual corretamente com a regra do + 5', () => {
+    const resultado = calcularMente({
+      persona: 10,
+      menteAdicional: 2,
+      danoPsiquico: 4
+    });
+
+    // Mente Total: 10 (persona) + 2 (adicional) + 5 (bônus fixo) = 17
+    expect(resultado.menteTotal).toBe(17);
+    // Mente Atual: 17 - 4 (dano psíquico) = 13
+    expect(resultado.menteAtual).toBe(13);
+    expect(resultado.isColapso).toBe(false);
+  });
+
+  test('deve ativar isColapso quando a mente atingir o limite exato negativo (-menteTotal)', () => {
+    const resultado = calcularMente({
+      persona: 10,
+      menteAdicional: 0,
+      danoPsiquico: 30
+      // Total: 10 + 5 = 15. Limite de Colapso = -15
+      // Atual: 15 - 30 = -15
+    });
+
+    expect(resultado.menteAtual).toBe(-15);
+    expect(resultado.limiteColapso).toBe(-15);
+    expect(resultado.isColapso).toBe(true);
+  });
+
+  test('deve tratar entradas em formato de string ou ausentes sem quebrar', () => {
+    const resultado = calcularMente({
+      persona: "8",
+      menteAdicional: "",
+      danoPsiquico: "3"
+    });
+
+    // Total: 8 + 0 + 5 = 13
+    // Atual: 13 - 3 = 10
+    expect(resultado.menteTotal).toBe(13);
+    expect(resultado.menteAtual).toBe(10);
   });
 
 });

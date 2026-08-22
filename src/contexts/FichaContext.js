@@ -5,8 +5,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useTheme } from 'next-themes';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { db } from '@/lib/firebaseClient';
+import { calcularPericiasFinais } from '@/utils/calcPericias';
 
 const FichaContext = createContext();
 
@@ -141,58 +140,12 @@ export function FichaProvider({ children }) {
     let periciasFinais = [];
 
     if (fichaAtual && atributosFinais && configSistema?.pericias?.length > 0) {
-        periciasFinais = fichaAtual.ficha.pericias.flatMap((pericia, index) => {
-
-            const regra = configSistema.pericias.find(b => b.nome.toLowerCase() === pericia.nome.toLowerCase()) || {};
-
-            const int = Number(pericia.pontosInt) || 0;
-            const edu = Number(pericia.pontosEdu) || 0;
-            const exp = Number(pericia.pontosExp) || 0;
-            const custom = Number(pericia.valorCustom) || 0;
-            const pontosInvestidos = int + edu + exp + custom;
-
-            // EXCEÇÃO: Se o atributo for um Array (Ex: ["destreza", "corpo"])
-            if (Array.isArray(regra.atributo)) {
-                return regra.atributo.map(attr => {
-                    const valorBase = (atributosFinais[attr] || 0) * (regra.multiplicador || 1);
-                    const total = valorBase + pontosInvestidos;
-
-                    return {
-                        ...pericia,
-                        nomeExibicao: `${pericia.nome} (${attr})`,
-                        chaveUnica: `${pericia.nome}-${attr}`,
-                        originalIndex: index,
-                        valorBase,
-                        normal: total,
-                        dificil: Math.floor(total / 2),
-                        extremo: Math.floor(total / 5)
-                    };
-                });
-            }
-            // REGRA PADRÃO: Atributo único ou Valor Fixo
-            else {
-                let valorBase = 0;
-                if (regra.atributo && atributosFinais[regra.atributo]) {
-                    valorBase = atributosFinais[regra.atributo] * (regra.multiplicador || 1);
-                } else if (regra.valorFixo !== undefined) {
-                    valorBase = regra.valorFixo;
-                }
-
-                const total = valorBase + pontosInvestidos;
-
-                return [{
-                    ...pericia,
-                    nomeExibicao: pericia.nome,
-                    chaveUnica: pericia.nome,
-                    originalIndex: index,
-                    valorBase,
-                    normal: total,
-                    dificil: Math.floor(total / 2),
-                    extremo: Math.floor(total / 5)
-                }];
-            }
+        // Chamamos a função pura enviando as entradas necessárias
+        periciasFinais = calcularPericiasFinais({
+            periciasAtuais: fichaAtual.ficha.pericias || [],
+            atributosFinais: atributosFinais,
+            basePericias: configSistema.pericias
         });
-
     }
 
     const atualizarDano = (tipoDano, valor) => { setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, saude: { ...prev.ficha.saude, dano: { ...prev.ficha.saude.dano, [tipoDano]: valor } } } })); };

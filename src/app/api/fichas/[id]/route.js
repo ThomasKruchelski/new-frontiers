@@ -4,7 +4,7 @@ import { dbAdmin } from "@/lib/firebaseAdmin";
 
 export async function GET(request, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
     
     const docRef = dbAdmin.collection("fichas").doc(id);
     const docSnap = await docRef.get();
@@ -24,7 +24,7 @@ export async function GET(request, { params }) {
 
 export async function PATCH(request, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
     
     const body = await request.json(); 
 
