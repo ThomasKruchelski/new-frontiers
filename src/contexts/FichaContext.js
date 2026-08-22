@@ -10,7 +10,7 @@ import { calcularPericiasFinais } from '@/utils/calcPericias';
 const FichaContext = createContext();
 
 export function FichaProvider({ children }) {
-    const { id } = useParams(); // Pega o ID da URL automaticamente
+    const { id } = useParams(); 
     const [fichaAtual, setFichaAtual] = useState(null);
     const [modoEdicao, setModoEdicao] = useState(false);
     const [configSistema, setConfigSistema] = useState({});
@@ -22,7 +22,7 @@ export function FichaProvider({ children }) {
             .catch(err => console.error("Erro ao carregar configSistema:", err));
     }, []);
 
-    // 1. BUSCAR A FICHA VIA API
+    // Busca a ficha no iniciar da pagina
     useEffect(() => {
         if (!id) return;
 
@@ -54,7 +54,7 @@ export function FichaProvider({ children }) {
             const resposta = await fetch(`/api/fichas/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ficha: fichaAtual.ficha }) // Envia só a parte editável
+                body: JSON.stringify({ ficha: fichaAtual.ficha }) 
             });
 
             if (resposta.ok) {
@@ -76,7 +76,6 @@ export function FichaProvider({ children }) {
     const cancelarEdicao = async () => {
         setModoEdicao(false);
 
-        // Refaz o fetch para pegar o dado original do banco novamente
         try {
             const resposta = await fetch(`/api/fichas/${id}`);
             if (resposta.ok) {
