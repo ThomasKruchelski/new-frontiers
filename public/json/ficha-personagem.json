@@ -231,6 +231,14 @@
                 "valorCustom": ""
             },
             {
+                "nome": "percepção",
+                "vantagem": 0,
+                "pontosInt": "",
+                "pontosEdu": "",
+                "pontosExp": "",
+                "valorCustom": ""
+            },
+            {
                 "nome": "pesquisa",
                 "tipo": "quimica",
                 "vantagem": 0,

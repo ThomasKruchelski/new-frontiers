@@ -76,6 +76,11 @@
             "multiplicador": 4
         },
         {
+            "nome": "percepção",
+            "atributo": "persona", 
+            "multiplicador": 5
+        },
+        {
             "nome": "pesquisa",
             "valorFixo": 5
         },
