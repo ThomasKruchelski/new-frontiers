@@ -1,5 +1,6 @@
 import React from 'react';
 import KeywordEffectbox from '@/components/KeywordEffectbox'
+import MarkdownContent from '@/components/MarkdownContent';
 
 const HandleWeaponsLayout = ({ item }) => {
 
@@ -140,9 +141,12 @@ const HandleWeaponsLayout = ({ item }) => {
                             <KeywordEffectbox keyword={keyword} />
                         ))}
                         {item.item.especial.map((efeito) => (
-                            <div className='efeito-box prose dark:prose-invert'>
-                                {efeito}
-                            </div>
+                            
+                                <div className='efeito-box prose dark:prose-invert'>
+                                    <MarkdownContent>
+                                        {efeito}
+                                    </MarkdownContent>
+                                </div>
                         ))}
                     </div>
                 </details>

@@ -692,14 +692,14 @@
             "tipoDano":"Bruto",
             "maos": "2",
             "area": "",
-            "dadoDano": "3d8",
+            "dadoDano": "3d6",
             "bonusDano":[""],
             "distancia":"40",
             "carga":"6 Rajadas",
             "municao":"balas de Mercurio",
             "pericia":"-",
             "keywords":[],
-            "especial":["Chat mate todos pra mim: Essa arma pode receber a modificação [Piloto Automático](/docs/livro-base/equipamentos/veiculos#piloto-automático) ao invés de usar o seu teste de perícia você pode usar o teste de perícia da IA."]
+            "especial":["**Chat mate todos pra mim**: Essa arma pode receber a modificação [Piloto Automático](/docs/livro-base/equipamentos/veiculos#piloto-automático). Ao invés de usar o seu teste de perícia para vozer um disparo você pode usar o teste de perícia da IA."]
         }
     }
 ]
