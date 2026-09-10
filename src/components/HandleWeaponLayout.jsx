@@ -3,9 +3,11 @@ import KeywordEffectbox from '@/components/KeywordEffectbox'
 
 const HandleWeaponsLayout = ({ item }) => {
 
+    const corBordas = item.corBordas? item.corBordas : '#ffffff'
+
     return (
         <div className='item-arma flex-col' id={item.nome}>
-            <div className='flex-col md:flex-row w-full flex border border-white'>
+            <div className={'flex-col md:flex-row w-full flex border '} style={corBordas ? { borderColor: corBordas } : undefined}>
                 <div className='flex flex-col flex-1 border-r '>
                     <div className='flex p-2 border-b md:flex-row flex-col'>
                         <div className='text-2xl'>
@@ -121,8 +123,10 @@ const HandleWeaponsLayout = ({ item }) => {
                         </div>
                     </div>
                 </div>
-                <div className='relative'>
-                    <img className='w-full ' src='https://placehold.co/300x160/080808/31343C'></img>
+                <div className='relative flex'>
+                    <div className='flex items-center flex-1 min-w-[300px] bg-[#080808]'>
+                        <img className='w-full' src={!item.imagem? 'https://placehold.co/300x160/080808/31343C': item.imagem }></img>
+                    </div>
                     <div className='img-desc-hover'>
                         {item.descricao}
                     </div>

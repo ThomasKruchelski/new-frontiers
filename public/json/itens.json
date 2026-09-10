@@ -613,5 +613,49 @@
             "keywords":["Agil"],
             "especial":["Técnica Dejai: Você pode realizar a ação de aparar em disparos realizados contra você, faça um teste de oposição ao disparo usando acrobacia, se for bem sucedido você evita o ataque e não recebe dano."]
         }
+    },
+    {
+        "nome": "Minigun",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Metralhadora","arma de fogo","DRG","Especial"],
+        "corBordas":"#ff9a1f",
+        "descricao":"Mini 🤏",
+        "valor":"",
+        "imagem":"https://deeprockgalactic.wiki.gg/images/thumb/Gatling-gun.png/200px-Gatling-gun.png?9ab3d9",
+        "item": {
+            "tipoDano":"bruto",
+            "maos": "2",
+            "area": "",
+            "dadoDano": "5d6",
+            "bonusDano":[""],
+            "distancia":"40",
+            "carga":"10 rajadas",
+            "municao":"militar",
+            "pericia":"armas",
+            "keywords":["Spray","Recarga lenta I"],
+            "especial":["Giro da Minigun: Antes de começar a disparar com a minigun, você deve gastar uma ação padrão para iniciar o giro da arma, enquanto a minigun estiver girando você possuí metade do deslocamento, se no final do turno você não disparar com a arma encerre o estado de giro"]
+        }
+    },
+    {
+        "nome": "Huricane",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Explosivo","arma de fogo","DRG"],
+        "corBordas":"#ff9a1f",
+        "descricao":"",
+        "valor":"",
+        "imagem":"https://deeprockgalactic.wiki.gg/images/thumb/Hurricane.png/200px-Hurricane.png?5c0371",
+        "item": {
+            "tipoDano":"bruto e termico",
+            "maos": "2",
+            "area": "quadrado 1,5m",
+            "dadoDano": "4d6",
+            "bonusDano":[""],
+            "distancia":"40",
+            "carga":"4 disparos",
+            "municao":"Misseis",
+            "pericia":"armas",
+            "keywords":["Recarga lenta II"],
+            "especial":[]
+        }
     }
 ]

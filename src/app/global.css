@@ -384,9 +384,9 @@ p {
   }
 }
 
-.item-arma * {
+/* .item-arma * {
   border-color: white;
-}
+} */
 
 .item-arma img {
   margin: 0;
