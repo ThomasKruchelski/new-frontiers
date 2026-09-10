@@ -33,8 +33,13 @@ const HandleWeaponsLayout = ({ item }) => {
                                 <div className='font-light text-center'>
                                     Dado de Dano
                                 </div>
-                                <div className='flex font-medium text-2xl justify-center items-center flex-1 text-wrap text-center'>
-                                    {item.item.dadoDano === "" ? '-' : item.item.dadoDano}
+                                <div className='flex font-medium text-2xl justify-center items-center flex-1 text-wrap text-center gap-1'>
+                                    {item.item.dadoDano[0] !== "" && <div className='text-red-300'>{item.item.dadoDano[0]}</div>}
+                                    {item.item.dadoDano[1] !== "" && <div className='text-orange-400'>{item.item.dadoDano[1]}</div>}
+                                    {item.item.dadoDano[2] !== "" && <div className='text-lime-300'>{item.item.dadoDano[2]}</div>}
+                                    {item.item.dadoDano[3] !== "" && <div className='text-teal-200'>{item.item.dadoDano[3]}</div>}
+                                    {item.item.dadoDano[4] !== "" && <div className='text-purple-500'>{item.item.dadoDano[4]}</div>}
+                                    {item.item.dadoDano.every(item => item.trim() === "") && "-"}
                                 </div>
                             </div>
                             <div className='flex flex-col p-1 border-r md:w-auto w-1/3'>
