@@ -140,7 +140,7 @@ const HandleWeaponsLayout = ({ item }) => {
                             <KeywordEffectbox keyword={keyword} />
                         ))}
                         {item.item.especial.map((efeito) => (
-                            <div className='efeito-box'>
+                            <div className='efeito-box prose dark:prose-invert'>
                                 {efeito}
                             </div>
                         ))}

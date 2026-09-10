@@ -639,7 +639,7 @@
     {
         "nome": "Huricane",
         "tipoPrincipal": "arma",
-        "tipoSecundario": ["Explosivo","arma de fogo","DRG"],
+        "tipoSecundario": ["Explosivo","dano igneo","arma de fogo","DRG"],
         "corBordas":"#ff9a1f",
         "descricao":"",
         "valor":"",
@@ -656,6 +656,50 @@
             "pericia":"armas",
             "keywords":["Recarga lenta II"],
             "especial":[]
+        }
+    },
+    {
+        "nome": "Breach Cutter",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Explosivo","dano ingneo","arma de fogo","DRG"],
+        "corBordas":"#ff9a1f",
+        "descricao":"",
+        "valor":"",
+        "imagem":"https://deeprockgalactic.wiki.gg/images/thumb/Breach_cutter.png/200px-Breach_cutter.png?29aee6",
+        "item": {
+            "tipoDano":"Termico",
+            "maos": "2",
+            "area": "Linha 3m x 18m",
+            "dadoDano": "2d20",
+            "bonusDano":[""],
+            "distancia":"40",
+            "carga":"3 disparos",
+            "municao":"Bateria",
+            "pericia":"armas",
+            "keywords":["Disparo unico"],
+            "especial":[]
+        }
+    },
+    {
+        "nome": "Rifle inteligente",
+        "tipoPrincipal": "arma",
+        "tipoSecundario": ["Rifle","arma de fogo","DRG","Especial"],
+        "corBordas":"#ff9a1f",
+        "descricao":"",
+        "valor":"",
+        "imagem":"https://deeprockgalactic.wiki.gg/images/thumb/Lok-1.png/200px-Lok-1.png?934a72",
+        "item": {
+            "tipoDano":"Bruto",
+            "maos": "2",
+            "area": "",
+            "dadoDano": "3d8",
+            "bonusDano":[""],
+            "distancia":"40",
+            "carga":"6 Rajadas",
+            "municao":"balas de Mercurio",
+            "pericia":"-",
+            "keywords":[],
+            "especial":["Chat mate todos pra mim: Essa arma pode receber a modificação [Piloto Automático](/docs/livro-base/equipamentos/veiculos#piloto-automático) ao invés de usar o seu teste de perícia você pode usar o teste de perícia da IA."]
         }
     }
 ]
