@@ -30,7 +30,7 @@ export default function Saude() {
 
     const vidaAtual = vidaTotal - danoFisicoTotal;
 
-    const limiteMorto = -(vidaTotal * 1.5);
+    const limiteMorto = -(vidaTotal);
     const isMorto = vidaAtual <= limiteMorto && vidaTotal != vidaAtual;
     const isVidaVermelha = vidaAtual < 0 && !isMorto;
 
@@ -38,7 +38,7 @@ export default function Saude() {
     const persona = atributosFinais.persona || 0;
     const menteAdicional = Number(s.menteTotal?.valorAdicional) || 0;
 
-    const menteTotal = persona + menteAdicional + 5;
+    const menteTotal = persona + menteAdicional;
 
     const danoPsiquico = Number(s.dano?.psiquico) || 0;
     const menteAtual = menteTotal - danoPsiquico;
