@@ -1,3 +1,18 @@
 {
-  "pages": ["index", "livro-base", "expansao-cybersuit", "conteudo-adicional"]
+    "pages":[
+        "index",
+        "info",
+        "atributos",
+        "vocacoes",
+        "especies",
+        "pericias",
+        "caracteristicas",
+        "afiliacoes",
+        "vida-e-status",
+        "cenas",
+        "patrimonio",
+        "equipamentos",
+        "extra",
+        "conteudo-adicional"
+    ]
 }
