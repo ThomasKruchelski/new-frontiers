@@ -186,9 +186,11 @@ description: Condições aplicaveis a personagens
     *Você está mais cansado que o normal*
 
     <li className='atack-red'> Personagem não possuí a Ação Bônus em seu turno de combate</li>
-    <li className='atack-red'> Ao realizar um teste de perícia estendida o personagem ou grupo precisaram adquirir 1 sucesso a mais para concluir o teste</li>
+    <li className='atack-red'> Ao realizar uma cena de desafio o personagem ou grupo precisaram adquirir 1 sucesso a mais para concluir o teste para cada personagem com a condição</li>
 
     O tempo que o personagem ficará _fadigado_ depende do causador dessa condição.
+
+    Ao finalizar um descanso longo você remove essa condição.
 
 </div>
 
@@ -199,9 +201,11 @@ description: Condições aplicaveis a personagens
     *Você está muito cansado*
 
     <li className='atack-red'> Personagem só pode realizar uma ação por turno, uma ação padrão, ação bônus ou movimento.</li>
-    <li className='atack-red'> Ao realizar um teste de perícia estendida o personagem ou grupo precisaram adquirir 2 sucessos a mais para concluir o teste</li>
+    <li className='atack-red'> Ao realizar uma cena de desafio o personagem ou grupo precisaram adquirir 2 sucessos a mais para concluir o teste para cada personagem com a condição</li>
 
     O tempo que o personagem ficará _Exausto_ depende do causador dessa condição.
+
+    Ao finalizar um descanso longo você remove essa condição.
 
     <Callout  type='warn'>
         Conteúdo sujeito a alterações futuras
@@ -216,22 +220,7 @@ description: Condições aplicaveis a personagens
     <li className='warn-yellow'> O personagem é incapaz de agir</li>
     <li className='atack-red'> Se o personagem for alvo de um ataque, esse ataque terá vantagem</li>
 
-    O tempo que o personagem _inconciente_ acorda após um descanso longo
-
-</div>
-
-<div className='box-border'>
-
-    ### Estado Crítico
-
-    *Sua saúde está em estado crítico e está em Coma, A cada minuto que passa você se aproxíma da luz no fim do túnel*
-
-    <li className='warn-yellow'> Se o personagem receber a condição _Estado Crítico_ ele automaticamente receberá a condição _Inconciente_</li>
-    <li className='atack-red'> O personagem não conseguira remover a condição _Inconciente_ enquanto tive a condição _Estado Crítico_ </li>
-
-    O _Estado Crítico_ é aplicado ao personagem se tiver 0 ou menos pontos de vida.
-
-    Se os pontos de vida do personagem estiverem acima de 0 essa condição é removida.
+    Se você não estiver com menos de 0 pontos de vida, ao finalizar um descanso longo você remove essa condição.
 
 </div>
 
