@@ -1,11 +1,14 @@
 import React from 'react';
 import KeywordEffectbox from '@/components/KeywordEffectbox'
+import MarkdownContent from '@/components/MarkdownContent';
 
 const HandleWeaponsLayout = ({ item }) => {
 
+    const corBordas = item.corBordas? item.corBordas : '#ffffff'
+
     return (
         <div className='item-arma flex-col' id={item.nome}>
-            <div className='flex-col md:flex-row w-full flex border border-white'>
+            <div className={'flex-col md:flex-row w-full flex border '} style={corBordas ? { borderColor: corBordas } : undefined}>
                 <div className='flex flex-col flex-1 border-r '>
                     <div className='flex p-2 border-b md:flex-row flex-col'>
                         <div className='text-2xl'>
@@ -30,8 +33,13 @@ const HandleWeaponsLayout = ({ item }) => {
                                 <div className='font-light text-center'>
                                     Dado de Dano
                                 </div>
-                                <div className='flex font-medium text-2xl justify-center items-center flex-1 text-wrap text-center'>
-                                    {item.item.dadoDano === "" ? '-' : item.item.dadoDano}
+                                <div className='flex font-medium text-2xl justify-center items-center flex-1 text-wrap text-center gap-1'>
+                                    {item.item.dadoDano[0] !== "" && <div className='text-red-300'>{item.item.dadoDano[0]}</div>}
+                                    {item.item.dadoDano[1] !== "" && <div className='text-orange-400'>{item.item.dadoDano[1]}</div>}
+                                    {item.item.dadoDano[2] !== "" && <div className='text-lime-300'>{item.item.dadoDano[2]}</div>}
+                                    {item.item.dadoDano[3] !== "" && <div className='text-teal-200'>{item.item.dadoDano[3]}</div>}
+                                    {item.item.dadoDano[4] !== "" && <div className='text-purple-500'>{item.item.dadoDano[4]}</div>}
+                                    {item.item.dadoDano.every(item => item.trim() === "") && "-"}
                                 </div>
                             </div>
                             <div className='flex flex-col p-1 border-r md:w-auto w-1/3'>
@@ -121,8 +129,10 @@ const HandleWeaponsLayout = ({ item }) => {
                         </div>
                     </div>
                 </div>
-                <div className='relative'>
-                    <img className='w-full ' src='https://placehold.co/300x160/080808/31343C'></img>
+                <div className='relative flex'>
+                    <div className='flex items-center flex-1 min-w-[300px] bg-[#080808]'>
+                        <img className='w-full' src={!item.imagem? 'https://placehold.co/300x160/080808/31343C': item.imagem }></img>
+                    </div>
                     <div className='img-desc-hover'>
                         {item.descricao}
                     </div>
@@ -136,9 +146,12 @@ const HandleWeaponsLayout = ({ item }) => {
                             <KeywordEffectbox keyword={keyword} />
                         ))}
                         {item.item.especial.map((efeito) => (
-                            <div className='efeito-box'>
-                                {efeito}
-                            </div>
+                            
+                                <div className='efeito-box prose dark:prose-invert'>
+                                    <MarkdownContent>
+                                        {efeito}
+                                    </MarkdownContent>
+                                </div>
                         ))}
                     </div>
                 </details>

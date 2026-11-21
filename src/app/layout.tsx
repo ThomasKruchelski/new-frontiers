@@ -1,23 +1,28 @@
-import './global.css';
-import { RootProvider } from 'fumadocs-ui/provider';
-import { Inter } from 'next/font/google';
-import type { ReactNode } from 'react';
-import Waves from '@/components/Waves'
-import { Analytics } from "@vercel/analytics/next"
+import "./global.css";
+import { RootProvider } from "fumadocs-ui/provider";
+import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
+import Waves from "@/components/Waves";
+import { Analytics } from "@vercel/analytics/next";
+import DiscordButton from '@/components/DiscordButton';
 
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
-export default function Layout({ children }: { children: ReactNode }) {
+const lineColor =
+  process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview"
+    ? "#ff000075"
+    : "#3c199b50";
 
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen relative">
-        <Analytics/>
-        <div className='w-full h-full z-10 fixed'>
+        <Analytics />
+        <div className="w-full h-full z-10 fixed">
           <Waves
-            lineColor="#3c199b50"
+            lineColor={lineColor}
             // backgroundColor="#060010"
             waveSpeedX={0.02}
             waveSpeedY={0.01}
@@ -30,9 +35,10 @@ export default function Layout({ children }: { children: ReactNode }) {
             yGap={36}
           />
         </div>
-        <div className='w-full h-full z-20'>
+        <div className="w-full h-full z-20">
           <RootProvider>{children}</RootProvider>
         </div>
+        <DiscordButton/>
       </body>
     </html>
   );

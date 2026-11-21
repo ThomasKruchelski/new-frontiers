@@ -13,6 +13,7 @@ const efeitos = [
   { keyword: 'Arma Pesada', descricao: 'Se o personagem se mover no mesmo turno que disparar com essa arma ele terá desvantagem no disparo' },
   { keyword: 'Marcial', descricao: 'Você pode usar bônus de artes marciais usando essa arma' },
   { keyword: 'Explosão', descricao: 'Alvos podem fazer um teste de reflexo para reduzir o dano a metade' },
+  { keyword: 'Spray', descricao: 'Você pode dividir o valor do dano causado pela arma entre outros alvos à até 1,5m do alvo principal' },
   // Adicione mais efeitos conforme necessário
 ];
 
