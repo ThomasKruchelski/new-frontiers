@@ -4,6 +4,7 @@ import BackGroundVideo from "@/components/BackgroundVideo";
 
 import Post1 from "src/public/posts/post-0-1.gif";
 import Post2 from "src/public/posts/post-0-8.gif";
+import Post3 from "src/public/posts/post-1-0.gif";
 
 export default function HomePage() {
   // console.log(gifbg)
@@ -12,26 +13,41 @@ export default function HomePage() {
     <main className="flex flex-1 flex-col items-center pb-10 w-full">
       <BackGroundVideo />
 
-      {/* <div className='flex flex-col items-center w-full pb-10'>
+      <div className='flex flex-col items-center w-full pb-10' id='update-0-9'>
 
-        <h1 className="mb-4 text-4xl font-bold text-center">Update 0.5 - Derrubando Robôs Gigantes</h1>
-        <Image src={Post2} alt='' className=''></Image>
+        <h1 className="mb-4 text-4xl font-bold text-center">Update 0.9 - Contagem Regressiva...</h1>
+        <Image src={Post3} alt='' className=''></Image>
         <div className='w-full px-4 md:px-0 md:max-w-11/20 pt-4 flex flex-col gap-3'>
           <p className='w-full'>Eae Galera, quanto tempo não temos um post novo?</p>
           <p className='w-full'>
-            Apesar da ausência continuei trabalhando arduamente no sistema, e com muita alegria venho informar que versão 1.0 do combate de robôs está oficialmente lançada.
+            Esse foi um ano cheio de Playtests e mudanças no sistema, e será um prazer compartilha-las com vocês aqui nesse post.
           </p>
+          <p className='w-full'>Gostaria de começar anunciando que o livro <b>SERÁ LANÇADO ANO QUE VEM</b>. Sim, é real. Em parceria com a Secretária de Cultura de São Mateus e o Estado do Paraná, fomos selecionados através da lei Aldir Blanc para fazer nosso projeto acontecer e lançarmos uma versão piloto do sistema, tanto DIGITAL quanto FÍSICA</p>
+          <p className='w-full'>Essa versão irá conter todos os conteúdos necessários para jogar o RPG contando com bestiário, loja de equipamentos, fichas prontas, guia para o narrador, história do mundo e uma aventura pronta para sentar e jogar com seus amigos</p>
+          <p className='w-full'>Por mais completa que seja essa versão ela ainda não irá conter todos os conteúdos que planejo para New Frontiers, além disso a remessa desse primeiro livro será limitada, mas esses são detalhes que irei abordar quando tivermos mais certeza da distribuição das cópias...</p>
+
+          <i>"Vamos ao que interessa, o que mudou nesse último ano?"</i>
+
+          <p className='w-full'>O sistema amadureceu e recebeu cortes de alguns conteúdos, foi removido o atributo de <b>sabedoria</b> por não fazer tanto sentido com a construção de personagem e suas caracteristicas foram atribuidas ao atributo de <b>Persona</b>, o sistema de afiliações foi afastado para receber algumas modificações futuras(sem previsão de retorno) e o sistema de robos gigantes... Bom... Da para se dizer que ficou complexo de mais para caber em um livro! E irá sair como uma expansão no fúturo (assim como planejado e avisado pelo <a className="underline bold text-sky-600" href='#update-0-6'>post 0.5</a>.)</p>
+
+          <p className='w-full'>Além disso foram adicionadas novas mecânicas e jeitos de construir o personagem. A mais importânte é a adição de 2 novas espécieas para o sistema! (Os Replicantes e os Androides) que irão criar mais variedade na construção de personagem e animar a monotonia de sempre jogar como um humano. Tambem foi adicionada uma nova mecânica de pontos de mente explora o foco dos personagens na trama e abre portas para dano psiquico e os mistérios da mente futurista. Alem de tudo isso foram adicionados novos itens, caracteristicas, armas, e muito mais!</p>
           
+          <i>"O que falta para lançar?"</i>
+
+          <p className="w-full">Ainda existem alguns conteúdos para serem balanceados, o bestiário e a economia são os pontos principais que precisam ser concluídos. As atualizações e o que falta podem ser acompanhados nas atualizações do Github do projeto e no próprio site.</p>
+
+          <p className="w-full">Se quiser conhecer mais sobre o projeto ou ficar antenado em mais atualizações, considere entrar na nossa comunidade clicando no <a href="https://discord.gg/JDJawBjbfk" target="_blank" className='text-[#5865F2]'>botão do discord</a> no canto direito inferior no site. Vejo vocês em breve com mais novidades ;)</p>
+
           <p className='w-full text-end'>
-            - Thom  18/02/2025
+            - Thom  20/11/2026
           </p>
 
         </div>
-      </div> */}
+      </div>
 
-      <div className="flex flex-col items-center w-full pb-10">
+      <div className="flex flex-col items-center w-full pb-10" id='update-0-6'>
         <h1 className="mb-4 text-4xl font-bold text-center">
-          Update 0.8 - Preparativos para Versão Piloto
+          Update 0.5 - Preparativos para Versão Piloto
         </h1>
         <Image src={Post2} alt="" className=""></Image>
         <div className="w-full px-4 md:px-0 md:max-w-11/20 pt-4 flex flex-col gap-3">

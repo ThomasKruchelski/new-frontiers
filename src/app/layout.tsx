@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import Waves from "@/components/Waves";
 import { Analytics } from "@vercel/analytics/next";
+import DiscordButton from '@/components/DiscordButton';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <div className="w-full h-full z-20">
           <RootProvider>{children}</RootProvider>
         </div>
+        <DiscordButton/>
       </body>
     </html>
   );
