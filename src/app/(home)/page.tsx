@@ -39,7 +39,7 @@ export default function HomePage() {
           <p className="w-full">Se quiser conhecer mais sobre o projeto ou ficar antenado em mais atualizações, considere entrar na nossa comunidade clicando no <a href="https://discord.gg/JDJawBjbfk" target="_blank" className='text-[#5865F2]'>botão do discord</a> no canto direito inferior no site. Vejo vocês em breve com mais novidades ;)</p>
 
           <p className='w-full text-end'>
-            - Thom  20/11/2026
+            - Thom 20/11/2026
           </p>
 
         </div>

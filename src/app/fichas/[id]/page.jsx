@@ -13,6 +13,7 @@ import BonusEImplantes from '@/components/ficha/BonusEImplantes';
 import ResistenciasEPrecursores from '@/components/ficha/ResistenciasEPrecursores';
 import Pericias from '@/components/ficha/Pericias';
 import Saude from '@/components/ficha/Saude';
+import Armas from '../../../components/ficha/Armas';
 
 export default function FichaPersonagem() {
 
@@ -72,6 +73,10 @@ export default function FichaPersonagem() {
 
           <ResistenciasEPrecursores />
 
+          <Armas/>
+
+          <Inventario />
+
         </div>
 
         {/* COLUNA DIREITA */}
@@ -82,8 +87,6 @@ export default function FichaPersonagem() {
           <BonusEImplantes />
 
           <Pericias />
-
-          <Inventario />
 
         </div>
       </div>

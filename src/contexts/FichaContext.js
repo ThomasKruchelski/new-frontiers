@@ -234,7 +234,87 @@ export function FichaProvider({ children }) {
     const adicionarObjetoArray = (nomeArray, objetoPadrao) => setFichaAtual(prev => ({ ...prev, ficha: { ...prev.ficha, [nomeArray]: [...prev.ficha[nomeArray], objetoPadrao] } }));
     const atualizarObjetoArray = (nomeArray, index, campo, valor) => setFichaAtual(prev => { const novo = [...prev.ficha[nomeArray]]; novo[index] = { ...novo[index], [campo]: valor }; return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
     const removerObjetoArray = (nomeArray, index) => setFichaAtual(prev => { const novo = prev.ficha[nomeArray].filter((_, i) => i !== index); return { ...prev, ficha: { ...prev.ficha, [nomeArray]: novo } }; });
+    const adicionarArma = (novaArmaPadrao) => {
+        setFichaAtual((prev) => {
+            if (!prev) return prev;
+            const armasAtuais = Array.isArray(prev.ficha.armas) ? prev.ficha.armas : [];
+            return {
+                ...prev,
+                ficha: {
+                    ...prev.ficha,
+                    armas: [...armasAtuais, novaArmaPadrao],
+                },
+            };
+        });
+    };
 
+    const atualizarArma = (index, campo, valor) => {
+        setFichaAtual((prev) => {
+            if (!prev) return prev;
+            const armasAtuais = Array.isArray(prev.ficha.armas) ? [...prev.ficha.armas] : [];
+            if (!armasAtuais[index]) return prev;
+
+            armasAtuais[index] = {
+                ...armasAtuais[index],
+                [campo]: valor,
+            };
+
+            return {
+                ...prev,
+                ficha: {
+                    ...prev.ficha,
+                    armas: armasAtuais,
+                },
+            };
+        });
+    };
+
+    const atualizarArrayDanoArma = (indexArma, campoArray, indiceTipoDano, valor) => {
+        setFichaAtual((prev) => {
+            if (!prev) return prev;
+            const armasAtuais = Array.isArray(prev.ficha.armas) ? [...prev.ficha.armas] : [];
+            const armaAlvo = armasAtuais[indexArma];
+            if (!armaAlvo) return prev;
+
+            const arrayAtual = Array.isArray(armaAlvo[campoArray])
+                ? [...armaAlvo[campoArray]]
+                : ["", "", "", "", ""];
+
+            // Garante que o array tenha pelo menos 5 posições
+            while (arrayAtual.length < 5) {
+                arrayAtual.push("");
+            }
+
+            arrayAtual[indiceTipoDano] = valor;
+
+            armasAtuais[indexArma] = {
+                ...armaAlvo,
+                [campoArray]: arrayAtual,
+            };
+
+            return {
+                ...prev,
+                ficha: {
+                    ...prev.ficha,
+                    armas: armasAtuais,
+                },
+            };
+        });
+    };
+
+    const removerArma = (index) => {
+        setFichaAtual((prev) => {
+            if (!prev) return prev;
+            const armasAtuais = Array.isArray(prev.ficha.armas) ? prev.ficha.armas : [];
+            return {
+                ...prev,
+                ficha: {
+                    ...prev.ficha,
+                    armas: armasAtuais.filter((_, i) => i !== index),
+                },
+            };
+        });
+    };
     // 3. O que a antena vai transmitir? (Tudo que está no 'value')
     return (
         <FichaContext.Provider value={{
@@ -263,7 +343,12 @@ export function FichaProvider({ children }) {
             atualizarTotalSaude,
             adicionarStatus,
             atualizarStatus,
-            removerStatus
+            removerStatus,
+            removerArma,
+            atualizarArrayDanoArma,
+            atualizarArma,
+            adicionarArma
+
         }}>
             {children}
         </FichaContext.Provider>
